@@ -1,0 +1,23 @@
+{
+    "template": "{st_dev} - ts_mean({st_dev}, 20)",
+    "expression_list": [
+        "anl15_gr_12_m_st_dev - ts_mean(anl15_gr_12_m_st_dev, 20)",
+        "anl15_gr_18_m_st_dev - ts_mean(anl15_gr_18_m_st_dev, 20)",
+        "anl15_gr_cal_fy1_st_dev - ts_mean(anl15_gr_cal_fy1_st_dev, 20)",
+        "anl15_gr_cal_fy2_st_dev - ts_mean(anl15_gr_cal_fy2_st_dev, 20)",
+        "anl15_gr_cal_fy3_st_dev - ts_mean(anl15_gr_cal_fy3_st_dev, 20)",
+        "anl15_gr_ltg_st_dev - ts_mean(anl15_gr_ltg_st_dev, 20)",
+        "anl15_ind_12_m_st_dev - ts_mean(anl15_ind_12_m_st_dev, 20)",
+        "anl15_ind_18_m_st_dev - ts_mean(anl15_ind_18_m_st_dev, 20)",
+        "anl15_ind_cal_fy1_st_dev - ts_mean(anl15_ind_cal_fy1_st_dev, 20)",
+        "anl15_ind_cal_fy2_st_dev - ts_mean(anl15_ind_cal_fy2_st_dev, 20)",
+        "anl15_ind_cal_fy3_st_dev - ts_mean(anl15_ind_cal_fy3_st_dev, 20)",
+        "anl15_ind_ltg_st_dev - ts_mean(anl15_ind_ltg_st_dev, 20)",
+        "anl15_s_12_m_st_dev - ts_mean(anl15_s_12_m_st_dev, 20)",
+        "anl15_s_18_m_st_dev - ts_mean(anl15_s_18_m_st_dev, 20)",
+        "anl15_s_cal_fy1_st_dev - ts_mean(anl15_s_cal_fy1_st_dev, 20)",
+        "anl15_s_cal_fy2_st_dev - ts_mean(anl15_s_cal_fy2_st_dev, 20)",
+        "anl15_s_cal_fy3_st_dev - ts_mean(anl15_s_cal_fy3_st_dev, 20)",
+        "anl15_s_ltg_st_dev - ts_mean(anl15_s_ltg_st_dev, 20)"
+    ]
+}

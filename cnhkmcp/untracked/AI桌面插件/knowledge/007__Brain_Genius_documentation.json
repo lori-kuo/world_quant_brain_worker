@@ -1,0 +1,288 @@
+{
+  "id": "brain-genius",
+  "title": "💡 Brain Genius",
+  "lastModified": "2025-10-28T08:00:52.931411-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Overview"
+      },
+      "id": "44740157-cc09-4bfc-bb69-849a93839409"
+    },
+    {
+      "type": "TEXT",
+      "value": "<iframe class=\"vidyard_iframe\" title=\"World_Quant_Brain_Genius_Explainer_v2b\" src=\"//play.vidyard.com/u9mjdmp27FW3DiESuHe2J7.html?\" width=\"640\" height=\"360\" scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" allowfullscreen referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+      "id": "15bcf536-9edc-4da4-b912-f4d33c01cdfe"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What is the BRAIN Genius program?"
+      },
+      "id": "73eaef88-0d4b-4f69-9332-b29a01866cf0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The BRAIN Genius program is a leveled system for WorldQuant BRAIN consultants that provides increasing access to data, tools, and opportunities based on performance and activity levels. There are four levels: Gold (default level for new BRAIN consultants), Expert, Master, and Grand Master. These levels are an extension to the user-level levels that you are already familiar with: Bronze, Silver and Gold.</p>",
+      "id": "d5c9a341-0d33-4165-93e4-124834846711"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What are the main benefits of advancing to higher levels?"
+      },
+      "id": "9e9b20bb-3e57-42b1-8cb9-b7f0c94592b0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Higher levels provide:</p><ul><li>Access to more operators, research regions, datasets and data fields for each level</li><li>Ability to create SuperAlphas from a wider pool</li><li>Less frequent requirement for biometrics sign-in</li><li>Certificates and badges</li><li>WorldQuant consistently searches for top talent to consider for eligible internship and full-time employment opportunities. In particular, those consultants who reach Master and Grand Master level are more likely to be considered for such internship and full-time employment opportunities</li><li>In addition, due to the access to more data, operators and other features, consultants at higher levels have a better opportunity to potentially receive higher quarterly payments amounts. Consultants who reach the Grand Master level can see increases to their Quarterly Payment amounts of 80x or more, potentially earning upwards of $8,000 or more in a Quarterly Payment amount.</li><li>Master level consultants can potentially earn upwards of $2,000 or more in a Quarterly payment amount</li></ul>",
+      "id": "fe3cc8d9-6b17-4d45-8abe-3962156c09a0"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "",
+            "Gold",
+            "Expert",
+            "Master",
+            "Grand Master"
+          ],
+          [
+            "Research Regions",
+            "USA, ASI, EUR, GLB, IND, CHN",
+            "Additional Pyramids across regions",
+            "+ AMR, JPN",
+            "+ HKG, KOR, TW"
+          ],
+          [
+            "Data Access",
+            "50% of available data fields",
+            "61%",
+            "78%",
+            "100%"
+          ],
+          [
+            "Operator Access",
+            "45% of all Operators",
+            "63%",
+            "78%",
+            "100%"
+          ],
+          [
+            "SuperAlpha Access (subject to 100+ Alpha submission requirement)",
+            "Only able to use own Alphas as components to SuperAlpha",
+            "In addition to prior level access, ability to select component Alphas of consultants from your same University",
+            "In addition to prior level access, ability to select component Alphas of consultants from your same Country",
+            "In addition to prior level access, ability to select component Alphas of all consultants"
+          ],
+          [
+            "Biometrics sign-in required every",
+            "4 hrs",
+            "6 hrs",
+            "12 hrs",
+            "24 hrs"
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": true
+      },
+      "id": "f1d94db2-73c6-423a-b15d-066028c2486a"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How often are these levels evaluated?"
+      },
+      "id": "87b4b5e3-6901-4f84-adc9-f56e90e8ce1f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>WorldQuant may evaluate levels on a quarterly basis. Changes in a consultant’s levels will take effect within the first week of each calendar quarter after each re-evaluation, starting 1st Jan 2025.</p>",
+      "id": "83a36cd3-4a94-46f7-87db-9b0add79354f"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How can I track my progress towards the next level?"
+      },
+      "id": "32217b54-d0aa-4eee-ab0e-42efa389d45f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>You can view your current level and progress towards the next level on the Genius <a href=\"https://platform.worldquantbrain.com/genius/leaderboard\">dashboard</a>. This displays metrics, such as (i) your current signal count, (ii) number of pyramids you have formulated, and (iii) combined performance of your Alphas relative to the thresholds for the next level.</p><p></p>",
+      "id": "b8a40fef-f491-41b4-8dec-e6bb92d75da5"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Can I lose access to features if I move into a lower level?"
+      },
+      "id": "091c497b-79f1-400b-ae6a-83740a77476e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Yes, if you move to a lower level, you may lose access to certain datasets, operators, and other features associated with higher levels. Note that moving to a lower level may prevent you from re-simulating previously created alphas if they use data fields or operators you no longer have access to, but you can use those in new SuperAlphas.</p>",
+      "id": "8943ea85-e096-4dc6-b105-a52aa3423c4d"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How can I regain a higher level after moving into a lower level?"
+      },
+      "id": "17cd6c95-b0b2-4f9a-b004-b3718418799d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>You'll need to meet the then-current criteria for the higher level in a subsequent quarter. Focus on increasing your signal submissions, formulating more pyramids, and improving your “Combined Alpha Performance”.</p><p>Moving to a lower level may prevent you from re-simulating previously created alphas if they use data fields or operators you no longer have access to, but you can use those in new SuperAlphas.</p>",
+      "id": "fea2a2b9-a86e-4e8d-9a37-2955728b8227"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Criteria"
+      },
+      "id": "5f5b219e-ad37-462e-891a-fc0e4e9303e6"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How do I qualify for the higher levels?"
+      },
+      "id": "d9fa4391-bea9-4d3b-956a-a00495280b92"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>To qualify for a level, you must meet three Eligibility criteria:</p><ol><li>Submit a minimum number of signals ( both Alphas and SuperAlphas count) per quarter</li><li>Work on a minimum number of \"pyramids\" (combinations of region, delay, and dataset categories)</li><li>Achieve a minimum Combined Alpha performance (i.e, Out-sample Sharpe ratio)</li></ol><p>The specific thresholds for each metric increase for higher levels and will be announced for every quarter in advance. WorldQuant expects to communicate any new thresholds for a the Genius levels in a particular quarter in the prior quarter to such thresholds taking effect.</p><p>Please note that there is also a maximum limit on the total number of consultants that may qualify in each level.</p><p></p><p><b>Important links:</b></p><ul><li><a href=\"https://platform.worldquantbrain.com/genius/leaderboard\">Genius leaderboard</a></li><li><a href=\"https://platform.worldquantbrain.com/genius/leaderboard\">Genius status</a></li></ul>",
+      "id": "8097991b-b6a5-4735-afe6-e81d9caa76ad"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Is the rank in the eligibility criteria important?"
+      },
+      "id": "a24d7c74-393a-4150-9658-2caf05f58f2f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Eligibility criteria are thresholds, not rankings. Meeting the thresholds, whether narrowly or by a wide margin, is the same. Hence they are relatively easy to achieve, compared to the tie breaker criteria.</p><p>For example, crossing Grandmaster eligibility thresholds does not guarantee a Master Genius level. Everyone who has crossed the eligibility thresholds of a genius level then compete on the tie breaker score.</p>",
+      "id": "45f1bfff-1034-42ee-addf-8762198041b3"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How many slots available for each level?"
+      },
+      "id": "b5398c6c-1fa1-47f6-9522-98c5f0e198c7"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            null,
+            "Gold",
+            "Expert",
+            "Master",
+            "Grand Master"
+          ],
+          [
+            "% Slots Available",
+            "70%",
+            "20%",
+            "8%",
+            "2%"
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": true
+      },
+      "id": "aee39f98-8c0b-40d8-a392-9b33abed3937"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The % of slots available for each level is calculated based on the number of BRAIN research consultants eligible for a quarterly payment, as set forth in their respective consulting agreements, meaning those who submitted in the prior calendar quarter (i.e., utilized at least 4% of their quarterly limit of 4 Alphas and 1 SuperAlpha per day).</p>",
+      "id": "46db74f4-6a99-4018-9407-43ca377bf5da"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What are pyramids?"
+      },
+      "id": "063fd383-7027-4a84-bfa6-f57be587ffa7"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>WorldQuant defines a “pyramid” as a combination of region, delay, and dataset category. E.g. USA-D1-analyst.</p><p>A consultant is considered to formulated a pyramid if they have submitted a minimum of 3 Alphas in it. A single Alpha can belong to multiple pyramids as it could have multiple data fields.</p><p>Formulating a higher number of pyramids can also potentially improve both the Value Factor and Combined Alpha Performance through diversification.</p>",
+      "id": "d66cd44b-8591-4775-aed9-f14d9dcf4ddf"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What is Combined Alpha Performance?"
+      },
+      "id": "07b26a34-ee7e-4c40-9b6b-13d489411df1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Consultants see two metrics on the Genius dashboard:</p><ul><li>Combined out-sample performance of all consultant Alphas submitted by the consultant</li><li>Combined out-sample performance of all consultant Alphas submitted by the consultant and then selected by WQ</li><li>Higher value of the two as of the end of a quarter, would be used as a key criterion of the consultant levels in the BRAIN Genius program</li><li>The metric would be refreshed every 4-6 weeks</li></ul><p>Alphas submitted in the last month of the quarter may not count towards the Combined Alpha Performance used to compute Genius levels at the end of the quarter, since the metric takes some weeks to compute. However, those Alphas will contribute to the</p><ul><li>Two other eligibility criteria and the value factor of the same quarter</li><li>Combined Alpha Performance in the next quarter.</li></ul>",
+      "id": "df6d8c61-883a-4525-ae54-47396b6619f7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What happens if more consultants qualify for a level than there are available spots?"
+      },
+      "id": "610ce202-c0f2-4e55-90b6-aaeb30de1044"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>If more consultants meet the base criteria for a level than there are available spots, a tiebreaker criterion is used. This is based on a sum of ranks across the following metrics:</p><ol><li>Avg distinct Operators/Alpha (Lower is better)</li><li>Avg distinct Fields/Alpha (Lower is better)</li><li>Total distinct Operators (Higher is better)</li><li>Total distinct Fields (Higher is better)</li><li>Maximum Simulation Streak: Best streak of a consultant that ends in that quarter or continues into the next quarter. Streak does not reset to 0 every quarter.</li><li>Community leader<ul><li>Forum: Number of Likes on posts or comments that are published as of the end of quarter. Minimum length of post or comment must be 100 characters.</li><li>Referral: Total number of successful referrals in the quarter. A referral is considered “successful” when the referring consultant has become eligible to accrue the referral fee for someone they have referred to BRAIN, in accordance with the guidelines of the <a href=\"https://platform.worldquantbrain.com/referral\">referral fee program</a>.</li></ul></li></ol>",
+      "id": "ce2bc363-a6b2-4858-ba9a-ca2fd609cebb"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What SuperAlpha accesses are visible to higher levels?"
+      },
+      "id": "7dd51197-02ae-4700-bd19-01d5c7ac1c08"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Eligibility: Any consultant (including Gold level) with 100 Alpha submissions can create SuperAlphas</li><li>Expert: Can also submit SuperAlphas using Alphas from consultants in their university.</li><li>Master: Can also submit SuperAlphas using Alphas from consultants in their country.</li><li>Grand Master: Can also submit SuperAlphas using Alphas from all consultants globally.</li></ul><p>Submissions: For each SuperAlpha a consultant submits from their own pool of Alphas, they will be permitted an equivalent allocation to select whether to submit a SuperAlpha using the expanded Alpha pool (based on their then-current Genius level) as their SuperAlpha submission on a subsequent day. Please note that the daily submission quota for SuperAlphas does not increase from 1.</p><ul><li>For example, if you submit a SuperAlpha that are comprised of your own Alphas on 10 different days, you will be permitted to submit a SuperAlpha comprised of Alphas from the other pools (depending on your Genius level) on 10 other days; however, if you fail to submit a SuperAlpha comprised of your own Alphas after that, you will not be permitted to submit a SuperAlpha comprised of Alphas from the other pools.</li></ul>",
+      "id": "c47afc61-7c76-4bca-8993-32ec3adb3cf7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What are base operators?"
+      },
+      "id": "1cad9f59-5c2e-4251-944c-2fd515886e46"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Base operators are the ones that have historically been observed to be most useful in creating high performing Alphas.</p><p>Many of them are also very intuitive operators. Each consultant has access to all the base operators and then many other operators. More complex operators unlock at higher Genius levels.</p><p>BRAIN will continue refreshing accesses from time to time, including launching more data fields and operators for the entire community, and promote a level playing field.</p>",
+      "id": "3481dd5d-ff05-49c9-b6ab-7781c382bcb5"
+    }
+  ],
+  "sequence": 999,
+  "category": "Consultant Information"
+}

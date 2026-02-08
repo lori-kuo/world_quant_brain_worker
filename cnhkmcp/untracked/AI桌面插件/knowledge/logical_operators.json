@@ -1,0 +1,145 @@
+[
+  {
+    "name": "and",
+    "category": "Logical",
+    "definition": "and(input1, input2)",
+    "description": "Logical AND operator, returns true if both operands are true and returns false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "equal",
+    "category": "Logical",
+    "definition": "input1 == input2",
+    "description": "Returns true if both inputs are same and returns false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "greater",
+    "category": "Logical",
+    "definition": "input1 > input2",
+    "description": "Logic comparison operators to compares two inputs",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "greater_equal",
+    "category": "Logical",
+    "definition": "input1 >= input2",
+    "description": "Returns true if input1 >= input2, return false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "if_else",
+    "category": "Logical",
+    "definition": "if_else(input1, input2, input 3)",
+    "description": "If input1 is true then return input2 else return input3.",
+    "documentation": "/operators/if_else",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "is_nan",
+    "category": "Logical",
+    "definition": "is_nan(input)",
+    "description": "If (input == NaN) return 1 else return 0",
+    "documentation": "/operators/is_nan",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "less",
+    "category": "Logical",
+    "definition": "input1 < input2",
+    "description": "If input1 < input2 return true, else return false",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "less_equal",
+    "category": "Logical",
+    "definition": "input1 <= input2",
+    "description": "Returns true if input1 <= input2, return false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "not",
+    "category": "Logical",
+    "definition": "not(x)",
+    "description": "Returns the logical negation of x. If x is true (1), it returns false (0), and if input is false (0), it returns true (1).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "not_equal",
+    "category": "Logical",
+    "definition": "input1!= input2",
+    "description": "Returns true if both inputs are NOT the same and returns false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "or",
+    "category": "Logical",
+    "definition": "or(input1, input2)",
+    "description": "Logical OR operator returns true if either or both inputs are true and returns false otherwise",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  }
+]

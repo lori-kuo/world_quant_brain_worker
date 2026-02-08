@@ -1,0 +1,64 @@
+{
+  "id": "getting-started-crowding-risk-neutralized-alphas",
+  "title": "Crowding Risk-Neutralized Alphas",
+  "lastModified": "2025-11-04T02:32:58.440036-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "What is Crowding Risk?"
+      },
+      "id": "d45b2fbd-e486-40d7-89fb-6dd59a2a8254"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Crowding risk occurs when many investors hold similar positions and trades. This similarity can create crowded positions and trades.</p><p>The main problems with crowded trades include:</p><ul><li>Unraveling of Crowded Positions: When too many investors try to sell the same positions simultaneously, prices can drop quickly, increasing losses.</li><li>Reduced Profitability: Crowded trades can become less profitable as more investors enter the same positions. Initially, prices may rise, but they may become vulnerable to steep declines.</li></ul>",
+      "id": "d7e4c895-a7b1-4e9f-848d-ef8d013e144d"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Crowding Risk Factors"
+      },
+      "id": "080b00ba-7acf-4a3d-933f-580428718765"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>For <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/getting-started-risk-neutralized-alphas\">long-short neutralized Alphas</a>, several style risk factors can indicate crowding risk. For example, the momentum factor identifies high exposure to instruments with favorable medium-term price movements. Instruments with strong momentum can attract many investors, potentially leading to crowded trades.</p>",
+      "id": "45b5918b-10eb-4af6-9589-e6a222fd5a30"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How to Simulate Crowding Risk-Neutralized Alphas"
+      },
+      "id": "53e2638d-494a-4be2-9dcb-4af05e7ee825"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>To control for crowding risk in Alphas, BRAIN has developed a risk model with various risk factors. By monitoring and managing these factors, BRAIN consultants can potentially reduce the negative impacts of crowded trades and improve the robustness of Alphas. Consultants can neutralize Alphas using crowding risk factors by adjusting the settings to 'CROWDING':</p>",
+      "id": "ead888ba-4be8-4a28-a714-f3dfb3641ff1"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "crowding_risk_neu.png",
+        "width": 624,
+        "height": 362,
+        "fileSize": 50882,
+        "url": "https://api.worldquantbrain.com/content/images/cPHU6I2_nsgdPuZATjrV1FBSSmc=/318/original/crowding_risk_neu.png"
+      },
+      "id": "6697c8c1-8982-404d-88c5-218fb62907bc"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>settings_dict = {<br/> \"instrumentType\": \"EQUITY\",<br/> \"region\": \"USA\",<br/> \"universe\": \"TOP3000\",<br/> \"delay\": 1,<br/> \"decay\": 0,<br/> \"neutralization\": \"CROWDING\",<br/> \"truncation\": 0.1,<br/> \"pasteurization\": \"ON\",<br/> \"unitHandling\": \"VERIFY\",<br/> \"nanHandling\": \"ON\",<br/> \"language\": \"FASTEXPR\",<br/> \"visualization\": False<br/>}</p>",
+      "id": "df0eb9f8-bd35-450a-a265-d48916cc4bb0"
+    }
+  ],
+  "sequence": 15,
+  "category": "Neutralization"
+}

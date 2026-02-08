@@ -1,0 +1,14 @@
+{
+    "template": "{1m_chg} * ({cos_up} - {cos_dn})",
+    "expression_list": [
+        "anl15_gr_12_m_1m_chg * (anl15_gr_12_m_cos_up - anl15_gr_12_m_cos_dn)",
+        "anl15_gr_18_m_1m_chg * (anl15_gr_18_m_cos_up - anl15_gr_18_m_cos_dn)",
+        "anl15_gr_ltg_1m_chg * (anl15_gr_ltg_cos_up - anl15_gr_ltg_cos_dn)",
+        "anl15_ind_12_m_1m_chg * (anl15_ind_12_m_cos_up - anl15_ind_12_m_cos_dn)",
+        "anl15_ind_18_m_1m_chg * (anl15_ind_18_m_cos_up - anl15_ind_18_m_cos_dn)",
+        "anl15_ind_ltg_1m_chg * (anl15_ind_ltg_cos_up - anl15_ind_ltg_cos_dn)",
+        "anl15_s_12_m_1m_chg * (anl15_s_12_m_cos_up - anl15_s_12_m_cos_dn)",
+        "anl15_s_18_m_1m_chg * (anl15_s_18_m_cos_up - anl15_s_18_m_cos_dn)",
+        "anl15_s_ltg_1m_chg * (anl15_s_ltg_cos_up - anl15_s_ltg_cos_dn)"
+    ]
+}

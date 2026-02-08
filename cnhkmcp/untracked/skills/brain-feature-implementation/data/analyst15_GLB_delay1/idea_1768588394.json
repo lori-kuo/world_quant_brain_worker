@@ -1,0 +1,23 @@
+{
+    "template": "{1m_chg} * log({mktcap} + 1)",
+    "expression_list": [
+        "anl15_gr_12_m_1m_chg * log(anl15_gr_12_m_mktcap + 1)",
+        "anl15_gr_18_m_1m_chg * log(anl15_gr_18_m_mktcap + 1)",
+        "anl15_gr_cal_fy1_1m_chg * log(anl15_gr_cal_fy1_mktcap + 1)",
+        "anl15_gr_cal_fy2_1m_chg * log(anl15_gr_cal_fy2_mktcap + 1)",
+        "anl15_gr_cal_fy3_1m_chg * log(anl15_gr_cal_fy3_mktcap + 1)",
+        "anl15_gr_ltg_1m_chg * log(anl15_gr_ltg_mktcap + 1)",
+        "anl15_ind_12_m_1m_chg * log(anl15_ind_12_m_mktcap + 1)",
+        "anl15_ind_18_m_1m_chg * log(anl15_ind_18_m_mktcap + 1)",
+        "anl15_ind_cal_fy1_1m_chg * log(anl15_ind_cal_fy1_mktcap + 1)",
+        "anl15_ind_cal_fy2_1m_chg * log(anl15_ind_cal_fy2_mktcap + 1)",
+        "anl15_ind_cal_fy3_1m_chg * log(anl15_ind_cal_fy3_mktcap + 1)",
+        "anl15_ind_ltg_1m_chg * log(anl15_ind_ltg_mktcap + 1)",
+        "anl15_s_12_m_1m_chg * log(anl15_s_12_m_mktcap + 1)",
+        "anl15_s_18_m_1m_chg * log(anl15_s_18_m_mktcap + 1)",
+        "anl15_s_cal_fy1_1m_chg * log(anl15_s_cal_fy1_mktcap + 1)",
+        "anl15_s_cal_fy2_1m_chg * log(anl15_s_cal_fy2_mktcap + 1)",
+        "anl15_s_cal_fy3_1m_chg * log(anl15_s_cal_fy3_mktcap + 1)",
+        "anl15_s_ltg_1m_chg * log(anl15_s_ltg_mktcap + 1)"
+    ]
+}

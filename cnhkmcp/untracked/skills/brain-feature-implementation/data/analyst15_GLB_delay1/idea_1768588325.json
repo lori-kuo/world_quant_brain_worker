@@ -1,0 +1,20 @@
+{
+    "template": "{1m_chg} / (abs({mean}) + 0.01)",
+    "expression_list": [
+        "anl15_gr_12_m_1m_chg / (abs(anl15_gr_12_m_mean) + 0.01)",
+        "anl15_gr_18_m_1m_chg / (abs(anl15_gr_18_m_mean) + 0.01)",
+        "anl15_gr_cal_fy1_1m_chg / (abs(anl15_gr_cal_fy1_mean) + 0.01)",
+        "anl15_gr_cal_fy2_1m_chg / (abs(anl15_gr_cal_fy2_mean) + 0.01)",
+        "anl15_gr_cal_fy3_1m_chg / (abs(anl15_gr_cal_fy3_mean) + 0.01)",
+        "anl15_ind_12_m_1m_chg / (abs(anl15_ind_12_m_mean) + 0.01)",
+        "anl15_ind_18_m_1m_chg / (abs(anl15_ind_18_m_mean) + 0.01)",
+        "anl15_ind_cal_fy1_1m_chg / (abs(anl15_ind_cal_fy1_mean) + 0.01)",
+        "anl15_ind_cal_fy2_1m_chg / (abs(anl15_ind_cal_fy2_mean) + 0.01)",
+        "anl15_ind_cal_fy3_1m_chg / (abs(anl15_ind_cal_fy3_mean) + 0.01)",
+        "anl15_s_12_m_1m_chg / (abs(anl15_s_12_m_mean) + 0.01)",
+        "anl15_s_18_m_1m_chg / (abs(anl15_s_18_m_mean) + 0.01)",
+        "anl15_s_cal_fy1_1m_chg / (abs(anl15_s_cal_fy1_mean) + 0.01)",
+        "anl15_s_cal_fy2_1m_chg / (abs(anl15_s_cal_fy2_mean) + 0.01)",
+        "anl15_s_cal_fy3_1m_chg / (abs(anl15_s_cal_fy3_mean) + 0.01)"
+    ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "getting-started-ram-risk-neutralized-alphas",
+  "title": "RAM Risk-Neutralized Alphas",
+  "lastModified": "2025-11-04T02:32:44.930831-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "What is Reversion and Momentum (RAM) Factor?"
+      },
+      "id": "0d3fc584-163e-41c5-9caf-4b9f2f9c73f3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Reversion Factor:</b><br/> The short-term reversion factor captures the phenomenon where stocks that have recently underperformed tend to generate higher returns in the near future, while stocks that have recently outperformed are more likely to experience declines. This behavior is based on the idea that markets often overreact to short-term events, causing temporary mispricing. As these inefficiencies are corrected, oversold stocks recover, and overbought stocks pull back. The reversion factor typically operates within a <b>5-day time horizon</b> and leverages mean reversion by overweighting recently underperforming stocks and underweighting recently outperforming stocks.</p><p><b>Momentum Factor:</b><br/> The momentum factor identifies stocks that exhibit consistent price trends based on recent performance. Stocks with positive excess returns in the recent past tend to continue their upward trajectory, while stocks with negative excess returns persist in their downward trend. This trend-following behavior is based on the principle that established price trends are more likely to continue than reverse. Momentum is typically calculated as the <b>cumulative excess return</b> over the last <b>12 months</b>.</p>",
+      "id": "7f0a0a05-08ad-4a97-b413-68491358a326"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Benefits of RAM Neutralization"
+      },
+      "id": "4c8d5e6b-29d8-4814-bd1f-5decc4d73038"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>RAM Neutralization</b> adjusts Alpha to reduce exposure to the Reversion and Momentum factors derived from stock price data.</p><ul><li><b>Neutralize Momentum Factor:</b> Reduces exposure to crowded trades during strong momentum trends, minimizing risks during market corrections.</li><li><b>Neutralize Short-Term Reversion Factor:</b> Hedges Alphas against mean-reversion signals, reducing unwanted risks.</li><li><b>Remove influence of Price: Helps eliminate the effect of price in unrelated Alphas, such as fundamental metrics like ‘eps/close.’</b></li><li><b>Improve Performance:</b> Mitigates risks during market drawdowns, improving Sharpe Ratio, reducing drawdowns, and balances turnover benefits with transaction costs for better Alpha performance.</li></ul>",
+      "id": "dacfb3d6-2afa-42a5-b639-0aef55bf8783"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "How to Simulate RAM Risk-Neutralized Alphas"
+      },
+      "id": "487a6f69-90b4-4eb6-8293-586db1784c7d"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "30.png",
+        "width": 618,
+        "height": 338,
+        "fileSize": 18513,
+        "url": "https://api.worldquantbrain.com/content/images/qAjglu10rPB6hjaX4KaAOZJm8Xc=/395/original/30.png"
+      },
+      "id": "261c9f30-94f2-4986-b06d-0f5754e32d27"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Below is an example configuration for simulating RAM risk-neutralized Alphas:</p>",
+      "id": "055f0071-b532-4bfc-9d20-dcd5d583626e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>{<br/> \"instrumentType\": \"EQUITY\",<br/> \"region\": \"USA\",<br/> \"universe\": \"TOP3000\",<br/> \"delay\": 1,<br/> \"decay\": 0,<br/> \"neutralization\": \"REVERSION_AND_MOMENTUM\",<br/> \"truncation\": 0.1,<br/> \"pasteurization\": \"ON\",<br/> \"unitHandling\": \"VERIFY\",<br/> \"nanHandling\": \"ON\",<br/> \"language\": \"FASTEXPR\",<br/> \"visualization\": false<br/>}</p>",
+      "id": "ccd33502-99a4-448f-8313-364b7f1b6f7f"
+    }
+  ],
+  "sequence": 16,
+  "category": "Advanced Topics"
+}

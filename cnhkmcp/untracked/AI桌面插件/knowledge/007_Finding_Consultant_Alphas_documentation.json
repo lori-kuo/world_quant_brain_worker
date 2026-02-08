@@ -1,0 +1,333 @@
+{
+  "id": "getting-started-finding-consultant-alphas-read-first",
+  "title": "Finding Consultant Alphas",
+  "lastModified": "2025-11-18T10:21:25.763937-05:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p><b>Welcome to the WorldQuant BRAIN Research Consultant Community!</b></p><p>To kickstart your journey as a BRAIN Research Consultant, this article provides a step-by-step guide in navigating the new submission tests and platform features in the consultant environment, so that you can work towards finding your first consultant Alpha. At the start, the consultant environment may seem more challenging than the user environment you were used to, but treat this as the initial learning phase. Just like how you managed to find Alphas in the user environment, you’ll get the hang of the consultant environment eventually.</p>",
+      "id": "2e316b24-0e49-439b-b02b-d0ab27926326"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Understand the new submission tests"
+      },
+      "id": "bc9c1c14-9212-40da-898e-937fd1cb0076"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "finding_consultant_alphas_new_submission_tests.png",
+        "width": 858,
+        "height": 558,
+        "fileSize": 45873,
+        "url": "https://api.worldquantbrain.com/content/images/cmUHXK0-SgWtGXKF5gWMtAKzUQA=/440/original/finding_consultant_alphas_new_submission_tests.png"
+      },
+      "id": "1c98ab4b-bdd1-41e4-a149-7b30beb8cf4d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Passing the new consultant submissions tests is one main source of challenge in the consultant environment. In addition to higher thresholds for passing the Sharpe and fitness tests, there will be two new submissions tests: Production Correlation and IS Ladder Sharpe.</p><p></p><p><b>Production Correlation</b></p><p>Your Alpha’s correlation will be tested against all existing Alphas in the consultant pool and not just your own. An Alpha passes the production correlation test if its maximum correlation with any BRAIN consultant Alpha is less than 0.7 or its Sharpe is at least 10% greater than the Sharpe of each Alpha with which it has a correlation greater than 0.7.</p><p></p><p><b><i>Tip:</i></b> By default, this test is not run immediately when you simulate an Alpha. When you test out a new Alpha idea, you may choose to run this test once first, by clicking the refresh button at the Production Correlation section in the Results panel. You can then assess whether this idea is unique enough from the rest of the consultant pool, before deciding whether to continue working on the idea. Try not to run this test too often though, as consultants may be limited to a certain number of correlation requests per hour.</p>",
+      "id": "548b418d-4a7b-42e7-9bfb-32496f41bd15"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "ConsultantProductionCorrelation.png",
+        "width": 624,
+        "height": 252,
+        "fileSize": 31813,
+        "url": "https://api.worldquantbrain.com/content/images/uiAg5kgIc9fgmDLlqGRhZEXbBug=/378/original/ConsultantProductionCorrelation.png"
+      },
+      "id": "3a6f30e9-e525-4f30-91ad-642d2bf85a59"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>IS Ladder Sharpe</b></p><p>The IS Ladder Sharpe test checks whether your Alpha is robust throughout the simulation period, with more emphasis placed on recent years’ performance. It is an iterative test, where it assesses your Alpha’s Sharpe in the most recent 2 years in the first iteration, then the most recent 3 years in the next iteration, and so on, until we reach 10 years in the last iteration.</p><p></p><p>In each iteration, there are two benchmarks that the Alpha’s Sharpe will be compared against. The FAIL_THRESHOLD is the same as the usual overall Sharpe test you’re familiar with, which is 1.58 for Delay 1. The PASS_THRESHOLD is stricter and can differ for each year of iteration. For example, the PASS_THRESHOLD is 2.38 for years 2 to 5, 2.22 for year 6, 2.06 for year 7, etc.</p><p></p><p>In the first iteration, if the Alpha’s Sharpe for the most recent 2 years is below the FAIL_THRESHOLD of 1.58, the Alpha will fail the IS Ladder Sharpe test immediately. If it is above the relevant PASS_THRESHOLD of 2.38, the Alpha will pass the IS Ladder Sharpe test immediately. Otherwise, if it is above the FAIL_THRESHOLD but lower than the PASS_THRESHOLD, we will enter the next iteration where the Alpha’s Sharpe for the most recent 3 years will be compared to the two benchmarks.</p><p></p><p><b><i>Tip:</i></b> Some Alphas may have performed well in the past but deteriorated in recent years. Before you choose to double down on a particular Alpha idea, you may wish to check the Alpha’s performance in recent years. For example, is there a downward trend in its more recent PnL? Is the Alpha already failing the IS Ladder Sharpe test in the first iteration, which looks at the most recent two years?</p>",
+      "id": "e4e0e99b-621a-4a2c-bc2d-507e3a84dfd4"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "ISLadderSharpe.png",
+        "width": 624,
+        "height": 299,
+        "fileSize": 41806,
+        "url": "https://api.worldquantbrain.com/content/images/5u7pF9mnR2gDWsnTjEvmVe7yvqE=/379/original/ISLadderSharpe.png"
+      },
+      "id": "c2d2a2cb-9541-4d92-b58f-bc6dbb2ab1ea"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Other consultant submission tests</b></p><p>Here’s the full list of consultant submission tests and their details: <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests\">Consultant Submission Tests</a>.</p>",
+      "id": "78e6a7a7-7918-4d87-ad00-f5e1fd5aaf6d"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Start with what you’re familiar with"
+      },
+      "id": "20356008-2ee6-4835-b14b-b2ef7a86e457"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>When you become a Research Consultant, you gain access to many new features: more datasets, a different simulation period, more regions, more simulation settings and so on. You may be wondering where to start from.</p><p></p><p>As consultants, your simulation period is now 10 years instead of 5 years. One way to begin would be to simulate your <b>past Alpha ideas</b> with this new simulation period, to see how they work over a longer period of historical data. You can also see how each Alpha performs in the new submission tests to earn a better understanding of how these tests work.</p><p></p><p>Thereafter, you can move on to other datasets in <b>dataset categories you’re more familiar with</b>. Swap out existing data fields you used in your past Alphas with similar data fields from these other datasets. Try new Alpha ideas using these datasets that you can understand well. You may also wish to explore <b>model datasets</b>, which usually has data fields with values that may already be treated and may be more easily used to create Alphas.</p><p></p><p>As you explore simulating Alphas in the consultant environment, you may wish to refer to tips on how to improve your Alphas here: <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/10431497209623-A-list-of-must-read-posts-on-how-to-improve-your-Alphas-that-are-submitted\">A list of must-read posts on how to improve your Alphas that are submitted</a>.</p>",
+      "id": "97a7fb5f-a7bf-4ebf-8e1c-14f0db3fc972"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Try new regions"
+      },
+      "id": "6a8f6831-9516-44cd-9981-aa0869bd3f39"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "finding_consultant_alphas_region_characteristics.png",
+        "width": 2212,
+        "height": 320,
+        "fileSize": 32724,
+        "url": "https://api.worldquantbrain.com/content/images/8mOEo8heMpnd3c5LO1GbzJIJHkY=/445/original/finding_consultant_alphas_region_characteristics.png"
+      },
+      "id": "0b9abf3c-67ae-4da3-b4d0-cae6fbd32871"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>When trying out Alpha ideas, you may choose to try the same idea out in all the available regions to potentially increase the likelihood of finding an Alpha that works. Here are some notes on the regions available on BRAIN.</p><p></p><p><b>USA</b></p><p>As users, you would have mostly worked with the USA region. This region remains popular among consultants and quite a number of Alphas have already been found in this region. This means that it may be hard to beat production correlation in USA.</p><p></p><p><b>HKG, KOR, TWN, CHN, IND</b></p><p>Look out for the high turnover in these regions. There may also be some region-specific considerations for KOR and TWN too. More tips here: <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/getting-started-hkgkortwn\">Getting started on HKG/KOR/TWN</a>, <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/china-region-consultants\">Getting Started: China Research for Consultants</a>, <a href=\"https://platform.worldquantbrain.com/learn/documentation/regions-and-universes/getting-started-india-alphas\"><b>India Alphas</b></a></p><p></p><p><b>GLB, EUR, ASI</b></p><p>For these regions, each region may contain stocks from different countries, which may cause the data field values to contain currency differences. It might be more meaningful to instead neutralize by country first before neutralizing by any other grouping. Refer to this guide on applying: <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/neut-users\">Double Neutralization</a>.</p>",
+      "id": "54f9b28d-f1b6-4d43-9a0f-17e820667ecd"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Explore new datasets"
+      },
+      "id": "1cb094ca-50f9-4c09-b667-e955a9c47d1c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>As you become more comfortable with the consultant environment, it may be time to try new dataset categories that you haven’t tried before! Trying new dataset categories can improve the diversity of your alpha pool too.</p><p></p><p>When trying new datasets, here are some things to take note:</p><ul><li>For vector data fields, you’ll need to convert the vector data field into a matrix data field first: <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/vector-datafields\">Vector Datafields</a>.</li><li>Evaluate new datasets using these tips: <a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/14833936207383--BRAIN-TIPS-6-ways-to-quickly-evaluate-a-new-dataset\">[BRAIN TIPS] 6 ways to quickly evaluate a new dataset</a>.</li><li>How to handle datafields with low coverage: <a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/14834608658199--BRAIN-TIPS-Weight-Coverage-common-issues-and-advice\">[BRAIN TIPS] Weight Coverage common issues and advice</a>.</li><li>Choosing datasets that are included in multiplier themes would increase your likelihood of having higher base payments: <a href=\"https://platform.worldquantbrain.com/learn/documentation/themes/overview-themes\">Overview of Themes</a>.</li></ul>",
+      "id": "2ef15b04-458e-4388-b256-54c1c2bf8019"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Build Alphas using research papers"
+      },
+      "id": "a527a3ad-051a-4baa-b963-3dfdf2e40b47"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The first and foremost step of building an alpha is coming up with an alpha idea. While there are multiple sources for finding ideas, research papers stand out as one of the most useful. In the beginning, the learn section of the platform is a good resource for sourcing ideas. For instance, the “Example” tab and Alpha concepts page are very useful. Although, for building low correlation alphas, it is important to use some unique or lesser utilized ideas. Research papers can assist you in finding different ideas.</p><p>Here are some general guidelines to build alphas using research papers:</p><p><b>Know your Operators</b>: The second step of the research process is to implement your alpha idea using operator. Hence, it is important to understand the concept of operators well. We recommend you go through the detailed operator descriptions before reading the research papers.</p><p><b>Reading the paper</b>: Visit any online journal and go through a few abstracts of the research papers. Choose a paper with an interesting idea to work with amongst all of the options. You can read the introduction, abstract, and main body. The aim is to gain a decent understanding of the research paper so that you know the methodology and data used by the authors.</p><p><b>Formulating your alpha</b>: The final step is to formulate your alpha. This is where your understanding of the operators comes in. Try to replicate the idea suggested in the paper and assess its performance, then think of any improvements that can be made on this version using any additional operators / data.</p><p>We will take you through an example <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=247435\">research paper</a> to show you how you can come up with an idea and refine it to create an alpha. This research paper talks about meeting or beating earnings estimate. Stocks that are better or equal to their earnings estimate are likely to show an outperformance as compared to other firms.</p><p><b>Iteration 1</b></p><p>Since the research paper is talking about an event (earnings release), we can use trade_when operator. A simple implementation of this idea could be to enter your positions when earnings estimate are beaten and amongst those stocks take positions according to the rank of ratio of actual earnings and estimated earnings and maintainyour position for the remainder of the quarter.</p><p>We have used the days_from_last_change operator to check if the earnings announcement was recent or not. The alpha below is in the US region, decay 4 and on subindustry neutralization, you can feel free to play around with the settings.</p><p></p>",
+      "id": "2ce7a039-f063-45f7-b4ae-10fbf79f5050"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 5.0,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "event=days_from_last_change(eps)<=5 && ts_delay(est_eps,10) <eps ;\r\ntrade_when(event,rank(eps/est_eps),-1)"
+      },
+      "id": "a7ee39b9-c9ee-4485-ae18-8a44fa64fa30"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Here are the results</p>",
+      "id": "3599f67e-8669-4ff7-8891-19dd359e1e60"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "is_summary.png",
+        "width": 871,
+        "height": 109,
+        "fileSize": 16174,
+        "url": "https://api.worldquantbrain.com/content/images/W3F03AjtpctsJ2VwKlUHwEv9smQ=/170/original/is_summary.png"
+      },
+      "id": "378d2e62-06e3-4fbb-a819-455b7aaefcd4"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Finding Consultant Alphas: Iteration 1 Graph",
+        "width": 735,
+        "height": 600,
+        "fileSize": 47533,
+        "url": "https://api.worldquantbrain.com/content/images/aEonuFZ7RGOSb7ZX1VdPlBnm87k=/138/original/Finding_Consultant_Alphas_Iteration_1_Graph.png"
+      },
+      "id": "e301a999-a0be-4d6d-bdf6-28d7e1dfffb9"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The alpha isn’t submittable but the results aren’t too bad either. This is a good sign for us and increases our confidence in the idea since our first implementation has shown decent results. Performance metrics give us a direction that we need to focus on increasing the turnover.</p><p><b>Iteration 2</b></p><p>In our first iteration, we only focused on stocks that were meeting or beating the earnings estimate and hence we took positions in a small subset of stocks. We can try another implementation of our idea where we take positions in all stocks but take positive weight in those stocks that beat expectations.</p>",
+      "id": "b9cc136a-ddde-412d-bebf-f6c53703e0c0"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 3,
+          "neutralization": "INDUSTRY",
+          "truncation": 4.0,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "event = days_from_last_change(eps)<=5 && ts_delay(est_eps,10) < eps ;\r\nif_else(event, 0.5 + rank(sales/assets), rank(sales/assets) )"
+      },
+      "id": "e950a720-63c6-4d06-9e78-97b507522dbc"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The 0.5 + rank(sales/assets) ensures that we up weight stocks that meet or beat earnings estimate. The asset turnover ratio was used to get an idea of how efficiently the firm uses its resources, you can obviously try out different ratios or data fields as a proxy for financial health of the firm /as a default fundamental signal.</p>",
+      "id": "f26cc390-e708-41f1-8e42-a1905459b3ca"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "5.png",
+        "width": 879,
+        "height": 129,
+        "fileSize": 16335,
+        "url": "https://api.worldquantbrain.com/content/images/SJARGBfkiMIEV-3rAAcUGg9jyW8=/140/original/5.png"
+      },
+      "id": "7320d9da-0a5e-465c-bad8-9796c04cca4c"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "6.png",
+        "width": 888,
+        "height": 720,
+        "fileSize": 40737,
+        "url": "https://api.worldquantbrain.com/content/images/t7O6wXsjXZ9dPVCYedpjp6wSBvU=/141/original/6.png"
+      },
+      "id": "3c593653-0d99-4239-938a-50df30b1421e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Our turnover has increased since we have now moved from trade_when to if_else operator and take positions in all the stocks. We have taken a hit on our fitness due to this.</p><p><b>Iteration 3</b></p><p>Working on a new idea doesn’t mean you can’t use your previous knowledge or ideas to aid your research. In fact, a responsible use of your past knowledge with your new ideas can help you build a great number of alphas from a single research paper.</p><p>Our paper here talks about the outperformance of stocks that beat earnings estimate. So, deciding to go long on these stocks for the complete quarter sounds plausible. For the other stocks, it would make sense to use an idea which is irrespective of meeting or beating the earnings estimate. This will make sure we are not taking positions solely on the basis of information added at an interval of 3 months. From our past knowledge, we can bet on the mean reverting nature for these other stocks in our portfolio.</p>",
+      "id": "e4d7b579-aac7-4c81-889f-4eb85b9d8f2a"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "7.png",
+        "width": 578,
+        "height": 90,
+        "fileSize": 6855,
+        "url": "https://api.worldquantbrain.com/content/images/q1ksUMnw9AWVYr2Vs7K9yPDreng=/142/original/7.png"
+      },
+      "id": "b7686a65-9619-4bbc-b8a8-5923f584e4b3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Alpha =1 makes sure we are long on the stocks that beat earnings estimate since 1 is the max possible value of our alt_alpha hence even after neutralization it is likely that these stocks will have positive weight.</p>",
+      "id": "901f9bd8-94af-4167-90f6-5776f1ce5a4e"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "8.png",
+        "width": 887,
+        "height": 129,
+        "fileSize": 15781,
+        "url": "https://api.worldquantbrain.com/content/images/yImTywQUTKZB-f9uKjJBLzlJLMM=/143/original/8.png"
+      },
+      "id": "a9962409-0f3f-4d31-af83-932c46e34e02"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "9.png",
+        "width": 882,
+        "height": 721,
+        "fileSize": 33584,
+        "url": "https://api.worldquantbrain.com/content/images/50qIxwnV6awayEZ5TCtQyJQSzMw=/144/original/9.png"
+      },
+      "id": "11bf85e1-1dfa-4d8d-a300-c10f723f56a9"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>We see a significant improvement in all of our performance metrics. You may notice we have used the same event across all three implementations and despite that, achieved very different results. This shows how we can use a single framework and a responsible combination of different ideas to build multiple alphas.</p><p><b>Iteration 4</b></p><p>Similar to the previous iteration here we have scaled the alpha by sales_ps in order to adjust for different eps scales of different firms</p>",
+      "id": "6cad8874-9a99-426d-8fce-e8aeed1e6091"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "10.png",
+        "width": 526,
+        "height": 68,
+        "fileSize": 7455,
+        "url": "https://api.worldquantbrain.com/content/images/2ylOLtBHkKaROEG1zOjYz6GzZFM=/145/original/10.png"
+      },
+      "id": "fdfc8db5-78bd-40fc-8a96-b16c68369b4e"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "11.png",
+        "width": 881,
+        "height": 121,
+        "fileSize": 15902,
+        "url": "https://api.worldquantbrain.com/content/images/TI5j92ysrWCn8LuqBFBQTRU8jZw=/146/original/11.png"
+      },
+      "id": "a632bf6b-b49d-40df-b497-119ba3a347ea"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "12.png",
+        "width": 891,
+        "height": 725,
+        "fileSize": 32433,
+        "url": "https://api.worldquantbrain.com/content/images/GKdsncoy3eB6Zzh9_SEQJ_FODUk=/147/original/12.png"
+      },
+      "id": "679bef08-f3a6-4e3c-beb4-2cf00c46af23"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>You can use different implementations for the same idea on the brain platform or use any of the numerous data fields at your disposal to improve an idea or come up with an alpha that is not correlated to our existing production pool. So, reading new ideas/papers will not only help you build high-sharpe alphas but also in bringing down your correlation, which should be an equally important goal of your research. Further, the target is never to make an alpha “just good enough to be submittable” you may carry forward improvements even after passing all tests and submit the best version that you deem fit since the OS results hold the highest importance.</p><p><b>Some Additional Tips</b></p><p>Reading helps. Almost none of the ideas given in the research papers would work as they are presented (in some cases, opposite works). They are helpful in guiding you to think in a certain direction which you might otherwise miss completely.</p><p>Before reading, also make sure that the dataset given in the research paper exists in Brain. This will save you a lot of time in case you read a research paper only to realize the dataset isn’t available.</p>",
+      "id": "acea652f-aafb-4e67-948b-248b6938f425"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "finding_consultant_alphas_best_practices.png",
+        "width": 1137,
+        "height": 598,
+        "fileSize": 37573,
+        "url": "https://api.worldquantbrain.com/content/images/wZCJpU91vCVM2xFw4wYgJqOTmgg=/442/original/finding_consultant_alphas_best_practices.png"
+      },
+      "id": "9b834c45-066b-4ff5-9df7-1df79b1d9939"
+    }
+  ],
+  "sequence": 3,
+  "category": "Consultant Information"
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "name": "normalize",
+    "category": "Cross Sectional",
+    "definition": "normalize(x, useStd = false, limit = 0.0)",
+    "description": "Calculates the mean value of all valid alpha values for a certain date, then subtracts that mean from each element",
+    "documentation": "/operators/normalize",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "quantile",
+    "category": "Cross Sectional",
+    "definition": "quantile(x, driver = gaussian, sigma = 1.0)",
+    "description": "Rank the raw vector, shift the ranked Alpha vector, apply distribution (gaussian, cauchy, uniform). If driver is uniform, it simply subtract each Alpha value with the mean of all Alpha values in the Alpha vector",
+    "documentation": "/operators/quantile",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "rank",
+    "category": "Cross Sectional",
+    "definition": "rank(x, rate=2)",
+    "description": "Ranks the input among all the instruments and returns an equally distributed number between 0.0 and 1.0. For precise sort, use the rate as 0",
+    "documentation": "/operators/rank",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "regression_neut",
+    "category": "Cross Sectional",
+    "definition": "regression_neut(y, x)",
+    "description": "Conducts the cross-sectional regression on the stocks with Y as target and X as the independent variable",
+    "documentation": "/operators/regression_neut",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "scale",
+    "category": "Cross Sectional",
+    "definition": "scale(x, scale=1, longscale=1, shortscale=1)",
+    "description": "Scales input to booksize. We can also scale the long positions and short positions to separate scales by mentioning additional parameters to the operator",
+    "documentation": "/operators/scale",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "truncate",
+    "category": "Cross Sectional",
+    "definition": "truncate(x,maxPercent=0.01)",
+    "description": "Operator truncates all values of x to maxPercent. Here, maxPercent is in decimal notation",
+    "documentation": "/operators/truncate",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "winsorize",
+    "category": "Cross Sectional",
+    "definition": "winsorize(x, std=4)",
+    "description": "Winsorizes x to make sure that all values in x are between the lower and upper limits, which are specified as multiple of std.\r\n\r\nInput: Value of 7 instruments at day t: (2, 4, 5, 6, 3, 8, 10), std: 1\r\nOutput: (2.81, 4, 5, 6, 3, 8, 8.03) from SD. = 2.61, mean = 5.42",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "zscore",
+    "category": "Cross Sectional",
+    "definition": "zscore(x)",
+    "description": "Z-score is a numerical measurement that describes a value's relationship to the mean of a group of values. Z-score is measured in terms of standard deviations from the mean",
+    "documentation": "/operators/zscore",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  }
+]

@@ -1,0 +1,171 @@
+{
+  "id": "getting-started-risk-neutralized-alphas",
+  "title": "Risk Neutralized Alphas",
+  "lastModified": "2025-11-04T02:31:59.811219-05:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Introducing a new way to neutralize Alphas* on BRAIN for the USA, EUR, ASI, CHN and GLB regions.</li><li>In addition to the existing neutralizations in simulation settings (Market, Sector, Industry, Subindustry), you will see other new risk factors’ sets for neutralizations: “Slow Factors”, “Fast Factors”, “Slow + Fast Factors”, “RAM”, “Statistical” and “Crowding” . Alphas created using these settings are called “Risk-Neutralized alphas” on BRAIN.</li></ul><p></p>",
+      "id": "9e2f65ce-6c4e-4180-a28f-f2cab95f5350"
+    },
+    {
+      "type": "TEXT",
+      "value": "<iframe width=\"743\" height=\"333\" src=\"https://www.youtube.com/embed/eTq8iPhL1Ys?list=PLmpIWlqVqfbeQeWM8_0yBgIOGZguQYdXo\" title=\"Learn2Quant: Risk Management | Lesson 9\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+      "id": "32f2b2df-474d-4dfe-8209-7c6e14b52330"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Introduction"
+      },
+      "id": "7effa364-fe72-4232-a082-e53979ec1a3d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Often in academic studies, stock returns can be deconstructed into different risk factor drivers. Take the classical Fama-French Model for example, we can run a multi-linear regression on individual stocks, and show that stock returns (R<sub>it</sub>) can be decomposed to market factor, size factor and value factor:</p>",
+      "id": "4332a588-8533-4016-bdac-2f8daf21dff4"
+    },
+    {
+      "type": "EQUATION",
+      "value": "\\begin{equation} R_{it}−R_{riskfreereturn}=α_{it}+β_{1}*R_{marketpremium}+β_{2}*R_{sizepremium}+β_{3}*R_{valuepremium}+ε_{it}\\nonumber \\end{equation}",
+      "id": "7cac3dfb-c23b-463c-8af6-9cb3dc0911e4"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>In the world of alphas*, we can apply similar methods to deconstruct an alpha’s returns. The coefficient (beta) of each risk factor shows its importance to the alpha's return. If an alpha's return can be fully explained by these well-documented risk factors, it does not bring any additional value since it can be easily replicated by these factors. On the other hand, if an alpha shows a significantly positive residual  (Ɛ<sub>it</sub>), it means this alpha captures some market anomalies that is not yet documented in the risk factor databases.</p>",
+      "id": "c25c379e-8cf8-4c4b-a5e6-a8650f086695"
+    },
+    {
+      "type": "EQUATION",
+      "value": "\\begin{equation} R_{αt}=β_{1}*R_{marketpremium}+β_{2}*R_{sizepremium}+β_{3}*R_{valuepremium}+ε_{it} \\notag \\end{equation}",
+      "id": "cf4cf28b-7f4a-452f-b54e-bc2a5395b9d5"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Here, our new risk neutralization feature will enable you to directly research on a risk-neutralized world and explore unique returns that have not been captured before.</p>",
+      "id": "5d39fb54-632a-4343-9bf4-72167e2229da"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "What are risk neutralized alphas?"
+      },
+      "id": "3f37e5e9-b688-4600-ba58-082d2c6f3541"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>In the past, the most rudimentary method of risk-handling is to set the neutralization to industry classification to avoid industry level risks. More advanced users may build their own set of risk factors, for example they may neutralize their alphas against the common size factor by defining a new group based on capitalization, and manually apply a layer of group_neutralize or vector_neut on their alpha.</p><p>Now let's imagine that instead of just neutralizing against one risk factor at a time - an alpha can be simultaneously controlled for a wide range of common, but yet comprehensive risk factors, its final return will be more representative of what the alpha intends to capture, instead of bearing unwanted risk factors. These unwanted risk factors may not pose a problem in the back-testing period, but it could be harmful if they experience drawdowns in the out-sample stage.</p>",
+      "id": "5d92258c-52bd-4729-8adf-2df63d39b2dc"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "How to use the risk neutralized feature"
+      },
+      "id": "c6f205bd-941f-4d10-a5e9-cef4e9e4e0ac"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>When opening the settings tab in the simulation stage, notice that besides the common market, and industry classifications, you will find additional new options under the neutralization setting. You may choose from these sets of risk factors. We provide you below with an overview of the feature. We cannot share granular details, due to confidentiality of the risk neutralized models and to prevent any potential overfitting of your alphas.</p>",
+      "id": "737a0d0a-278c-439e-a352-3ce1b54f7c0d"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Risk_neutral.png",
+        "width": 736,
+        "height": 472,
+        "fileSize": 26607,
+        "url": "https://api.worldquantbrain.com/content/images/XC-Be3H4wCrRDnDGlHdmVg54bH0=/272/original/Risk_neutral.png"
+      },
+      "id": "e1335be4-7811-4283-9ec8-a23dc0093ab5"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Risk factors' sets"
+      },
+      "id": "9c4209f4-c90b-4062-8461-f8ba1f5b42b6"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The turnover space you intend to work on should help you decide which risk factors’ set to use. As a rule of thumb, we recommend adopting the Slow Factors for low-turnover signals and Fast Factors or Slow + Fast factors for high-turnover signals. The Slow + Fast Factors incorporates both of the above factors together. However, there is no universal rule as to which alpha should apply certain risk factors. We recommend giving them a try and finding the most suitable risk factors for your needs.</p><p>When applying neutralization, please remember the turnover of the output alpha is likely to increase versus the input one, and more so when neutralizing to the Fast Factors. Fast Factors comprises high turnover factors that would change the position weights of your alpha more so than the Slow Factors (See table below) and thus increase alpha turnover. Thus using “Fast Factors” or “Slow + Fast Factors” neutralization would be beneficial in cases where the increase in turnover comes with a corresponding increase in Sharpe. You should balance the benefits from better risk-neutralization (higher Sharpe or lower drawdown) and increased turnover by sourcing the most relevant set of factors for each alpha and leveraging the knowledge of the alpha properties : for instance, if your alpha is not susceptible to some fast factors (i.e., reversion) by design, neutralizing to Fast factors might be redundant.</p><p>All of these risk factors’ settings will also assume long-short balanced with market neutralization for the risk-neutralized alphas. Besides the style factors, all risk factors’ settings include industries and market risk as well.</p><p></p><p></p>",
+      "id": "0f5951d8-809c-4282-871e-0f2aeeb3d6dc"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Risk Factor Setting",
+            "Description"
+          ],
+          [
+            "Slow Factors",
+            "Includes market and industry factors as well as other common lower turnover style factors."
+          ],
+          [
+            "Fast Factors",
+            "Includes market, industry factors and higher turnover style factors, such as reversion alpha."
+          ],
+          [
+            "Slow + Fast Factors",
+            "Combines both slow and fast factors."
+          ],
+          [
+            "RAM",
+            "Includes risk factors that capture the impact of short-term mean reversion and long-term momentum trends in stock prices."
+          ],
+          [
+            "Statistical",
+            "Includes risk factors which use techniques to identify patterns in historical returns, neutralize risks, and enhance Alpha stability with diverse, data-driven insights."
+          ],
+          [
+            "Crowding",
+            "Includes risk factors of excessive investor concentration in similar positions, which can lead to reduced profitability by heightened impact during concentrated unwinding."
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": false
+      },
+      "id": "d03a5bf9-69ff-40e7-8c00-ab39fc3a50a1"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How should you start your risk neutralized alpha research?"
+      },
+      "id": "57211031-bb6e-4e2c-b38d-b5860f402c2f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>We recommend first trying this new feature out on your previous submitted alphas. You may notice some of them greatly improve your original alphas while also having less correlation to the submitted alpha.</li><li>After understanding how this feature affects your alphas, we suggest setting risk-neutralized settings as default in the simulation setting, and see if you can discover new, unique alphas from here on!</li></ul><p></p><p>We recommend you also go through the <a href=\"https://www8.gsb.columbia.edu/programs/sites/programs/files/finance/Finance%20Seminar/spring%202014/ken%20french.pdf\">classical 5-factor FAMA French-Model</a> to have a deeper understanding of style factors.</p>",
+      "id": "4797daca-7f25-4a8f-bcd5-3d2d047bd132"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Summary"
+      },
+      "id": "45b871ed-0011-4b24-8573-8289d0f4d57b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Risk-neutralized alphas are alphas that show orthogonal and unique returns after accounting for market, industries and style factors.</li><li>Choose \"Slow Factors\" or \"Fast Factors\" / \"Slow + Fast factors\" in neutralization settings depending on the signal's turnover.</li><li>Start searching for innovative ideas through risk-neutralized alphas!</li><li>Read “<a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/16107745494807-Risk-Neutralized-Alpha-How-to-start-risk-neutralize-research-\">How to start risk neutralize research</a>?” on the forum .</li><li>Read \" <a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/16133457218199-Risk-Neutralized-Alpha-How-to-choose-risk-factors-set-\">Risk Neutralized Alpha: How to choose risk factors’ set?</a><b>\"</b> on the forum .</li></ul><p></p><p></p>",
+      "id": "25e40e9f-6f46-4ec1-8ca1-c1745997eeb1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><i>*WorldQuant defines alphas as mathematical models that seek to predict the future price movements of various financial instruments</i></p>",
+      "id": "a4199b31-75e3-45dc-af7b-4fde057cda58"
+    }
+  ],
+  "sequence": 6,
+  "category": "Advanced Topics"
+}

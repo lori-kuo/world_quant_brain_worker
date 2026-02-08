@@ -1,0 +1,99 @@
+{
+  "id": "visualization-tool",
+  "title": "Visualization Tool",
+  "lastModified": "2024-03-24T16:45:39.384441-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Visualization Tool"
+      },
+      "id": "9347f953-64b8-475b-a2e9-2fdde680d8bd"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The visualization feature allows users to plot graphs of Alpha values and statistics, in addition to the PnL graph. It enables users to analyze the visualized output and fine tune Alphas before re-simulating or submitting.</p><p>Running the visualization has an impact on simulation speed, so be judicious in utilizing this feature. By default this feature is turned off but can be turned on in simulation settings. Visualization data for older Alphas is only available for a week after simulation date.</p><p></p>",
+      "id": "352f243d-7975-42b5-85cb-6f355601e702"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Term",
+            "Usage"
+          ],
+          [
+            "Coverage",
+            "Number or percentage of instruments with non-NAN Alpha values"
+          ],
+          [
+            "Size",
+            "Amount of money allocated as percentage of booksize"
+          ],
+          [
+            "PNL",
+            "PNL attributed to the relevant set of instruments"
+          ],
+          [
+            "Sharpe",
+            "Sharpe value of associated PNL stream"
+          ],
+          [
+            "Capitalization",
+            "Quintile of market capitalization of underlying stock"
+          ],
+          [
+            "Industry / Sector",
+            "Market grouping (scroll down to the bottom of the page for the full list of sectors and industries)"
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": false
+      },
+      "id": "b74b4c0f-a7e6-41ab-88fc-8cb3d95c2968"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Available Graphs by Category"
+      },
+      "id": "919640f3-5820-4aa9-a527-ddc15a5ee931"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Coverage</b></p><ul><li>Alpha Coverage</li><li>Coverage by Industry</li><li>Coverage by Sector</li></ul><p><i>‘Coverage’ denotes the average number of stocks whose value change each day.</i></p><p><b>Size</b></p><ul><li>Average Size by Capitalization</li><li>Average Size by Industry</li><li>Average Size by Sector</li></ul><p><b>PNL</b></p><ul><li>PNL by Capitalization</li><li>PNL by Industry</li><li>PNL by Sector</li></ul><p><b>Sharpe</b></p><ul><li>Sharpe by Capitalization</li><li>Sharpe by Industry</li><li>Sharpe by Sector</li></ul><p><b>Others</b></p><ul><li>Turnover with Time</li><li>Industry Average value with Time</li><li>Sector Average value with Time<br/></li></ul>",
+      "id": "696c41ee-ca6c-4d9f-ba0e-c3e868ddc766"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Tips to Analyze the Graphs"
+      },
+      "id": "6cf17836-aa42-4036-833c-de3c5d529ad0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ol><li>Highly varying turnover or average Alpha value with time should be avoided.</li><li>Very large booksize concentrated on low cap or one sector or industry is not good, as it potentially entails low liquidity or diversification.</li><li>Filtering out a lot of stocks in your simulation leading to less diversification across caps, sector or industry is not a good practice. This could be checked using the coverage plots.</li><li>Sharpe contribution from different industries and sectors towards the overall Sharpe indicates diversification.</li><li>Good Sharpe in high cap stocks along with low caps makes a good Alpha.</li></ol>",
+      "id": "92a48b09-d453-4023-b861-da530967eb96"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Full List of Sectors & Industries"
+      },
+      "id": "06528010-b659-44eb-afbd-549a0f6772a2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Sector</b></p><ul><li>Distribution Services</li><li>Communications</li><li>Transportation</li><li>Utilities</li><li>Retail Trade</li><li>Miscellaneous</li><li>Consumer Durables</li><li>Industrial Services</li><li>Commercial Services</li><li>Consumer Non-Durables</li><li>Process Industries</li><li>Consumer Services</li><li>Technology Services</li><li>Producer Manufacturing</li><li>Health Technology</li><li>Energy Minerals</li><li>Electronic Technology</li><li>Non-Energy Minerals</li><li>Finance</li><li>-99999 (Uncategorized)</li></ul><p><b>Industry</b></p><ul><li>All Unclassified Establishments</li><li>Public Administration</li><li>Other Services (except Public Administration)</li><li>Educational Services</li><li>Arts Entertainment and Recreation</li><li>Agriculture Forestry Fishing and Hunting</li><li>Health Care and Social Assistance</li><li>Accommodation and Food Services</li><li>Administrative and Support and Waste Management and Remediation Services</li><li>Transportation and Warehousing</li><li>Construction</li><li>Wholesale Trade</li><li>Utilities</li><li>Retail Trade</li><li>Real Estate and Rental and Leasing</li><li>Management of Companies and Enterprises</li><li>Professional Scientific and Technical Services</li><li>Information</li><li>Finance and Insurance</li><li>Mining Quarrying and Oil and Gas Extraction</li><li>Manufacturing</li><li>-99999 (Uncategorized)</li></ul>",
+      "id": "c653be59-a1e9-4fef-8537-835618e97cf1"
+    }
+  ],
+  "sequence": 11,
+  "category": "Consultant Information"
+}

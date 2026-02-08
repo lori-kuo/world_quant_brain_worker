@@ -1,0 +1,35 @@
+{
+  "id": "brains-new-advisory-program",
+  "title": "Research Advisory Program",
+  "lastModified": "2024-10-04T15:32:18.609549-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "The BRAIN Research Advisory Program"
+      },
+      "id": "3a3a103c-4d3a-4fbb-b429-2af54901ae26"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The BRAIN Research Advisory Program is available for all BRAIN Research Consultants to join and take advantage of direct access to a WorldQuant Researcher.</p><p><b>What:</b> You will be given the opportunity to speak with and learn from one of our WorldQuant Researchers on key areas of alpha research specific to your assigned Researcher’s specialty. This Advisory Program is an <b>optional resource</b> for each of you to continue your quant journey on BRAIN and hopefully gain deeper insight in your research methodology and process.</p><p><b>Key topics:</b> When communicating with your assigned Researcher, You can focus on many different topics, including:</p><ul><li>Alphas research in much greater depth (related to the areas of focus of your assigned Researcher);</li><li>SuperAlpha research;</li><li>Personalized advice on refining your ideas;</li></ul><p><b>How often:</b> The BRAIN Researcher will schedule a monthly session for this group for you to join as you wish. This may take place either in-person or may be conducted virtually. While we expect these sessions will be helpful to all BRAIN Consultants, there is no requirement or obligation to join the sessions. They are meant solely for your benefit.</p><p><b>Why:</b> We believe that this will be a unique experience enabling you to be part of a cohort of fellow learners. These sessions will be structured with concrete learning objectives, and you will have access to continuous engagement throughout the year with your assigned Researcher. You will be given the opportunity to receive first-hand insight into how your assigned Researcher tackles a problem or comes up with a particular idea or methodology.</p><p></p><p></p>",
+      "id": "2b076535-150b-4df0-957e-e024c1d26dc7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Find Your Advisor"
+      },
+      "id": "ca6f366d-233d-4bdc-927f-85fc52dc2a41"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>You can find out more on your advisor and the content recommended by them on the next page.</p>",
+      "id": "296d959d-470c-4530-a2be-f61f1020026d"
+    }
+  ],
+  "sequence": 100,
+  "category": "Consultant Information"
+}

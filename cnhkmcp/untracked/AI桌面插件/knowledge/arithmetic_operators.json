@@ -1,0 +1,209 @@
+[
+  {
+    "name": "abs",
+    "category": "Arithmetic",
+    "definition": "abs(x)",
+    "description": "Absolute value of x",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "add",
+    "category": "Arithmetic",
+    "definition": "add(x, y, filter = false), x + y",
+    "description": "Add all inputs (at least 2 inputs required). If filter = true, filter all input NaN to 0 before adding",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "densify",
+    "category": "Arithmetic",
+    "definition": "densify(x)",
+    "description": "Converts a grouping field of many buckets into lesser number of only available buckets so as to make working with grouping fields computationally efficient",
+    "documentation": "/operators/densify",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "divide",
+    "category": "Arithmetic",
+    "definition": "divide(x, y), x / y",
+    "description": "x / y",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "inverse",
+    "category": "Arithmetic",
+    "definition": "inverse(x)",
+    "description": "1 / x",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "log",
+    "category": "Arithmetic",
+    "definition": "log(x)",
+    "description": "Natural logarithm. For example: Log(high/low) uses natural logarithm of high/low ratio as stock weights.",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "max",
+    "category": "Arithmetic",
+    "definition": "max(x, y, ..)",
+    "description": "Maximum value of all inputs. At least 2 inputs are required",
+    "documentation": "/operators/max",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "min",
+    "category": "Arithmetic",
+    "definition": "min(x, y ..)",
+    "description": "Minimum value of all inputs. At least 2 inputs are required",
+    "documentation": "/operators/min",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "multiply",
+    "category": "Arithmetic",
+    "definition": "multiply(x ,y, ... , filter=false), x * y",
+    "description": "Multiply all inputs. At least 2 inputs are required. Filter sets the NaN values to 1",
+    "documentation": "/operators/multiply",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "power",
+    "category": "Arithmetic",
+    "definition": "power(x, y)",
+    "description": "x ^ y",
+    "documentation": "/operators/power",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "reverse",
+    "category": "Arithmetic",
+    "definition": "reverse(x)",
+    "description": " - x",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "s_log_1p",
+    "category": "Arithmetic",
+    "definition": "s_log_1p(x)",
+    "description": "Confine function to a shorter range using logarithm such that higher input remains higher and negative input remains negative as an output of resulting function and -1 or 1 is an asymptotic value",
+    "documentation": "/operators/s_log_1p",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "sign",
+    "category": "Arithmetic",
+    "definition": "sign(x)",
+    "description": "if input > 0, return 1; if input < 0, return -1; if input = 0, return 0; if input = NaN, return NaN;\r\n\r\nInput: Value of 7 instruments at day t: (2, -3, 5, 6, 3, NaN, -10)\r\nOutput: (1, -1, 1, 1, 1, NaN, -1)",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "signed_power",
+    "category": "Arithmetic",
+    "definition": "signed_power(x, y)",
+    "description": "x raised to the power of y such that final result preserves sign of x",
+    "documentation": "/operators/signed_power",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "sqrt",
+    "category": "Arithmetic",
+    "definition": "sqrt(x)",
+    "description": "Square root of x",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "subtract",
+    "category": "Arithmetic",
+    "definition": "subtract(x, y, filter=false), x - y",
+    "description": "x-y. If filter = true, filter all input NaN to 0 before subtracting",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR",
+      "SELECTION"
+    ]
+  }
+]

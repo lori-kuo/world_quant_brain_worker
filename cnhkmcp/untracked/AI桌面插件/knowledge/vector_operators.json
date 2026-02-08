@@ -1,0 +1,38 @@
+[
+  {
+    "name": "vec_avg",
+    "category": "Vector",
+    "definition": "vec_avg(x)",
+    "description": "Taking mean of the vector field x\r\n\r\nInput: Vector of value of 1 instrument in a day: (2, 3, 5, 6, 3, 8, 10)\r\nOutput: 37 / 7 = 5.29",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "vec_count",
+    "category": "Vector",
+    "definition": "vec_count(x)",
+    "description": "Number of elements in vector field x",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "vec_sum",
+    "category": "Vector",
+    "definition": "vec_sum(x)",
+    "description": "Sum of vector field x\r\n\r\nInput: Vector of value of 1 instrument in a day: (2, 3, 5, 6, 3, 8, 10)\r\nOutput: 2 + 3 + 5 + 6 + 3 + 8 + 10 = 37",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  }
+]

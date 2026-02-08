@@ -1,0 +1,386 @@
+[
+  {
+    "name": "days_from_last_change",
+    "category": "Time Series",
+    "definition": "days_from_last_change(x)",
+    "description": "Amount of days since last change of x\r\n\r\nInput: Value of 1 instrument in past 7 days where first element is the latest: (2, 2, 2, 7, 5, 16, 1)\r\nOutput: 3",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "hump",
+    "category": "Time Series",
+    "definition": "hump(x, hump = 0.01)",
+    "description": "Limits amount and magnitude of changes in input (thus reducing turnover)",
+    "documentation": "/operators/hump",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "hump_decay",
+    "category": "Time Series",
+    "definition": "hump_decay(x, p=0)",
+    "description": "This operator helps to ignore the values that changed too little corresponding to previous ones",
+    "documentation": "/operators/hump_decay",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "inst_tvr",
+    "category": "Time Series",
+    "definition": "inst_tvr(x, d)",
+    "description": "Total trading value / Total holding value in the past d days\r\n\r\nInput: Value of 1 instrument in past 5 days where first element is the latest: (105, 102, 99, 101,100)\r\nOutput: 0.022 from (1+2+3+3)/(105+102+99+101)",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "kth_element",
+    "category": "Time Series",
+    "definition": "kth_element(x, d, k)",
+    "description": "Returns K-th valid value of input by looking through lookback days. This operator can be used to backfill missing data if k=1",
+    "documentation": "/operators/kth_element",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "last_diff_value",
+    "category": "Time Series",
+    "definition": "last_diff_value(x, d)",
+    "description": "Returns last x value not equal to current x value from last d days",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_arg_max",
+    "category": "Time Series",
+    "definition": "ts_arg_max(x, d)",
+    "description": "Returns the relative index of the max value in the time series for the past d days. If the current day has the max value for the past d days, it returns 0. If previous day has the max value for the past d days, it returns 1",
+    "documentation": "/operators/ts_arg_max",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_arg_min",
+    "category": "Time Series",
+    "definition": "ts_arg_min(x, d)",
+    "description": "Returns the relative index of the min value in the time series for the past d days; If the current day has the min value for the past d days, it returns 0; If previous day has the min value for the past d days, it returns 1.",
+    "documentation": "/operators/ts_arg_min",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_av_diff",
+    "category": "Time Series",
+    "definition": "ts_av_diff(x, d)",
+    "description": "Returns x - tsmean(x, d), but deals with NaNs carefully. That is NaNs are ignored during mean computation",
+    "documentation": "/operators/ts_av_diff",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_backfill",
+    "category": "Time Series",
+    "definition": "ts_backfill(x, d)",
+    "description": "Returns the first valid value of the input x by looking through lookback days (d). This operator can be used to backfill missing data.",
+    "documentation": "/operators/ts_backfill",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_corr",
+    "category": "Time Series",
+    "definition": "ts_corr(x, y, d)",
+    "description": "Returns correlation of x and y for the past d days",
+    "documentation": "/operators/ts_corr",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_count_nans",
+    "category": "Time Series",
+    "definition": "ts_count_nans(x ,d)",
+    "description": "Returns the number of NaN values in x for the past d days\r\n\r\nInput: Value of 1 instrument in past 4 days where first element is the latest: (100, NaN, NaN, 200), d: 4\r\nOutput: Number of NaN in 4 days = 2",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_covariance",
+    "category": "Time Series",
+    "definition": "ts_covariance(y, x, d)",
+    "description": "Returns covariance of y and x for the past d days",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_decay_exp_window",
+    "category": "Time Series",
+    "definition": "ts_decay_exp_window(x, d, factor = f)",
+    "description": "Returns exponential decay of x with smoothing factor for the past d days",
+    "documentation": "/operators/ts_decay_exp_window",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_decay_linear",
+    "category": "Time Series",
+    "definition": "ts_decay_linear(x, d, dense = false)",
+    "description": "Returns the linear decay on x for the past d days. Dense parameter=false means operator works in sparse mode and we treat NaN as 0. In dense mode we do not.",
+    "documentation": "/operators/ts_decay_linear",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_delay",
+    "category": "Time Series",
+    "definition": "ts_delay(x, d)",
+    "description": "Returns x value d days ago\r\n\r\nInput: Value of 1 instrument in past 7 days where first element is the latest: (2, 3, 5, 6, 3, 8, 10), d: 6\r\nOutput: Value 6 days ago = 10",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_delta",
+    "category": "Time Series",
+    "definition": "ts_delta(x, d)",
+    "description": "Returns x - ts_delay(x, d)\r\n\r\nInput: Value of 1 instrument in past 7 days where first element is the latest: (2, 3, 5, 6, 3, 8, 10), d: 6\r\nOutput: Value today – value 6 days ago = 2 - 10 = -8",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_delta_limit",
+    "category": "Time Series",
+    "definition": "ts_delta_limit(x, y, limit_volume=0.1)",
+    "description": "Limit the change in the Alpha position x between dates to a specified fraction of y. The \"limit_volume\" can be in the range of 0 to 1. Also, please be aware of the scaling for x and y. Besides setting y as adv20 or volume related data, you can also set y as a constant.",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_mean",
+    "category": "Time Series",
+    "definition": "ts_mean(x, d)",
+    "description": "Returns average value of x for the past d days.",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_median",
+    "category": "Time Series",
+    "definition": "ts_median(x, d)",
+    "description": "Returns median value of x for the past d days",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_product",
+    "category": "Time Series",
+    "definition": "ts_product(x, d)",
+    "description": "Returns product of x for the past d days",
+    "documentation": "/operators/ts_product",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_quantile",
+    "category": "Time Series",
+    "definition": "ts_quantile(x,d, driver=\"gaussian\" )",
+    "description": "It calculates ts_rank and apply to its value an inverse cumulative density function from driver distribution. Possible values of driver (optional ) are \"gaussian\", \"uniform\", \"cauchy\" distribution where \"gaussian\" is the default.\r\n\r\nInput: Value of 1 instrument in past 7 days where first element is the latest: (8, 10, 4, 6, 5, 3, 2), d: 7, driver: ’gaussian’\r\nOutput: quantile = 0.82 from SD = 2.82, mean = 5.43, zscore = 0.911",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_rank",
+    "category": "Time Series",
+    "definition": "ts_rank(x, d, constant = 0)",
+    "description": "Rank the values of x for each instrument over the past d days, then return the rank of the current value + constant. If not specified, by default, constant = 0.\r\n\r\nInput: Value of 1 instrument in past 3 days where first element is the latest: (100, 0, 200), d: 3\r\nOutput: 0.5",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_regression",
+    "category": "Time Series",
+    "definition": "ts_regression(y, x, d, lag = 0, rettype = 0)",
+    "description": "Returns various parameters related to regression function",
+    "documentation": "/operators/ts_regression",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_scale",
+    "category": "Time Series",
+    "definition": "ts_scale(x, d, constant = 0)",
+    "description": "Returns (x - ts_min(x, d)) / (ts_max(x, d) - ts_min(x, d)) + constant. This operator is similar to scale down operator but acts in time series space",
+    "documentation": "/operators/ts_scale",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_std_dev",
+    "category": "Time Series",
+    "definition": "ts_std_dev(x, d)",
+    "description": "Returns standard deviation of x for the past d days",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_step",
+    "category": "Time Series",
+    "definition": "ts_step(1)",
+    "description": "Returns days' counter",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_sum",
+    "category": "Time Series",
+    "definition": "ts_sum(x, d)",
+    "description": "Sum values of x for the past d days.",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_target_tvr_decay",
+    "category": "Time Series",
+    "definition": "ts_target_tvr_decay(x, lambda_min=0, lambda_max=1, target_tvr=0.1)",
+    "description": "Tune \"ts_decay\" to have a turnover equal to a certain target, with optimization weight range between lambda_min, lambda_max",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_target_tvr_delta_limit",
+    "category": "Time Series",
+    "definition": "ts_target_tvr_delta_limit(x, y, lambda_min=0, lambda_max=1, target_tvr=0.1)",
+    "description": "Tune \"ts_delta_limit\" to have a turnover equal to a certain target with optimization weight range between lambda_min, lambda_max. Also, please be aware of the scaling for x and y. Besides setting y as adv20 or volume related data, you can also set y as a constant.",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_target_tvr_hump",
+    "category": "Time Series",
+    "definition": "ts_target_tvr_hump(x, lambda_min=0, lambda_max=1, target_tvr=0.1)",
+    "description": "Tune \"hump\" to have a turnover equal to a certain target with optimization weight range between lambda_min, lambda_max.",
+    "documentation": null,
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "ts_zscore",
+    "category": "Time Series",
+    "definition": "ts_zscore(x, d)",
+    "description": "Z-score is a numerical measurement that describes a value's relationship to the mean of a group of values. Z-score is measured in terms of standard deviations from the mean: (x - tsmean(x,d)) / tsstddev(x,d). This operator may help reduce outliers and drawdown.\r\n\r\nInput: Value of 1 instrument in past 5 days where first element is the latest: (100, 0, 50, 60, 25), d: 5\r\nOutput: (100-47)/33.7 = 1.57 from SD: 33.7, mean = 47",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "id": "getting-started-investability-constrained-metrics",
+  "title": "Investability Constrained Metrics",
+  "lastModified": "2025-11-04T02:32:14.611009-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Introduction"
+      },
+      "id": "5f79e957-c978-4ff0-8617-c120319a3c0c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>When evaluating Alpha performance, various metrics can be used. One metric of them is Alpha Performance after Investability Constraint.</p><p>Investability Constraints ensure that the positions taken by an Alpha are within the liquidity limits of the instruments. This helps avoid significant market impact, which can negatively affect the Alpha's profitability. An Alpha that performs well under Investability Constraints will potentially have higher capacity and liquidity.</p><p><b>For example:</b></p><p>Consider two Alphas that allocate weights to stock X, scaled to a book size of $20 million:</p>",
+      "id": "95afd691-cc93-40ef-acff-c4bae33813c2"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Alphas",
+            "Allocation (million $)",
+            "Average Daily Volume of Stock X (million $)"
+          ],
+          [
+            "A",
+            "5",
+            "50"
+          ],
+          [
+            "B",
+            "0.1",
+            "50"
+          ]
+        ],
+        "firstRowIsTableHeader": false,
+        "firstColIsHeader": true
+      },
+      "id": "ee911bd7-cea7-4a3c-947d-f9b303bf4104"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Alpha A's position is harder to change because it represents 10% of the average daily volume (ADV) of stock X. In contrast, Alpha B's position has more room for adjustment. This difference can have a significant impact when considering thousands of stocks in a universe.</p>",
+      "id": "2078e319-efd8-4215-aa2a-a11ddec4f92c"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Where to find the metrics"
+      },
+      "id": "fb45a1cb-057d-4f37-82b6-8abbbd5b7063"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>You can find the Investability Constrained Metrics on the new simulation results page. The page displays the Alpha's PnL under Investability Constraint conditions.</p>",
+      "id": "a78d6064-a1d8-48ed-8a21-5edf2ea3e9cf"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Investability _1.png",
+        "width": 624,
+        "height": 421,
+        "fileSize": 51789,
+        "url": "https://api.worldquantbrain.com/content/images/ogx8yz2CbMhzIOjee65t2RsQPx8=/380/original/Investability__1.png"
+      },
+      "id": "624b229d-d446-40fd-932e-40c9119eb147"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Additionally, the IS Summary now includes new aggregate data for Alpha performance after applying Investability Constraints.</p>",
+      "id": "37ff1cce-1e0d-495e-847d-15166c166085"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Investability _2.png",
+        "width": 548,
+        "height": 560,
+        "fileSize": 122374,
+        "url": "https://api.worldquantbrain.com/content/images/XeYvX8AWP2zvTcamIhFrpYjkaZ8=/381/original/Investability__2.png"
+      },
+      "id": "0a9766df-fcdb-4ecf-9625-4c15a5125824"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "How to use the metric in your Alpha research"
+      },
+      "id": "d245b2b3-f73f-460d-9901-bd1c48e4ba2b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li><b>Performance Consistency</b>: Ensure that Alphas do not lose too much performance under Investability Constraints compared to their base performance. Alphas that have good Investability Constraints Sharpe are likely to have good After-cost Sharpe also which will help improve your Combine Alpha Performance in Genius.</li><li><b>Optimization Metrics</b>: Consultants can leverage Investability Constrained Metrics as a metric to enhance your Alpha optimization process. Here’re some tips to create Alphas which such performance:<ul><li>An Alpha which captures signal in the liquid instruments space of the market may have higher Investability Constrained Performance. This is especially true for cases of medium to high turnover like Alphas in Price Volume, News, Options, etc. category. You should either control the liquidity profile of your signals or lower the turnover of the illiquid part of them. Please checkout some forum post about these technique in the References.</li><li>An Alpha with low turnover in general may be less impacted by these constraint for example Alphas in category Fundamental, Model, … Because it changes position in low frequency, thus its performance relies less on the liquidity of the instruments. Please checkout some forum post about creating low turnover Alphas in the References.</li></ul></li><li><b>Alpha Submissions Selection</b>: Use these metrics as a filter for selecting Alphas, especially in regions like ASI and GLB. Alphas that perform well under these constraints can possibily add significant value and may result in higher value factor and weight factor because they scale better when the booksize increases.</li><li><b>Apply Max Trade Settings to your Alpha</b>: In order to convert your Alphas into Investability Constrained Alphas, you can change the Max Trade option in Simulation Settings to ON. Please read <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-features\">this documentation</a> for further information.</li></ul>",
+      "id": "22917336-5991-4cd2-ae06-c2f0803d8e52"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "max_trade_settings.png",
+        "width": 624,
+        "height": 442,
+        "fileSize": 46781,
+        "url": "https://api.worldquantbrain.com/content/images/JwWVUWRjohnOUsF0t5joWH7bsVs=/394/original/max_trade_settings.png"
+      },
+      "id": "a50e28c0-52b4-440a-924d-6811bcffdbcc"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "References"
+      },
+      "id": "2dc25a9e-a837-4ec1-8423-3275f0dc0d69"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Research Papers:</p><ul><li><a href=\"https://haas.berkeley.edu/wp-content/uploads/hiddenImpact13.pdf\">The market impact of large trading orders: Correlated order flow, asymmetric liquidity and efficient prices</a></li><li><a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2480954\">The Impact of Large Orders in Electronic Markets</a></li></ul><p>BRAIN Forum posts &amp; Articles:</p><ul><li><a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/29520890528151-Tips-for-Success-in-the-High-Capacity-Alphas-Competition\">Tips for Success in the High Capacity Alphas Competition</a></li><li><a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/29647491881623-How-to-Improve-After-Cost-Performance\">How to Improve After Cost Performance</a></li><li><a href=\"https://support.worldquantbrain.com/hc/en-us/articles/5972783716887-What-is-liquidity\">What is liquidity?</a></li><li><a href=\"https://support.worldquantbrain.com/hc/en-us/articles/25960264611351-What-s-After-cost-Sharpe-ratio\">What's After cost Sharpe ratio?</a></li><li><a href=\"https://support.worldquantbrain.com/hc/en-us/articles/5973492634903-Can-you-explain-what-decay-is\">Can you explain what decay is?</a></li><li><a href=\"https://support.worldquantbrain.com/hc/en-us/articles/5973359129239-Do-you-recommend-higher-or-lower-Decay\">Do you recommend higher or lower Decay?</a></li></ul>",
+      "id": "0345c7aa-ceb3-45df-8c2a-dd6aa9953301"
+    }
+  ],
+  "sequence": 18,
+  "category": "Advanced Topics"
+}

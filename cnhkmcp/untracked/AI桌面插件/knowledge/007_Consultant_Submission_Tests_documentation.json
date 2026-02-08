@@ -1,0 +1,363 @@
+{
+  "id": "consultant-submission-tests",
+  "title": "Consultant Submission Tests",
+  "lastModified": "2025-12-14T10:55:05.173898-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Alphas excluding CHN region"
+      },
+      "id": "873bc252-08c5-4008-a38c-80b8d210a2a0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The following tests are run till the end of In Sample period.</p>",
+      "id": "5ae06de0-7c35-4375-b788-7325c6ce9c16"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "SUBMISSION CRITERIA",
+            "THRESHOLDS FOR CONSULTANTS"
+          ],
+          [
+            "Fitness",
+            "Greater than 1.5 for Delay 0 alphas and Greater than 1 for Delay 1 alphas"
+          ],
+          [
+            "Sharpe",
+            "Greater than 2.69 for Delay 0 and Greater than 1.58 for Delay 1 alphas"
+          ],
+          [
+            "Turnover",
+            "Greater than 1% and less than 70%"
+          ],
+          [
+            "Weight",
+            "Max weight in any stock < 10%. This measures if sufficient number of stocks are assigned weight for sufficient days in a year. Number varies with simulation universe (Top 3000, Top 2000 etc.)"
+          ],
+          [
+            "Sub universe test",
+            "The Sharpe in the sub universe must be higher than at least one threshold. These thresholds scale down sharpe with sub universe size. You can find detailed example below."
+          ],
+          [
+            "Self-correlation",
+            "Less than 0.7 PNL series correlation with user's alphas, or a sharpe at least 10% greater than other correlated alphas submitted by user"
+          ],
+          [
+            "Prod-correlation",
+            "Same as the Self-correlation criteria but applied to all submitted alphas in BRAIN, not just your own"
+          ],
+          [
+            "Check-IS-Sharpe or IS-Ladder test",
+            "In Sample Sharpe for the recent 2, 3, 4...10 years should be above the Sharpe thresholds set up for D1 and D0. Please find detailed information below about the D0 and D1 thresholds and the ladder test"
+          ],
+          [
+            "Bias test",
+            "This measures any forward bias in the alpha. This test should not fail for expression alphas. In case any of your expressions fail Bias test, please contact BRAIN Support."
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": true
+      },
+      "id": "2f0cc77f-64b5-4ba8-9af2-dcf137ee0dde"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Alphas in CHN region"
+      },
+      "id": "9337c7e9-3f55-40f8-a034-77e0fae6eb1b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>The China market has a high cost of trading, thus requiring higher returns than other regions. Thus the submission criteria are <b>Sharpe &gt;= 2.08, Returns &gt;= 8% and Fitness &gt;= 1.0 for D1; Sharpe &gt;= 3.5, Returns &gt;= 12% and Fitness &gt;= 1.5 for D0</b></li><li>Apart from usual robustness tests such as sub universes, turnover, fitness and weight, there is an additional test exclusive to the China research region: <b>Robust universe test performance</b>: Alphas are considered good if the robust universe component retains at least 40% of the returns and Sharpe of the submission version.</li></ul>",
+      "id": "00a82c4a-381e-4b05-acd2-527a9b48fd6e"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "ASI Alphas: Robust Universe Performance Test"
+      },
+      "id": "5a629edc-7815-431e-85b7-0d4c60648320"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>What is Robust Universe Test Criteria?</b></p><p>The ASI research region introduces a new and exclusive robustness assessment: the <b>Robust Universe Test</b>. This test is designed to ensure that Alphas maintain strong, reliable performance even when a more scalable universe is adjusted to better reflect real-world scalability constraints. An Alpha passes the Robust Universe Test if its performance on the adjusted universe retains <b>at least 90%</b> of the returns and Sharpe ratio compared to the original submission version.</p><p><b>Actionable tips to potentially pass Robust Universe Test for ASI Alphas</b><br/> Build Alphas that perform well across a wide, diverse universe, rather than relying on signals from a limited group of stocks. Also, prioritize signals with strong, intuitive economic rationale and broad applicability, rather than those tailored to specific stocks or historical quirks. Before submitting, test your Alpha on various universe configurations to ensure robust performance retention. You can also use visualization function to see how your Alpha performs in different countries/regions; try to submit Alphas that can have performance in various countries/regions rather than just a few countries/regions.</p><p></p>",
+      "id": "5b9d8e6e-20b8-4db3-bbc0-d9eac46e5ab7"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "ASI Alphas.png",
+        "width": 617,
+        "height": 263,
+        "fileSize": 81957,
+        "url": "https://api.worldquantbrain.com/content/images/VyUyu7a3WYpKGfw7nwcf1nVP5Zg=/423/original/ASI_Alphas.png"
+      },
+      "id": "46484d03-f081-4781-9434-1780169b0d5d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>And try to aim for higher returns and greater margin, as Alphas with stronger performance and wider profit margins are more resilient to real-world investment costs and constraints and are more likely to be selected for deployment.</p>",
+      "id": "2704d64d-5eea-4b71-9906-bbbd2d857088"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "ASI, JPN, HKG, TWN, KOR Alphas: Investability Sharpe test"
+      },
+      "id": "991d791c-3108-451e-a2ca-a615bfd3b9ca"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Please refer to <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/getting-started-investability-constrained-metrics\">Investability Constrained Metrics | WorldQuant BRAIN</a> for details about investability concept and max-trade.</p><p>For ASI, JPN, HKG, TWN, KOR Alphas, they can pass the investability Sharpe test, in either way:</p><ol><li>Set maxtrade=ON</li><li>Set maxtrade=OFF, and ensure \"investability constraint Sharpe\" &gt; \"original Sharpe\" * 0.7</li></ol>",
+      "id": "2f1d060b-e423-477c-b82b-626a92160805"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Superalphas"
+      },
+      "id": "7efa3629-8dcd-4fd0-9f1a-e97169378546"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Same submission criteria apply for superalphas as alphas, except turnover. <b>2% &lt;= turnover &lt; 40%</b></p>",
+      "id": "4f3c47c7-4c21-46a1-8f47-a809f3029dc8"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Alphas in ILLIQUID_MINVOL1M Universes"
+      },
+      "id": "3fbe4e90-73f4-4061-9a1c-8947f946c91e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The ILLIQUID_MINVOL1M universe contains a basket of illiquid instruments that have a minimum volume of 1 million USD. As illiquid instruments have high slippages, wider bid ask spreads and low volume which is not found in the liquid universes, there is a larger difference in returns and wider price impact when traded compared to liquid universes.</p><p>Thus, the <b>after cost sharpe</b> scores the returns taking into account the above costs of trading.</p><p>An additional condition that the After cost sharpe for most illiquid 50% instruments should be greater than fraction (~52.5%) of original universe after cost sharpe apply to this universe.</p>",
+      "id": "0446d47d-2c26-4ade-ae1a-3ada1352ba12"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Self-Correlation"
+      },
+      "id": "e850090c-69d0-42b6-b926-bf41e99883e2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Self correlation tests checks if the submitted alpha is highly correlated to previous submissions made by the user.</p><p>The threshold for correlation is 0.7. In case correlation between submitted alpha and previous submissions is greater than 0.7, below conditions apply:</p>",
+      "id": "f4857d83-607d-4204-8ca1-334fbe4e8003"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Weight test"
+      },
+      "id": "54c9b6bf-8c7c-44f0-9b17-97027f7500e5"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Alphas are also tested on the distribution of Alpha <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=W-,Weight,-BRAIN\">weights</a> across stocks. Alphas can fail this test if:</p><ul><li><a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/8394917303575-Why-fundamental-alphas-always-show-Weight-is-too-strongly-concentrated-or-too-few-instruments-are-assigned-weight-\">Too few stocks are assigned</a> weight for significant number of days in a year. Note that assigning zero weights to all stocks at the start of the <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=definition.-,Simulation,-Simulation\">simulation</a> does not fail this condition, it only applies after the Alpha starts assigning weights. The exact number of minimum stocks varies with the simulation <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=U-,Universe,-Universe\">universe</a>.</li><li>Alpha weight is too concentrated in any one stock. For example, if one stock has 30 percent of all Alpha weight, it will fail this test.</li></ul>",
+      "id": "3c6fcd15-a8c9-4e05-a2e9-d06d3a6b5829"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Sub universe"
+      },
+      "id": "eca3f8a7-f471-4fea-b28b-c7eb69feae4e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>For TOPXXX universes:</p><p>subuniverse_sharpe &gt;= 0.75 * sqrt(subuniverse_size / alpha_universe_size) * alpha_sharpe</p><p>For non TOPXXX universes:</p><p>subuniverse_sharpe &gt;= subuniverse_ratio * alpha_sharpe</p><p>where subuniverse_ratio:</p><p>ASI MINVOL1M: 0.295</p><p>USA ILLIQUID_MINVOL1M: 0.41</p><p>EUR ILLIQUID_MINVOL1M: 0.355</p>",
+      "id": "07c839e1-b2e4-4deb-b31e-d70fb422d25c"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Check-IS-Sharpe or IS-Ladder test"
+      },
+      "id": "7521e118-39ad-41ab-a265-86f80d491f42"
+    },
+    {
+      "type": "EQUATION",
+      "value": "$$𝑆ℎ𝑎𝑟𝑝𝑒= \\sqrt{250}*𝐼𝑅≈15.8*𝐼𝑅 $$",
+      "id": "4e7ba4cc-5861-4096-83c8-7fe58c03f853"
+    },
+    {
+      "type": "EQUATION",
+      "value": "$$ 𝐼𝑅=\\frac{𝑎𝑣𝑔(𝑑𝑎𝑖𝑙𝑦 𝑃𝑁𝐿)}{Std𝐷𝑒𝑣(𝑑𝑎𝑖𝑙𝑦 𝑃𝑁𝐿)}$$",
+      "id": "15e7197d-0f2d-436a-84d8-d8181bb464e5"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The Check-IS-Sharpe or IS-Ladder test is an iterative test which compares the average IS performance to a series of benchmarks. Initially, the test examines only the most recent two years of IS data available. With each iteration, an additional year is added to the IS period. For example, in the fourth iteration, the IS ladder test examines the most recent 5 years of IS data and compares the Sharpe from that period to the benchmarks described below.</p><p>Alpha undergoes the IS Sharpe ladder test according to the following logic:</p><ol><li>if Sharpe for the whole history is less than FAIL_THRESHOLD, the test is failed</li><li>Else:</li><li>Start with N_YEARS = 2</li><li>if Sharpe[N_YEARS] &lt; FAIL_THRESHOLD: test FAILED</li><li>else if Sharpe[N_YEARS] &gt; PASS_THRESHOLDS[N_YEARS]: test PASSED</li><li>else if (Sharpe[N_YEARS] &gt; FAIL_THRESHOLD) and (Sharpe[N_YEARS ] &lt; PASS_THRESHOLDS[N_YEARS]): N_YEARS += 1</li><li>Go to step 4 with updated N_YEARS value.</li></ol><p></p><p><b>Thresholds for D1 and D0:</b></p>",
+      "id": "3724a9ab-f79f-433e-85a9-30a9fba75437"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "No. YEARS",
+            "D1 THRESHOLD",
+            "D0 THRESHOLD"
+          ],
+          [
+            "FAIL_THRESHOLD",
+            "1.59",
+            "2.69"
+          ],
+          [
+            "2 YEARS",
+            "2.38",
+            "3.96"
+          ],
+          [
+            "3 YEARS",
+            "2.38",
+            "3.96"
+          ],
+          [
+            "4 YEARS",
+            "2.38",
+            "3.96"
+          ],
+          [
+            "5 YEARS",
+            "2.38",
+            "3.96"
+          ],
+          [
+            "6 YEARS",
+            "2.22",
+            "3.64"
+          ],
+          [
+            "7 YEARS",
+            "2.06",
+            "3.33"
+          ],
+          [
+            "8 YEARS",
+            "1.90",
+            "3.17"
+          ],
+          [
+            "9 YEARS",
+            "1.74",
+            "2.85"
+          ],
+          [
+            "10 YEARS",
+            "1.59",
+            "2.69"
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": true
+      },
+      "id": "0b9db490-749a-40c5-803a-31a4f10e321f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Note:</b></p><ul><li>Sharpe[N_YEARS] is calculated for most recent N_YEARS years of the IS period</li><li>If the turnover of Alpha is less than 30%, the IS Sharpe Ladder PASS_THRESHOLDS are multiplied by a factor of 0.85. FAIL_THRESHOLD is not multiplied by this factor.</li></ul>",
+      "id": "ad24f4df-1db3-42d9-9721-741eded0a256"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Interpreting Status Messages in Simulation Results"
+      },
+      "id": "e491ac8f-f08f-4f4a-8e5e-a8690e8074a7"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>When “Check Submission” or “Submit Alpha” button is pressed, tests are performed in the order described below. In case Alpha fails any of the tests, respective Test Message is displayed.</p>",
+      "id": "c3db7f1f-34da-4ec8-bc5a-fab61d44173a"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "#",
+            "TEST RESULT",
+            "TEST MESSAGE"
+          ],
+          [
+            "1",
+            "Alpha fails checkWeight test",
+            "Maximum weight on an instrument is greater than 10% OR Weight is too strongly concentrated or too few instruments are assigned weight."
+          ],
+          [
+            "2",
+            "Alpha fails CheckCorr test",
+            "Reduce max correlation"
+          ],
+          [
+            "3",
+            "Alpha fails 0.75*ISLadder",
+            "Improve Sharpe"
+          ],
+          [
+            "4",
+            "Alpha clears 0.75*ISLadder , fails 0.85*ISLadder and turnover > 10%",
+            "Improve Sharpe or reduce turnover"
+          ],
+          [
+            "5",
+            "Alpha clears 0.85*ISLadder, fails 1.0*ISLadder, turnover > 30% and correlation > 0.3",
+            "Improve Sharpe or reduce turnover or reduce correlation"
+          ],
+          [
+            "6",
+            "Alpha fails fitness test",
+            "Improve fitness"
+          ],
+          [
+            "7",
+            "Delay 0 Alpha fails checkDelay1Sharpe",
+            "Alpha better suited for Delay 1"
+          ],
+          [
+            "8",
+            "Alpha fails SubUniverse test",
+            "Improve Sharpe in SubUniverse"
+          ],
+          [
+            "9",
+            "Most illiquid 50% instruments after cost Sharpe of x is below cutoff of y (z original universe after cost Sharpe)",
+            "Improve alpha performance in top illiquid quantile"
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": true
+      },
+      "id": "dd75a931-85d3-4bd0-9a95-6303845436d1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<ul><li>Example: if an Alpha clears criteria 1, 2 and 3 but fails at criteria 4, recommendation would be “Improve Sharpe or reduce turnover”.</li></ul><p></p>",
+      "id": "83bf37c2-0840-4d2b-b617-5ab9d6e07242"
+    }
+  ],
+  "sequence": 10,
+  "category": "Consultant Information"
+}

@@ -1,0 +1,32 @@
+{
+    "template": "ts_mean({ests}, 20) / ts_mean({ests}, 60)",
+    "expression_list": [
+        "ts_mean(anl15_gr_12_m_ests, 20) / ts_mean(anl15_gr_12_m_ests, 60)",
+        "ts_mean(anl15_gr_18_m_ests, 20) / ts_mean(anl15_gr_18_m_ests, 60)",
+        "ts_mean(anl15_gr_cal_fy1_ests, 20) / ts_mean(anl15_gr_cal_fy1_ests, 60)",
+        "ts_mean(anl15_gr_cal_fy2_ests, 20) / ts_mean(anl15_gr_cal_fy2_ests, 60)",
+        "ts_mean(anl15_gr_cal_fy3_ests, 20) / ts_mean(anl15_gr_cal_fy3_ests, 60)",
+        "ts_mean(anl15_gr_fy1_ests_dn, 20) / ts_mean(anl15_gr_fy1_ests_dn, 60)",
+        "ts_mean(anl15_gr_fy2_ests_dn, 20) / ts_mean(anl15_gr_fy2_ests_dn, 60)",
+        "ts_mean(anl15_gr_fy3_ests_dn, 20) / ts_mean(anl15_gr_fy3_ests_dn, 60)",
+        "ts_mean(anl15_gr_ltg_ests, 20) / ts_mean(anl15_gr_ltg_ests, 60)",
+        "ts_mean(anl15_ind_12_m_ests, 20) / ts_mean(anl15_ind_12_m_ests, 60)",
+        "ts_mean(anl15_ind_18_m_ests, 20) / ts_mean(anl15_ind_18_m_ests, 60)",
+        "ts_mean(anl15_ind_cal_fy1_ests, 20) / ts_mean(anl15_ind_cal_fy1_ests, 60)",
+        "ts_mean(anl15_ind_cal_fy2_ests, 20) / ts_mean(anl15_ind_cal_fy2_ests, 60)",
+        "ts_mean(anl15_ind_cal_fy3_ests, 20) / ts_mean(anl15_ind_cal_fy3_ests, 60)",
+        "ts_mean(anl15_ind_fy1_ests_dn, 20) / ts_mean(anl15_ind_fy1_ests_dn, 60)",
+        "ts_mean(anl15_ind_fy2_ests_dn, 20) / ts_mean(anl15_ind_fy2_ests_dn, 60)",
+        "ts_mean(anl15_ind_fy3_ests_dn, 20) / ts_mean(anl15_ind_fy3_ests_dn, 60)",
+        "ts_mean(anl15_ind_ltg_ests, 20) / ts_mean(anl15_ind_ltg_ests, 60)",
+        "ts_mean(anl15_s_12_m_ests, 20) / ts_mean(anl15_s_12_m_ests, 60)",
+        "ts_mean(anl15_s_18_m_ests, 20) / ts_mean(anl15_s_18_m_ests, 60)",
+        "ts_mean(anl15_s_cal_fy1_ests, 20) / ts_mean(anl15_s_cal_fy1_ests, 60)",
+        "ts_mean(anl15_s_cal_fy2_ests, 20) / ts_mean(anl15_s_cal_fy2_ests, 60)",
+        "ts_mean(anl15_s_cal_fy3_ests, 20) / ts_mean(anl15_s_cal_fy3_ests, 60)",
+        "ts_mean(anl15_s_fy1_ests_dn, 20) / ts_mean(anl15_s_fy1_ests_dn, 60)",
+        "ts_mean(anl15_s_fy2_ests_dn, 20) / ts_mean(anl15_s_fy2_ests_dn, 60)",
+        "ts_mean(anl15_s_fy3_ests_dn, 20) / ts_mean(anl15_s_fy3_ests_dn, 60)",
+        "ts_mean(anl15_s_ltg_ests, 20) / ts_mean(anl15_s_ltg_ests, 60)"
+    ]
+}

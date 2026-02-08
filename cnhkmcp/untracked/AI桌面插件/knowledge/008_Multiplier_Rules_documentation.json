@@ -1,0 +1,14 @@
+{
+  "id": "multiplier-rules",
+  "title": "Multiplier Rules",
+  "lastModified": "2024-06-03T03:30:35.804439-04:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p><b>Use Themes to increase your potential to earn more</b></p><p>Increase your chances of earning a higher base payment with Themes. If you submit an Alpha that satisfy a <b>set of rules</b> then you will receive <b>higher Quality Factor</b> with respect to submitting an Alpha in any other case. You can use<b> grouping fields</b> in your Alpha expression to get multiplier.</p><p>During Theme announcements, we will confirm the multiplier by which QualityFactor will increase if it updates. A higher QualityFactor will in turn increase your potential to earn a higher base payment. Note that grouping fields are industry, market, sector, subindustry and any other fields of type Group.</p><p></p><p><b>How does it work?</b></p><p>If there are multiple Themes running in parallel, the multiplier calculation will be different. If an Alpha that satisfies such multiple themes is submitted, then final multiplier = sum of multiplier – count of themes + 1. For example, if we have USA Region Theme with 3x multiplier along with regular Dataset Theme with 5x multiplier for a certain week, then if you create a Theme Data Field Alpha in USA region, you will get a multiplier of (3+5) – 2 + 1 = 7 on your QualityFactor.</p><p>The link to a relevant forum post will be shared to you via an announcement on the platform or you can access it from <a href=\"https://support.worldquantbrain.com/hc/en-us/community/topics/5772838556183-Consultants-Themes\">here</a> as well. You can discuss queries, doubts and Alpha ideas there. We will moderate the thread to align discussion productively. You can find additional FAQs for Themes <a href=\"https://support.worldquantbrain.com/hc/en-us/sections/5887970274071-Themes\">here</a>.</p><p>We will also share other useful resources to help you make Alphas in that category, which could include research papers or articles.</p><p>Stay Tuned!</p>",
+      "id": "4cef7d97-89c3-4ba6-ac43-d9f38baecf75"
+    }
+  ],
+  "sequence": 2,
+  "category": "Themes"
+}

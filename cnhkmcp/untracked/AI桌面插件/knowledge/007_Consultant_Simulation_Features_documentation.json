@@ -1,0 +1,149 @@
+{
+  "id": "multi-alpha-simulation",
+  "title": "Consultant Simulation Features",
+  "lastModified": "2025-08-27T04:04:02.635767-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "What is Multi-Simulation?"
+      },
+      "id": "87956647-eb0d-4b6d-aacb-58a9ad55726c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Multi-Simulation is a feature that allows for faster simulation of multiple Alphas in a single run. It's particularly useful for experimenting with multiple variations of an Alpha idea.</p><p>Consultants can execute up to 8 simultaneous Multi-Simulations. Each Multi-Simulation can contain up to 10 Alphas that run sequentially, each of the 10 Alphas with distinct operators, data fields, and settings. However, all must share the same Region and Delay setting within a Multi-Simulation.</p>",
+      "id": "87a59d58-8ead-4c5a-af59-2272d1e30dae"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "multi_sim_alphas.png",
+        "width": 344,
+        "height": 581,
+        "fileSize": 87398,
+        "url": "https://api.worldquantbrain.com/content/images/8YTF7Iv-vFYDbAKDuSQK0NWCCYE=/302/original/multi_sim_alphas.png"
+      },
+      "id": "f97c0b69-8b8f-4484-a160-0ee34decf639"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Example"
+      },
+      "id": "db3bae44-4ea8-4444-9847-53e31c36bcec"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Consider you have an Alpha <b>rank(delta(close,1))</b>, and you want to see how the Alpha’s performance varies when replacing <b>close</b> with <b>open</b>, <b>high</b> and <b>low</b>:</p>",
+      "id": "218a9714-bcca-493b-9582-b3680ba7632a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<table style=\"border: 1px solid black; border-collapse: collapse;\">\r\n  <thead>\r\n    <tr>\r\n      <th colspan=\"2\" style=\"border: 1px solid black;\">Multi-Simulation 1</th>\r\n<th colspan=\"2\" style=\"border: 1px solid black;\"></th>\r\n      <th colspan=\"2\" style=\"border: 1px solid black;\">Multi-Simulation 2</th>\r\n<th colspan=\"2\" style=\"border: 1px solid black;\"></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr>\r\n      <td style=\"border: 1px solid black;\">Simulation 1.1</td>\r\n      <td style=\"border: 1px solid black;\">Simulation 1.2</td>\r\n      <td style=\"border: 1px solid black;\">Simulation 2.1</td>\r\n      <td style=\"border: 1px solid black;\">Simulation 2.2</td>\r\n    </tr>\r\n    <tr>\r\n      <td style=\"border: 1px solid black;\">rank(delta(close,1))<br>USA, Delay 1</td>\r\n      <td style=\"border: 1px solid black;\">rank(delta(open,1))<br>USA, Delay 1</td>\r\n      <td style=\"border: 1px solid black;\">rank(delta(high,1))<br>USA, Delay 0</td>\r\n      <td style=\"border: 1px solid black;\">rank(delta(low,1))<br>USA, Delay 0</td>\r\n    </tr>\r\n  </tbody>\r\n</table>",
+      "id": "feeae0c8-c871-4100-9fa1-1ad0917177c6"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "How can you use Multi-Simulation"
+      },
+      "id": "7cf90fdd-3f6c-405c-95e7-89d0511c3b27"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>1. Create a new simulation by clicking “New Multi-Simulation”</p>",
+      "id": "f11857da-3d5e-4650-8b41-e81d56528232"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "new multi sim.png",
+        "width": 145,
+        "height": 37,
+        "fileSize": 3494,
+        "url": "https://api.worldquantbrain.com/content/images/iegtB0P_EFgY-1d1PvHPfC0xwT4=/303/original/new_multi_sim.png"
+      },
+      "id": "03a4ef76-1cc6-4bf5-b3fd-b10d01107f9f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>2. Click on \"+\" button to create new simulation within a Multi-Simulation (you can create up to 10 windows)</p>",
+      "id": "ee25c91e-ef6a-41f3-9b2e-8d24d9920a19"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "sub multi sim.png",
+        "width": 402,
+        "height": 31,
+        "fileSize": 6698,
+        "url": "https://api.worldquantbrain.com/content/images/59Arn8vZSD5DzOIxEUq-az8JiNE=/304/original/sub_multi_sim.png"
+      },
+      "id": "3dc3fad6-1e00-4b97-b813-e1852a2e2e61"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>3. Input your simulation settings, expressions for each Alpha.<br/> <i>Note that REGION, DELAY, LANGUAGE and INSTRUMENT TYPE need to be the same for all Alphas within a single Multiple-Simulation</i></p><p>4. Click the “Multi-Simulate” icon to start the simulation after inputting all Alphas.</p>",
+      "id": "0baa9076-a406-4b91-bde1-867c01142d06"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "start_multi_sim.png",
+        "width": 155,
+        "height": 30,
+        "fileSize": 3984,
+        "url": "https://api.worldquantbrain.com/content/images/kSg3rpDNCtFP5IZQLjFjtHlvMnw=/305/original/start_multi_sim.png"
+      },
+      "id": "a13564a8-9cc0-469e-868d-b9d6ee768be3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>5. Review simulation results by switching between Alphas for detailed comparison.</p><p>6. You can submit one or more of the Alphas from the batch.</p><p>7. Refer to <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/brain-api#simulations:~:text=the%20SUPER%20simulation%3E%22%0A%7D-,Multiple%20simulations,-can%20be%20run\">this document</a> for Multi Alpha Simulation API usage.</p>",
+      "id": "a7592a7b-7a15-4e86-ba37-5224bf36bfaa"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Tips for Success"
+      },
+      "id": "51d99660-1e70-4a98-8ece-ead089cb0286"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li><b>Naming Alphas</b>: To avoid confusion, name each Alpha.</li><li><b>Resource Error</b>: If the error “<i>The simulation requires more resources than are available</i>” occurs, reduce the number of Alphas within a Multi-Simulation and retry.</li></ul>",
+      "id": "7d3bbeff-f883-4aef-aecf-9159c598a671"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Test Period"
+      },
+      "id": "8486a1d0-2566-4c66-8b76-2e7dcfe22f55"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Test_period.PNG",
+        "width": 681,
+        "height": 483,
+        "fileSize": 27131,
+        "url": "https://api.worldquantbrain.com/content/images/-FJkDHu6xsk2Bz60GuIysfBGp_8=/286/original/Test_period.PNG"
+      },
+      "id": "fff2a4bc-d2f9-426e-8ea8-95074ff0e2db"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The Test Period setting offers you the flexibility to designate a separate testing period for your Alpha. This period corresponds to the final 0-6 years of the In-Sample (IS) period, providing a distinct timeframe for assessing your Alpha's performance before submission.</p>",
+      "id": "23cd434c-a27f-4801-8fa5-6d8483b01e0a"
+    }
+  ],
+  "sequence": 7,
+  "category": "Consultant Information"
+}

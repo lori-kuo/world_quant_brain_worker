@@ -1,0 +1,35 @@
+{
+  "id": "consultant-dos-and-donts",
+  "title": "Consultant Dos and Don'ts",
+  "lastModified": "2024-07-02T10:01:25.914891-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Standard Operating Guidelines"
+      },
+      "id": "8bc86297-e8c7-424e-a796-fa96d0fb47c2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Dos</b></p><ol><li>DO keep your personal information actual and updated always.</li><li>DO recertify your <a href=\"https://platform.worldquantbrain.com/profile/account/basic-details\">BRAIN account</a> every three months; keep your employment details and country of residence up-to-date.</li><li>DO consider flagging behavior you would deem inappropriate under the <a href=\"https://platform.worldquantbrain.com/profile/agreements\">Terms and Conditions</a> of BRAIN and this document. Please contact us at support@worldquantbrain.com . We protect the confidentiality of those who report to us in good faith. We verify all the reports at the backend and take appropriate action in the genuine cases.</li><li>DO read the <a href=\"https://support.worldquantbrain.com/hc/en-us/categories/4413011872791-General-FAQs\">FAQs</a> before raising a ticket or reaching out to support@worldquantbrain.com.</li><li>DO follow the requirements of the BRAIN API when utilizing scripts. Ensure the scripts deployed do not lay excessive load on the server.</li></ol><p><b>Don’ts</b></p><ol><li>DO NOT impersonate others or provide inaccurate information.</li><li>DO NOT share or disclose any User Codes [digital certificate(s), unique identifiers, user name(s) and/or password(s)] with any other person.</li><li>DO NOT share your Alpha code with any other person. You are encouraged to invite other consultants to form official teams, if you discuss ideas together. You are advised to discuss Alpha ideas on the <a href=\"https://support.worldquantbrain.com/hc/en-us/community/topics\">community page</a> and in Advisory sessions.</li><li>DO NOT disclose your Alpha details or payout information to any other person or post on any public forum or social media.</li><li>DO NOT engage in spidering, \"screen scraping\", \"database scraping\", or any other automatic or unauthorized means of accessing, logging-in or registering on BRAIN.</li><li>DO NOT use BRAIN in any manner that could interrupt, damage, disable, overburden or impair BRAIN or interfere with any other party's use and enjoyment of BRAIN</li><li>DO NOT distribute, publish, and exploit BRAIN or BRAIN Elements unless you have received our express written prior permission.</li><li>DO NOT act as representative of BRAIN or WorldQuant without approval from WorldQuant LLC.</li><li>DO NOT violate the above document or the terms included in the <a href=\"https://platform.worldquantbrain.com/profile/agreements\">Terms and Conditions</a>.</li></ol><p>Failure to follow the above rules would result in severe consequences including termination and suspension of accounts.</p><p>For research best practices, please refer to Recommended Practices for Alpha Research below.</p><p></p><p></p><p></p>",
+      "id": "ff5ea3fd-735b-46c1-bd3b-6d2a03efa870"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Recommended Practices for Alpha Research"
+      },
+      "id": "3e786105-36d8-4f92-a483-8bf549589916"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Dos</b></p><ol><li>DO make sure your Alpha has economic foundation. A good practice would be to check if you could explain your Alpha to someone within a minute.</li><li>DO simplify the implementation of an Alpha idea and remove unnecessary elements: parts that do not make sense or do not drive performance.</li><li>DO assign meaningful names to the variables in your Alpha code to ensure readability.</li><li>DO follow theme in your Alpha research to create Alphas for higher payout.</li><li>DO use different datasets &amp; operators to build Alphas to ensure diversification</li><li>DO search new/different/unique idea, from different papers, blogs, and articles. For example, <a href=\"https://platform.worldquantbrain.com/learn/documentation/learn-financial-concepts/papers\">papers on Quant research</a>.</li><li>DO run simulations with different sub-universe (TOP 500/1000/2000/3000) while tuning the Alpha parameters. This reduces the risk of universe fitting.</li><li>DO restrict parameter search to simple &amp; reasonable ones. For example 5, 20, 60, 120, 252 in case of days, instead of 37, 14 etc.</li><li>DO check your Alpha’s performance stability across sub-universe, super-universe and across other regions for higher OS performance.</li><li>DO improve Alphas by refining ideas, not by adding or fitting parameters, factors or reversion elements.</li><li>DO ensure coverage by <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=B-,Backfill,-Replace%20missing%20values\">backfilling</a> data fields and the final Alpha using operators such as ts_backfill, group_backfill, group_extra.</li><li>DO use exit triggers (e.g. stop-loss) to close position while using <i>trade_when</i> operator.</li><li>DO normalize data fields to remove any firm related bias for cross-sectional comparison.</li><li>DO use automation for cutting down the redundant task in your Alpha making process</li><li>DO ensure that Alphas make financial sense after automation.</li></ol><p><b>Don’ts</b></p><ol><li>DO NOT spend too much time on a single simple idea.</li><li>DO NOT incorporate noise in the Alpha to reduce production correlation.</li><li>DO NOT add an existing Alpha from one data source to enhance the signal from another data source without any strong economic sense.</li><li>DO NOT over fit your Alpha to enhance performance or to reduce correlation by<ol><li>Trying many different parameters or using too many data fields</li><li>Using too many if else</li><li>Shortening IS period</li><li>Filtering or presetting signals</li></ol></li><li>DO NOT use automation as a source for generating Alpha ideas.</li></ol>",
+      "id": "54d53fbb-b18a-467e-9290-ba50d30bd72d"
+    }
+  ],
+  "sequence": 13,
+  "category": "Consultant Information"
+}

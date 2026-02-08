@@ -1,0 +1,142 @@
+{
+  "id": "china-region-consultants",
+  "title": "Getting Started: China Research for Consultants [Gold]",
+  "lastModified": "2025-06-02T02:36:59.225739-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "REGION SPECIFICS – Things to consider"
+      },
+      "id": "3f32bb63-9798-4c26-8e6b-c9f11bd025a9"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>With BRAIN you can create alphas on China’s Stock market - the second largest in the world by capitalization. There are two primary exchanges:</p><ul><li>Shanghai Stock Exchange (SSE): &gt;2000 listed companies, market cap &gt;7 trillion USD</li><li>Shenzhen Stock Exchange (SZSE): &gt;2000 listed companies, market cap &gt;5 trillion USD</li></ul>",
+      "id": "805ff97e-476e-4b92-9990-4fdad5655a66"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Different submission criteria"
+      },
+      "id": "94b685a3-665e-4b11-9a6b-6da63f453643"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The China market has a high cost of trading, thus requiring higher returns than other regions.</p><ul><li>D1 criteria: Sharpe &gt;= 2.08; Returns &gt;= 8%; Fitness &gt;= 1.0</li><li>D0 criteria: Sharpe &gt;= 3.5; Returns &gt;= 12%; Fitness &gt;= 1.5</li></ul><p><a href=\"https://www.investopedia.com/terms/d/daily_trading_limit.asp#:~:text=A%20daily%20trading%20limit%20is,occurring%20over%20one%20trading%20day.\"><b>Daily trading limit</b></a><b>:</b> price can change in 5-10% range based on stock type. The daily price limit does not apply on the first five trading days after an IPO.[1]</p><p><a href=\"https://www.investopedia.com/ask/answers/09/short-selling-china.asp\"><b>Short-selling Restriction:</b></a> both short selling and margin buying is allowed only for eligible \"blue chip\" stocks with good earnings performance and is only permitted for locally licensed investors.</p><p>This implies that the opposite alphas will not flip the performance. Check alpha example with same simulation setting below:</p>",
+      "id": "22481395-6e0f-4b8a-8f3b-02b7c76aa00d"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "CHN_1",
+        "width": 1077,
+        "height": 506,
+        "fileSize": 78053,
+        "url": "https://api.worldquantbrain.com/content/images/IXeVl9KLtAFM9AT65sjUe4oLiOs=/267/original/chn1.png"
+      },
+      "id": "989fb344-168c-43f4-bd1b-79c9e166b2f3"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "CHN region simulation settings"
+      },
+      "id": "ecf37cbb-1fb2-4248-8cef-854b53bf36ee"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>China <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=A-,Alpha,-An\">alphas</a> are created and simulated on the “Simulate” page. To run your first <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/4902349883927-Click-here-for-a-list-of-terms-and-their-definitions#:~:text=definition.-,Simulation,-Simulation\">simulation</a> on China region:</p><ol><li>Click on the gear icon under your simulation tab to open the settings panel.</li><li>Select “CHN” in Region drop down menu and click “Apply”</li></ol>",
+      "id": "8d68b63d-50e9-424f-8925-d37ce146028c"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "chn_2",
+        "width": 676,
+        "height": 518,
+        "fileSize": 36818,
+        "url": "https://api.worldquantbrain.com/content/images/IBHSkkqEnyn4nXE2OxHtEDpWanc=/268/original/chn2.png"
+      },
+      "id": "b0533641-8b92-460a-b81e-001055fa7b2e"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "The replicate of China Stock Index 1000 on BRAIN"
+      },
+      "id": "75ee0318-6379-43a6-90ce-2453deacb162"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The CSI 1000 Index is composed of 1,000 small-scale and well-liquid stocks after excluding the constituent stocks of the CSI 800 Index from all A-shares. It comprehensively reflects the stock price performance of small and medium-sized companies in China's A-share market. You can replicate this index on BRAIN platform:</p>",
+      "id": "52f8a7ea-2844-4c7f-9e17-8aafca5e35f7"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "chn3.png",
+        "width": 731,
+        "height": 736,
+        "fileSize": 57846,
+        "url": "https://api.worldquantbrain.com/content/images/c9dffleUllw_8WD5KN787R1UCvE=/269/original/chn3.png"
+      },
+      "id": "5ec7aa60-fac0-40b1-9f1e-57e215a46af7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Formula"
+      },
+      "id": "9b465821-e818-4ee0-acf1-092e3279c2b3"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "CHN",
+          "universe": "TOP2000",
+          "delay": 0,
+          "decay": 0,
+          "neutralization": "NONE",
+          "truncation": 0.0,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "rank(cap) < 0.6 ? rank(cap) > 0.1 ? cap : 0 : 0"
+      },
+      "id": "7cf5acbd-dba7-4b96-812d-0a431f389da5"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Since CSI1000 takes 1000 stocks based on the market cap ranking from 800 to 1800, so we have this range from 0.1 to 0.6.</p>",
+      "id": "9bda64af-6ee4-4855-a533-e5c93e6deda8"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Getting started"
+      },
+      "id": "4fe5b250-678e-4a03-81a1-8a3848c4834c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<ul><li>Although China’s stock market has several unique characteristics, many common research ideas can be good starting point for your China research before you explore specific ideas:<ul><li>Technical indicators (Stochastic Oscillator, Relative Strength Index, MACD etc.)</li><li>Fundamental ratios</li></ul></li><li>The China market has a high cost of trading, thus requiring higher returns than other regions.</li><li>Apart from usual robustness tests such as sub universes, turnover, fitness and weight, there is an additional test exclusive to the China research region: Robust universe test performance: Alphas are considered good if the robust universe component retains at least 40% of the returns and Sharpe of the submission version.</li></ul><p></p><p>Since China market has a price limit system, (i.e., the Shenzhen Stock Exchange and Shanghai Stock Exchange resumed the 10% symmetric price limit system on 26 December 1996 [1] ), you will observe the fact that the opposite alphas will not flip the performance (i.e., Sharpe, Returns, Fitness) of alphas.</p><p></p><p>Please see the following example:</p><p>Alpha= ts_returns(close,5) with Delay=”1”, Neutralization = “industry”, Decay = “0”, Truncation = “0.01”, Universe=”TOP3000” will have the performance as follows:</p><p>Sharpe=-6.10, Turnover=63.34%, Returns=-72.73%, Margin=-229.10</p><p>However, the oppsite alpha:</p><p>Alpha= -ts_returns(close,5) with Delay=”1”, Neutralization = “industry”, Decay = “0”, Truncation = “0.01”, Universe=”TOP3000”</p><p>will have the performance as follows:</p><p>Sharpe=1.86, Turnover=62.69%, Returns=22.99%, Margin=73.30</p><p>Don’t miss your chance to make unique alphas for the China region and boost performance of your BRAIN alpha portfolio!</p><p>[1]: <a href=\"https://www.tandfonline.com/doi/full/10.1080/23322039.2022.2106635\">The impact of price limit system on the comprehensive quality of the stock market: Research on long-term and short-term effects based on submarkets</a></p>",
+      "id": "d2d0785c-ed62-4e20-92bf-7f7c6098abbf"
+    }
+  ],
+  "sequence": 123,
+  "category": "Regions and Universes"
+}

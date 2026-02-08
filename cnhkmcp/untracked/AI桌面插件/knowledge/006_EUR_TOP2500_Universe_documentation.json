@@ -1,0 +1,35 @@
+{
+  "id": "getting-started-eur-top2500-universe",
+  "title": "EUR TOP2500 Universe",
+  "lastModified": "2025-11-04T02:35:32.827518-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Characteristics of the EUR TOP2500 Universe"
+      },
+      "id": "7d4f2c7c-018e-4205-9fd0-6caf04d6b759"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The EUR TOP2500 universe expands from the TOP1200, covering around 2500 instruments. This offers a broader area for analysis.</p>",
+      "id": "64925827-96b8-4ed2-a77b-c3990a7898e3"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Tips for Success"
+      },
+      "id": "8cdfb99e-41cc-4459-bbec-89eeb0ccf851"
+    },
+    {
+      "type": "TEXT",
+      "value": "<ul><li>Resimulate your TOP1200 Alphas on the new TOP2500 universe.</li><li>Adapt GLB region Alphas to the EUR TOP2500 universe.</li><li>Start with datasets in price volume, analyst, fundamental, option, and short interest categories.</li><li>In addition to sub-universe test, check Alpha's performance on the TOP800 universe to evaluate performance on liquid instruments.</li><li><b>Apply Double Neutralization</b>:<ul><li>With the expanded EUR TOP2500 universe, more instruments are available within each group. This increased number of instruments per group enhances the reliability and robustness of your Alphas.</li><li><b>Country Neutralization</b>: Remove country-specific risk by neutralizing by country mean values.</li><li><b>Sector/Industry Neutralization</b>: Further refine by neutralizing by sector or industry.</li><li><b>Example</b>: new_group = group_cartesian_product(country, industry), or new_group = densify(country) + densify(industry)*100</li></ul></li><li>Neutralize EUR Alphas against a group of risk factors using group neutralize operators or use SLOW, FAST, SLOW_AND_FAST, CROWDING, STATISTICAL neutralization in settings.</li></ul><p>Take advantage of the expanded EUR TOP2500 universe for more reliable and robust Alphas.</p><p>Happy simulating!</p>",
+      "id": "4623fc65-cf58-45ff-aa33-d17dbf5efa25"
+    }
+  ],
+  "sequence": 101,
+  "category": "Regions and Universes"
+}

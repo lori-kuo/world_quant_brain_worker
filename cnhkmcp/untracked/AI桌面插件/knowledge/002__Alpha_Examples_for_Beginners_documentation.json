@@ -1,0 +1,254 @@
+{
+  "id": "19-alpha-examples",
+  "title": "⭐ Alpha Examples for Beginners",
+  "lastModified": "2025-03-31T23:12:17.353193-04:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Momentum after news"
+      },
+      "id": "6e598096-f4b0-43ff-b37d-794c0b66eb7c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b></p><p>After news is released, if a stock takes a longer time to rise, it may show strong evidence of upward momentum, and it could be beneficial to take a long position in it.</p><p></p><p><b>Implementation</b></p><p>Use the fundamental data field 'nws12_prez_4l' to capture this hypothesis. Backfill it with two years of data to ensure there is no drop in coverage.</p><p></p><p><b>Hint to improve the Alpha</b></p><p>Can increasing weight on more liquid stocks (Stocks with high volume) help pass the sub-universe test?</p>",
+      "id": "dedc8af5-d435-4714-99f1-6b870810df01"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP500",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "INDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "ts_backfill(vec_avg(nws12_prez_4l),504)"
+      },
+      "id": "8124ebc9-bb1f-4cb5-b552-374eeb1a3ec5"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Pretax Income"
+      },
+      "id": "bbf56dfa-0cfd-4311-9a83-05896c92105c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b></p><p>Pretax income is a good measure of a company's financial health and profitability. Companies with increasing pretax income may have good growth prospects and higher potential for increasing stock price. Thus, you tend to long stocks with increasing pretax income and short stocks with decreasing pretax income.</p><p></p><p><b>Implementation</b></p><p>Use the time-series rank operator to compare the trend of the fundamental data field pretax income over the past 2 years, and use the quantile operator to normalize the result.</p><p></p><p><b>Hints to Implement</b></p><p>Boost the signal with sales data. For example, if the company has higher sales, it is more likely to outperform.</p>",
+      "id": "824d416d-0822-4d3e-b2d9-d409e8eb7b62"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 4,
+          "neutralization": "MARKET",
+          "truncation": 0.01,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "quantile(ts_rank(pretax_income,250))"
+      },
+      "id": "de6306b0-eec1-4b2a-9377-8f601b87913b"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Operating Earnings Yield"
+      },
+      "id": "2fabd9cb-e07a-44f8-9827-a2c73ecaf0ba"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b></p><p>If the operating income of a company is currently higher than its past 1 year history, buy the company’s stock and vice-versa.</p><p></p><p><b>Implementation</b></p><p>Using ts_rank to identify current performance of the company compared to its own history, using the fundamental data field \"operating_income\".</p><p></p><p><b>Hints to Implement</b></p><p>Rather than comparing the value directly, can calculating a ratio that includes stock market moves, improve the signal?</p>",
+      "id": "16c67205-f1a8-4d14-8128-69c67c8d7b88"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "SUBINDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "ts_rank(operating_income,252)"
+      },
+      "id": "c8147118-4226-4621-a768-3d523b8287db"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Appreciation of liabilities"
+      },
+      "id": "937878a5-f302-43a4-8cbc-b7ad1c6dbd20"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b></p><p>An increase in the fair value of liabilities could indicate a higher cost than expected. This may deteriorate the company's financial health, potentially leading to lower profitability or financial distress.</p><p></p><p><b>Implementation</b></p><p>Go short when there is an increase in the fair value of liabilities within a year and long when the opposite occurs using fundamental data.</p><p></p><p><b>Hints to Implement</b></p><p>Could observing the increase over a shorter period improve accuracy?</p>",
+      "id": "b9d5d4c7-8238-44dc-a32d-942191624b48"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "SUBINDUSTRY",
+          "truncation": 0.08,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "-ts_rank(fn_liab_fair_val_l1_a,252)"
+      },
+      "id": "fa0865b4-3080-466a-b77d-25b90713df0b"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Deferred Revenue"
+      },
+      "id": "1b9f9ee5-60e9-41b6-845d-de391670e926"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b></p><p>Firms with high deferred revenue will surprise the market in the future when the deferred revenue is recognized.</p><p></p><p><b>Implementation</b></p><p>fnd6_drc field refers to deferred revenue. To improve the coverage of the datafield, ts_backfill operator is applied. Deferred revenue is divided by total assets to account for the size of a firm.</p><p></p><p><b>Hints to Implement</b></p><p>Instead of relying on the raw value of the ratio to decide weights of stocks, use cross-sectional operators. Utilize group based operators to compare across similar stocks.</p><p></p>",
+      "id": "4af4365c-9242-4d86-9463-bd30ea7a962b"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "SECTOR",
+          "truncation": 1.0,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "ts_backfill(fnd6_drc, 252)/assets"
+      },
+      "id": "3cc4fca3-28a8-40b5-ac4a-f02c5136f119"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Reducing debt"
+      },
+      "id": "1b6fdb14-9b4c-4468-8adc-34ade3e5b32a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b>: Take a long position in companies whose debt has decreased compared to the past, and conversely, take a short position in companies whose debt has increased.</p><p><br/><b>Implementation</b>: Use the fundamental data ‘debt’ to capture this hypothesis. Use the time-series quantile operator to compare the trend of the fundamental data field over the past six months.</p><p><br/><b>Hint to improve the Alpha</b>: Utilize the operator’s driver parameter to transform it into a different distribution.</p>",
+      "id": "385a50b9-8081-4b26-9d8b-12f4fe5cb8b7"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "MARKET",
+          "truncation": 0.01,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "-ts_quantile(debt, 126)"
+      },
+      "id": "319096ed-02f2-4a1c-8295-a6e756c6be70"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Power of leverage"
+      },
+      "id": "c4c57a62-fa49-4c75-bff0-87222f4bb794"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Hypothesis</b>: Companies with high liability-to-asset ratios – excluding those with poor financial health or weak cashflows – often leverage debt as a strategic tool to pursue aggressive growth initiatives. By effectively utilizing financial leverage, these firms are more likely to deliver outsized returns, as they reinvest borrowed capital into high-potential opportunities.</p><p><br/><b>Implementation</b>: Use the ‘liabilities’ and ‘assets’ to design the ratio.</p><p><br/><b>Hint to improve the Alpha</b>: This ratio can vary significantly across industries. Would it be worth considering alternative neutralization settings?</p>",
+      "id": "fe2b8127-17e6-4b86-bce6-185c95d6c1ef"
+    },
+    {
+      "type": "SIMULATION_EXAMPLE",
+      "value": {
+        "settings": {
+          "instrumentType": "EQUITY",
+          "region": "USA",
+          "universe": "TOP3000",
+          "delay": 1,
+          "decay": 0,
+          "neutralization": "MARKET",
+          "truncation": 0.01,
+          "pasteurization": "ON",
+          "unitHandling": "VERIFY",
+          "nanHandling": "OFF",
+          "language": "FASTEXPR",
+          "maxTrade": "OFF"
+        },
+        "type": "REGULAR",
+        "regular": "liabilities/assets"
+      },
+      "id": "bb4244b9-bdd2-40ef-bb86-284acf6cc8e1"
+    }
+  ],
+  "sequence": 28,
+  "category": "Creating Alphas"
+}

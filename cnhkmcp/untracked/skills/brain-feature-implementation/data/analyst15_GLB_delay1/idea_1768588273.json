@@ -1,0 +1,23 @@
+{
+    "template": "({ests_up} - {ests_dn}) / ({ests_up} + {ests_dn} + 1)",
+    "expression_list": [
+        "(anl15_gr_12_m_ests_up - anl15_gr_12_m_ests_dn) / (anl15_gr_12_m_ests_up + anl15_gr_12_m_ests_dn + 1)",
+        "(anl15_gr_18_m_ests_up - anl15_gr_18_m_ests_dn) / (anl15_gr_18_m_ests_up + anl15_gr_18_m_ests_dn + 1)",
+        "(anl15_gr_fy1_ests_up - anl15_gr_fy1_ests_dn) / (anl15_gr_fy1_ests_up + anl15_gr_fy1_ests_dn + 1)",
+        "(anl15_gr_fy2_ests_up - anl15_gr_fy2_ests_dn) / (anl15_gr_fy2_ests_up + anl15_gr_fy2_ests_dn + 1)",
+        "(anl15_gr_fy3_ests_up - anl15_gr_fy3_ests_dn) / (anl15_gr_fy3_ests_up + anl15_gr_fy3_ests_dn + 1)",
+        "(anl15_gr_ltg_ests_up - anl15_gr_ltg_ests_dn) / (anl15_gr_ltg_ests_up + anl15_gr_ltg_ests_dn + 1)",
+        "(anl15_ind_12_m_ests_up - anl15_ind_12_m_ests_dn) / (anl15_ind_12_m_ests_up + anl15_ind_12_m_ests_dn + 1)",
+        "(anl15_ind_18_m_ests_up - anl15_ind_18_m_ests_dn) / (anl15_ind_18_m_ests_up + anl15_ind_18_m_ests_dn + 1)",
+        "(anl15_ind_fy1_ests_up - anl15_ind_fy1_ests_dn) / (anl15_ind_fy1_ests_up + anl15_ind_fy1_ests_dn + 1)",
+        "(anl15_ind_fy2_ests_up - anl15_ind_fy2_ests_dn) / (anl15_ind_fy2_ests_up + anl15_ind_fy2_ests_dn + 1)",
+        "(anl15_ind_fy3_ests_up - anl15_ind_fy3_ests_dn) / (anl15_ind_fy3_ests_up + anl15_ind_fy3_ests_dn + 1)",
+        "(anl15_ind_ltg_ests_up - anl15_ind_ltg_ests_dn) / (anl15_ind_ltg_ests_up + anl15_ind_ltg_ests_dn + 1)",
+        "(anl15_s_12_m_ests_up - anl15_s_12_m_ests_dn) / (anl15_s_12_m_ests_up + anl15_s_12_m_ests_dn + 1)",
+        "(anl15_s_18_m_ests_up - anl15_s_18_m_ests_dn) / (anl15_s_18_m_ests_up + anl15_s_18_m_ests_dn + 1)",
+        "(anl15_s_fy1_ests_up - anl15_s_fy1_ests_dn) / (anl15_s_fy1_ests_up + anl15_s_fy1_ests_dn + 1)",
+        "(anl15_s_fy2_ests_up - anl15_s_fy2_ests_dn) / (anl15_s_fy2_ests_up + anl15_s_fy2_ests_dn + 1)",
+        "(anl15_s_fy3_ests_up - anl15_s_fy3_ests_dn) / (anl15_s_fy3_ests_up + anl15_s_fy3_ests_dn + 1)",
+        "(anl15_s_ltg_ests_up - anl15_s_ltg_ests_dn) / (anl15_s_ltg_ests_up + anl15_s_ltg_ests_dn + 1)"
+    ]
+}

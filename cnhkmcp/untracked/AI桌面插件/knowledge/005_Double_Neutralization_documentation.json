@@ -1,0 +1,53 @@
+{
+  "id": "neut-users",
+  "title": "Double Neutralization",
+  "lastModified": "2025-10-30T01:42:01.001138-04:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>You can apply simultaneous neutralizations by two different groups, such as country and industry with the help of \"group_cartesian_product\", in regions with many countries like EUR, ASI, and GLB. Double neutralization neutralizes Alphas within a group of stocks that share the same 'country' and 'industry' identifiers. In the USA, we can use other pairs, such as combinations from industry/subindustry/sector and another group (for example, sector, sta1_top1000c50).</p><p>If you use two \"group_neutralize\" operators sequentially, such as <b>group_neutralize(group_neutralize(Alpha, industry), country)</b>, the second neutralization partially negates the first one. The double neutralization approach differs from using two group_neutralize operators.</p>",
+      "id": "95371775-cc81-49e7-8c1f-015f193cf1ca"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "ASI Example: Double neutralization by industry and country"
+      },
+      "id": "4a67c626-196e-426a-b96d-47035f75edec"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Original Alpha:</b> ts_rank(eps, 252)</p><p><i>Set Neutralization=Sector:</i> In settings, set Universe=MINVOL1M</p><p></p><p><b>Double Neutralization Alpha:</b></p><p>alpha = ts_rank(eps, 252) group = densify(group_cartesian_product(industry, country)) group_neutralize(alpha, group)</p><p>Line 2 uses group_cartesian_product to merge industry and country into a new group. This ensures unique values for each pair of industry and country</p>",
+      "id": "a1a5eb24-c8bc-4f9f-82f5-c0b8eee2155a"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "USA Example: Double neutralization by sector and other grouping"
+      },
+      "id": "d268a5f3-af5b-456c-9b38-489e48a0177e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Original Alpha:</b> group_rank(ts_rank(eps, 252), sector)</p><p><i>Set Neutralization=Sector:</i> In settings, set Universe=TOP1000</p><p></p><p><b>Double Neutralization Alpha:</b></p><p>group = group_cartesian_product(sector, sta1_top1000c50) alpha = group_rank(ts_rank(eps, 252), group) group_neutralize(alpha, group)</p><p>Line 1 uses group_cartesian_product to merge sta1_top1000c50 with the sector grouping. This ensures that all group operators in the Alpha consider both sector and statistical grouping.</p>",
+      "id": "674abc80-69e8-45f2-a6f7-3f74bd1bd462"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Tips for Success"
+      },
+      "id": "5d7a238e-68f1-4320-902a-ff78f3cf87a3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<ul><li>Using basic grouping fields in 'double neutralization' for the multi-country region can improve an Alpha’s simulated performance.</li><li>Try using other grouping datasets for 'double neutralization' in the USA/EUR/ASI regions to improve an Alpha’s simulated performance</li></ul>",
+      "id": "1cb3b26a-64f7-47f3-95d9-11d0ca4ca04d"
+    }
+  ],
+  "sequence": 4,
+  "category": "Advanced Topics"
+}

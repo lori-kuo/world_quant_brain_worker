@@ -1,0 +1,23 @@
+{
+    "template": "{1m_chg} + 0.7 * {3m_chg}",
+    "expression_list": [
+        "anl15_gr_12_m_1m_chg + 0.7 * anl15_gr_12_m_3m_chg",
+        "anl15_gr_18_m_1m_chg + 0.7 * anl15_gr_18_m_3m_chg",
+        "anl15_gr_cal_fy1_1m_chg + 0.7 * anl15_gr_cal_fy1_3m_chg",
+        "anl15_gr_cal_fy2_1m_chg + 0.7 * anl15_gr_cal_fy2_3m_chg",
+        "anl15_gr_cal_fy3_1m_chg + 0.7 * anl15_gr_cal_fy3_3m_chg",
+        "anl15_gr_ltg_1m_chg + 0.7 * anl15_gr_ltg_3m_chg",
+        "anl15_ind_12_m_1m_chg + 0.7 * anl15_ind_12_m_3m_chg",
+        "anl15_ind_18_m_1m_chg + 0.7 * anl15_ind_18_m_3m_chg",
+        "anl15_ind_cal_fy1_1m_chg + 0.7 * anl15_ind_cal_fy1_3m_chg",
+        "anl15_ind_cal_fy2_1m_chg + 0.7 * anl15_ind_cal_fy2_3m_chg",
+        "anl15_ind_cal_fy3_1m_chg + 0.7 * anl15_ind_cal_fy3_3m_chg",
+        "anl15_ind_ltg_1m_chg + 0.7 * anl15_ind_ltg_3m_chg",
+        "anl15_s_12_m_1m_chg + 0.7 * anl15_s_12_m_3m_chg",
+        "anl15_s_18_m_1m_chg + 0.7 * anl15_s_18_m_3m_chg",
+        "anl15_s_cal_fy1_1m_chg + 0.7 * anl15_s_cal_fy1_3m_chg",
+        "anl15_s_cal_fy2_1m_chg + 0.7 * anl15_s_cal_fy2_3m_chg",
+        "anl15_s_cal_fy3_1m_chg + 0.7 * anl15_s_cal_fy3_3m_chg",
+        "anl15_s_ltg_1m_chg + 0.7 * anl15_s_ltg_3m_chg"
+    ]
+}

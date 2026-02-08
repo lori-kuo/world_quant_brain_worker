@@ -1,0 +1,27 @@
+{
+  "id": "documentation-ace-api-library-gold",
+  "title": "Documentation for ACE API Library [Gold]",
+  "lastModified": "2025-03-07T04:24:41.918309-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "ACE Package and instructions"
+      },
+      "id": "42d0fd9c-1d44-4d56-8553-8f2ec3c7fa49"
+    },
+    {
+      "type": "TEXT",
+      "value": "<h3>Download our Alpha Creation Engine from <a href=\"https://support.worldquantbrain.com/hc/en-us/articles/30469668943767-Alpha-Creation-Engine-API-library-Gold\"><b>here</b></a><h3>",
+      "id": "a38c4123-7ebc-4a0f-b5cf-033fff3711dd"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The Alpha Creation Engine is designed to automate the process of simulating and analyzing Alphas via Python. Here's what's included:</p><ul><li>ace_lib.py - contains main functions that interact with the API.</li><li>helpful_functions.py - provides additional functions. These functions transform outputs into dataframes and load data from the Data Explorer.</li><li>how_to_use.ipynb - Jupyter notebook that demonstrates how to use the `ace_lib.py` and `helpful_functions.py` libraries for alpha simulation and results analysis.</li><li>requirements.txt - lists all the Python modules and their respective versions needed to run our Alpha Creation Engine. This ensures you have the correct environment setup for smooth operation.</li><li>README.md - provides instructions on how to install the required Anaconda package.</li></ul>",
+      "id": "54eeb3ba-f746-49f9-b35e-74cf19e84275"
+    }
+  ],
+  "sequence": 31,
+  "category": "BRAIN API"
+}

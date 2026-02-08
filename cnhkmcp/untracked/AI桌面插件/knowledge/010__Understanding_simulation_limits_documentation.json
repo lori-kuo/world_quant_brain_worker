@@ -1,0 +1,210 @@
+{
+  "id": "understanding-simulation-limits",
+  "title": "❗Understanding simulation limits",
+  "lastModified": "2025-12-04T23:17:20.021695-05:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p>The simulation limit encourages high yield research, ensure optimal system performance and fair usage for all consultants. Here's what you need to know:</p>",
+      "id": "c58add68-cb54-4c2f-9add-126b28297ff7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "What counts as a simulation?"
+      },
+      "id": "a4aea516-e377-47b8-a009-da2804da7797"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>All successful simulations are counted, including child simulations in multi-simulations and simulations of previously existing Alphas. Duplicate Alphas that you simulate <b>are not</b> removed from the count.</p>",
+      "id": "5c7d969b-15b0-4a10-99aa-76e82cb2b204"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Tracking simulations on the Platform"
+      },
+      "id": "ae608917-ccfc-4d2e-8d89-0300131e5ec9"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The <a href=\"https://platform.worldquantbrain.com/alphas/unsubmitted\"><b>Alphas page</b></a> with Today or Yesterday filter on Date Created can help estimate your simulation count. However, if you simulate the same Alpha on different days, the simulation will count, but the Alpha will only appear under the date it was first simulated. <b>Simulating the same Alpha on different days consumes your simulation quota, even though you do not see Alpha on Alphas page for Today.</b></p>",
+      "id": "24e2b761-9c77-4d1c-ac40-5f076b50b215"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Tracking simulations using BRAIN API"
+      },
+      "id": "e28be337-b002-4449-919b-6cc165284702"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Simulation limit details in API response"
+      },
+      "id": "8f154098-9f9a-498f-9ace-ff2c709b0168"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>When posting a simulation, the response headers provide:</p><ul><li><b>X-Ratelimit-Limit</b>: Total daily simulation limit.</li><li><b>X-Ratelimit-Remaining</b>: Remaining simulations for the day.</li><li><b>X-Ratelimit-Reset</b>: Time (in seconds) until the limit resets.</li></ul><p>Example:<br/>simulate_response.headers[\"x-ratelimit-limit\"],<br/>simulate_response.headers[\"x-ratelimit-remaining\"],<br/>simulate_response.headers[\"x-ratelimit-reset\"]</p>",
+      "id": "930a607e-bbfd-4b9e-9b3f-ffa190422bc1"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Managing simulation limits"
+      },
+      "id": "82c84120-e6c2-4d3a-ac26-d7561423e710"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>To avoid exceeding the daily limit:</p><ul><li>Plan simulations effectively to avoid wasting your daily quota.</li><li>Monitor your simulation count and pause or stop when nearing the limit.</li><li>If using the API, implement logic to handle limits, such as pausing simulations when the count reaches the limit and resuming after the reset.</li><li>On the Platform interface, a warning message will appear when less than 1,000 simulations remain: <b>You are 987 simulations away from breaching the daily simulation limit. If you exceed this limit, you will not be able to run additional simulations until tomorrow (EST time zone). Please plan accordingly.</b></li></ul>",
+      "id": "92a92117-2399-4cdf-8087-7c7ab3920ee9"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "How to use simulations effectively?"
+      },
+      "id": "cdfbc4cf-116f-4fb4-a6ae-6c49bd1ea142"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Analyze data fields"
+      },
+      "id": "1c828e95-57da-49a1-8c92-f463e09a98c2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>To maximize the effectiveness of your simulations, it's essential to analyze the data fields available on the Platform and use the information provided on the <a href=\"https://platform.worldquantbrain.com/data\"><b>Data page</b></a>. The Data page includes useful details such as:</p><ul><li><b>Coverage</b>: The percentage of instruments in the universe covered by the data field.</li><li><b>Date Coverage</b>: The percentage of days with data available over a 10-year period. Ensure sufficient historical data for meaningful back testing.</li><li><b>Description</b>: Explains the context of the data field, helping you understand its potential use cases. It can also be used to identify similar fields. Fields with similar descriptions might represent overlapping or related data. You can use tools like LLMs (Large Language Models) to find similar data field efficiently. Avoid technical fields such as <b>timestamps, dates, or symbol identifiers</b> (e.g., ISIN, CUSIP) that <b>are unlikely to contribute to Alpha generation</b>.</li><li><b>Alpha Count</b>: The number of Alphas that have used this data field. A low Alpha count might indicate untapped potential, while a high count could suggest the data field is well-explored.<ul><li><b>User Count</b>: The number of users who have utilized this data field. This can indicate how popular or challenging the data field is.</li></ul></li></ul>",
+      "id": "d1968d90-6427-419c-b905-025c04483f07"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Use BRAIN Labs for deeper insights"
+      },
+      "id": "4d1283d8-38a3-43f9-a801-e7ea1a928269"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li><b>Visualize data fields:</b> Use BRAIN Labs to explore data fields in detail. Analyze daily coverage, turnover, typical values, and correlations with returns.</li><li><b>Experiment with data fields and Python:</b> In BRAIN Labs, you can recreate operators using Python to test how they affect the data field and its correlation with returns. This process can help you identify promising transformations and refine your approach.</li></ul>",
+      "id": "99a0c2f2-014f-4f27-a1ae-8bd3f0a69fa7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Utilize Alpha statistics"
+      },
+      "id": "158a7c82-998f-4cf8-9a42-46a9bbc26e67"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>When simulating an Alpha, review additional PnLs and statistics:</p><ul><li><b>Risk-handled performance:</b> Simulates using SLOW_AND_FAST neutralization.</li><li><b>Investability-constrained performance:</b> Simulates using MaxTrade ON.</li></ul>",
+      "id": "773492ad-da2f-4a4c-ab00-4c77ce61ad9d"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Optimize search space"
+      },
+      "id": "581cdecc-77eb-4963-81ac-9a48194c4c4a"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "simulation_cutoff.png",
+        "width": 949,
+        "height": 825,
+        "fileSize": 53226,
+        "url": "https://api.worldquantbrain.com/content/images/bXVASTINaSSJaBjn07neVE3DXjw=/449/original/simulation_cutoff.png"
+      },
+      "id": "b6f2f02b-75cb-46cd-968e-81e022330563"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>To make the most of your simulations, it's important to restrict your search space initially and focus on testing one element at a time. Once a signal is found, you can expand and refine your approach by testing similar elements</p>",
+      "id": "8adc0f09-91db-4794-82a0-855db6f42ae8"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "3",
+        "content": "Select data fields"
+      },
+      "id": "9f4b482b-9fd0-4d52-a5f9-dfbe4f743211"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>If you are working with a large dataset, analyze the descriptions of data fields and exclude irrelevant fields (e.g., timestamps, dates, or symbol identifiers like ISIN or CUSIP).</li><li>Select only one data field from a group of similar fields to test for an initial signal. For example, if you have fields like implied_volatility_call_30, implied_volatility_call_120, and implied_volatility_call_360, start with just one (e.g., implied_volatility_call_30).</li><li>Once a signal is found, you can experiment with substituting similar fields to improve the Alpha.</li></ul>",
+      "id": "620df549-6f66-408d-94ef-a5b690c95b63"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Select operators"
+      },
+      "id": "7bb5f99c-8970-471a-a3da-258e6642ec4c"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Operators can be grouped into categories, such as:<ul><li><b>Aggregational</b>: ts_mean, ts_median, ts_sum.</li><li><b>Delta-based</b>: ts_delta, ts_av_diff, ts_zscore.</li><li><b>Group-based</b>: group_zscore, group_rank.</li></ul></li><li>Start by testing only one operator from a group (e.g., ts_mean for aggregational operators).</li><li>If a signal is found, try replacing it with similar operators from the same group (e.g., switch from ts_mean to ts_median or ts_stddev) to explore variations.</li></ul>",
+      "id": "4680920f-3cc4-463e-8ee0-ada76d686fa8"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "3",
+        "content": "Select parameters"
+      },
+      "id": "3ca65eae-186d-4058-934f-bcb8481a394b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>For time series operators, start with a single timeframe.<ul><li>For <b>fast</b> signals, use shorter timeframes (e.g., 5, 10 or 21 days).</li><li>For <b>slow</b> signals, use longer timeframes (e.g., 63, 121 or 252 days).</li></ul></li><li>Once a signal is found, experiment with other timeframes to see if the signal improves.</li></ul>",
+      "id": "1f3941d8-fa30-400c-b6ed-30321cfff91c"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "3",
+        "content": "Select neutralization"
+      },
+      "id": "df8beaf8-be3c-4caa-8793-3e480dcd4226"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Applies to both -- in-code neutralization and neutralization in settings.</p><ul><li><b>Market</b>: For single-country regions.</li><li><b>Country</b>: For multi-country regions.</li><li><b>Industry</b>: For industry-specific neutralization.</li><li>Combined neutralization in code: Country + Industry, for multi-country regions.</li><li><b>Risk</b> neutralization:<ul><li>If you see a signal in the risk-handled performance (e.g., SLOW_AND_FAST neutralization), you can experiment with similar settings like SLOW, FAST, CROWDING, or REVERSION_AND_MOMENTUM. These are variations of SLOW_AND_FAST and may yield better results.</li><li>STATISTICAL neutralization is different, so should be tested separately.</li></ul></li><li>Begin by testing one neutralization type (e.g., market neutralization).</li><li>If a signal is found, try other neutralization settings (e.g., industry, subindustry, sector) to refine the Alpha further.</li></ul>",
+      "id": "4ab3aef8-c38a-4ba2-9021-c2a08424c26a"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Tips"
+      },
+      "id": "5ca9dc21-930c-413d-a52e-07d6d43a8c34"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Run 10-50 simulations initially to test the search space. If no signal is found, edit the template before running the full search space.</li><li>Simulate daily to avoid wasting your simulation quota.</li></ul>",
+      "id": "55905e54-2803-44f2-92b4-da58b32c396e"
+    }
+  ],
+  "sequence": 5,
+  "category": "BRAIN API"
+}

@@ -1,0 +1,11 @@
+What an alpha template is
+An alpha template is a reusable recipe that captures an economic idea and leaves “slots” (data fields, operators, groups, decay, neutralization choices, etc.) to instantiate many candidate alphas. Typical structure: clean data (backfill, winsorize) → transform/compare across time or peers → rank/neutralize → (optionally) decay/turnover tune. Templates encourage systematic search, reuse, and diversification while keeping an explicit economic rationale.
+
+Some Example Templates and rationales
+
+CAPM residual (market/sector-neutral return): ts_regression(returns, group_mean(returns, log(ts_mean(cap,21)), sector), 252, rettype=0) after backfill+winsorize. Rationale: strip market/sector beta to isolate idiosyncratic alpha; sector-weighted by smoothed log-cap to reduce large-cap dominance.
+CAPM beta (slope) template: same regression with rettype=2; pre-clean target/market (ts_backfill(...,63) + winsorize(std=4)). Rationale: rank stocks by relative risk within sector; long low-β, short high-β, or study β dispersion across groups.
+CAPM generalized to any feature: data = winsorize(ts_backfill(<data>,63),std=4); data_gpm = group_mean(data, log(ts_mean(cap,21)), sector); resid = ts_regression(data, data_gpm, 252, rettype=0). Rationale: pull out the component unexplained by group average of same feature; reduces common-mode exposure.
+Actual vs estimate spread (analyst): group_zscore( group_zscore(<act>, industry) – group_zscore(<est>, industry), industry ) or the abstracted group_compare(diff(group_compare(act,...), group_compare(est,...)), ...). Rationale: surprise/beat-miss signal within industry, normalized to peers to avoid level bias.
+Analyst term-structure (fp1 vs fy1/fp2/fy2): group_zscore( group_zscore(anl14_mean_eps_<period1>, industry) – group_zscore(anl14_mean_eps_<period2>, industry), industry ) with operator/group slots. Rationale: cross-period expectation steepness; rising near-term vs long-term forecasts can flag momentum/inflection.
+Option Greeks net spread: group_operator(<put_greek> - <call_greek>, <grouping_data>) over industry/sector (Delta/Gamma/Vega/Theta). Rationale: options-implied sentiment/convexity skew vs peers; outlier net Greeks may precede spot moves; extend with multi-Greek composites or time-series deltas.

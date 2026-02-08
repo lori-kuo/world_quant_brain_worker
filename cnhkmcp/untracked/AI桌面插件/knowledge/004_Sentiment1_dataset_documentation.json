@@ -1,0 +1,14 @@
+{
+  "id": "getting-started-sentiment1-dataset",
+  "title": "Sentiment1 dataset",
+  "lastModified": "2025-11-04T02:27:28.213820-05:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>Getting Started with sentiment1 dataset (Research Sentiment Data)</b></p><ul><li>The sentiment1 dataset combines sentiment metrics with earnings estimations and surprises for U.S.-listed companies.</li><li>It provides insights into market mood, analyst consensus, and earnings-based signals.</li><li>Key fields include sentiment scores, ratios of analyst buy/sell recommendations, earnings surprises, and dispersion among analyst estimates.</li><li>Sentiment scores are dynamic with higher turnover in nature, while analyst and earnings metrics are slower-moving signals.</li><li>Use smoothing <b>decay</b> operations to manage high-frequency sentiment data and be considerate when using long lookback periods (&gt;63 days) as older events may lose relevance.</li><li>The dataset has coverage of approximately 2000 on TOP3000. Do try your ideas on more liquid universes such as TOP1000 and TOPSP500 but ensure sufficient long &amp; short count to avoid overfitting.</li></ul><p><b>Example Alpha Ideas</b></p><ul><li>Positive sentiment indicates market confidence, while negative sentiment signals potential downside. Go long on stocks with bullish sentiment (<b>snt1_cored1_score</b> &gt; 5) and short on stocks with bearish sentiment (<b>snt1_cored1_score</b> &lt; -5).</li><li>Positive earnings surprises often lead to upward price movements. Go long on stocks with positive earnings surprises using <b>snt1_d1_earningssurprise</b>.</li><li>A strong analyst consensus combined with sufficient analyst coverage reflects market confidence. Go long on stocks with a high ratio of analyst buys over sells using <b>snt1_d1_buyrecpercent</b>, filtering out stocks with low analyst coverage with <b>snt1_d1_analystcoverage</b></li></ul>",
+      "id": "9632018b-1cea-4724-9ba1-4cea1d37f17d"
+    }
+  ],
+  "sequence": 1303,
+  "category": "Data"
+}

@@ -1,0 +1,83 @@
+{
+  "id": "superalpha-results",
+  "title": "SuperAlpha Results",
+  "lastModified": "2025-06-02T05:34:18.183196-04:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><hr/><p></p>",
+      "id": "4ab0fc61-f222-443e-9770-900905f780c4"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "SuperAlpha Results"
+      },
+      "id": "15728bae-96fd-458a-a620-3e75a2195f5e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>SuperAlpha results have some new features to help understand the details and performance of your SuperAlphas.</p><p></p>",
+      "id": "19ba1195-c865-4098-96ff-f88bcd9fdb3b"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Superalpha_results_pic8.png",
+        "width": 591,
+        "height": 256,
+        "fileSize": 20560,
+        "url": "https://api.worldquantbrain.com/content/images/_cQ4g5fXgfYe_GIQxIVr5VW4rfw=/103/original/Superalpha_results_pic8.png"
+      },
+      "id": "f50e4bd1-511d-452a-b843-851a244e35b3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The selected Alphas section displays the list of Alphas included in the SuperAlpha. This information is displayed after clicking the \"Run Selection\" button prior to simulating the SuperAlpha, and it is also displayed as part of the SuperAlpha simulation results after simulation has completed. The top 10 selected values, ordered by the selection expression, are shown in the table. The total number of Alphas selected is noted at the top of the Selected Alphas section. You can view all of the selected Alphas by clicking the \"View All\" link at the top, right corner of the Selected Alphas section.</p>",
+      "id": "40b6c947-d8b0-4c75-a2ec-a30b83b8ac95"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Superalpha_results_pic9.png",
+        "width": 562,
+        "height": 399,
+        "fileSize": 23565,
+        "url": "https://api.worldquantbrain.com/content/images/Inx8_CwRq-rhw--OJ-dFRkYBl8c=/104/original/Superalpha_results_pic9.png"
+      },
+      "id": "efc21d87-3e2d-46bc-9490-92e782a583a6"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The PnL chart shown in SuperAlpha simulation results shows two PnL lines. The blue line is the performance of your SuperAlpha; the gray line is the performance of the same set of Alphas combined with a simple, equal-weight combo. An equal weight combo can be recreated by entering a constant as the combo expression, e.g., \"1\". The equal-weight combo is simple but effective, and your combo should strive to improve upon the performance of the equal-weight combo. Note that returns are not the only important measure of a good SuperAlpha.</p>",
+      "id": "bddc6689-61ef-4745-9acd-821eec4d8656"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Properties"
+      },
+      "id": "c3c2e468-dc85-4c5f-ad5b-a26b2a503ea1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>SuperAlpha properties are similar to Alpha properties, except that SuperAlphas have two description fields. One description field is for the selection expression, and the other description field is for the combo expression. Both of these description fields are required in order to submit a SuperAlpha.</p><p></p>",
+      "id": "89e41c3f-0d66-4ddf-b245-71734323b77d"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Properties_pic10.png",
+        "width": 588,
+        "height": 252,
+        "fileSize": 12923,
+        "url": "https://api.worldquantbrain.com/content/images/pnN3qH9qNlLnnt1gbahE3nEMqDU=/105/original/Properties_pic10.png"
+      },
+      "id": "829ba0e9-b1ea-4a59-8704-036f9ffe989d"
+    }
+  ],
+  "sequence": 4,
+  "category": "SuperAlpha"
+}

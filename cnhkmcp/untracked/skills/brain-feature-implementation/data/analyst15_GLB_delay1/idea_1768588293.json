@@ -1,0 +1,23 @@
+{
+    "template": "({cos} * {ests}) / ({st_dev} + 0.01)",
+    "expression_list": [
+        "(anl15_gr_12_m_cos * anl15_gr_12_m_ests) / (anl15_gr_12_m_st_dev + 0.01)",
+        "(anl15_gr_18_m_cos * anl15_gr_18_m_ests) / (anl15_gr_18_m_st_dev + 0.01)",
+        "(anl15_gr_cal_fy1_cos * anl15_gr_cal_fy1_ests) / (anl15_gr_cal_fy1_st_dev + 0.01)",
+        "(anl15_gr_cal_fy2_cos * anl15_gr_cal_fy2_ests) / (anl15_gr_cal_fy2_st_dev + 0.01)",
+        "(anl15_gr_cal_fy3_cos * anl15_gr_cal_fy3_ests) / (anl15_gr_cal_fy3_st_dev + 0.01)",
+        "(anl15_gr_ltg_cos * anl15_gr_ltg_ests) / (anl15_gr_ltg_st_dev + 0.01)",
+        "(anl15_ind_12_m_cos * anl15_ind_12_m_ests) / (anl15_ind_12_m_st_dev + 0.01)",
+        "(anl15_ind_18_m_cos * anl15_ind_18_m_ests) / (anl15_ind_18_m_st_dev + 0.01)",
+        "(anl15_ind_cal_fy1_cos * anl15_ind_cal_fy1_ests) / (anl15_ind_cal_fy1_st_dev + 0.01)",
+        "(anl15_ind_cal_fy2_cos * anl15_ind_cal_fy2_ests) / (anl15_ind_cal_fy2_st_dev + 0.01)",
+        "(anl15_ind_cal_fy3_cos * anl15_ind_cal_fy3_ests) / (anl15_ind_cal_fy3_st_dev + 0.01)",
+        "(anl15_ind_ltg_cos * anl15_ind_ltg_ests) / (anl15_ind_ltg_st_dev + 0.01)",
+        "(anl15_s_12_m_cos * anl15_s_12_m_ests) / (anl15_s_12_m_st_dev + 0.01)",
+        "(anl15_s_18_m_cos * anl15_s_18_m_ests) / (anl15_s_18_m_st_dev + 0.01)",
+        "(anl15_s_cal_fy1_cos * anl15_s_cal_fy1_ests) / (anl15_s_cal_fy1_st_dev + 0.01)",
+        "(anl15_s_cal_fy2_cos * anl15_s_cal_fy2_ests) / (anl15_s_cal_fy2_st_dev + 0.01)",
+        "(anl15_s_cal_fy3_cos * anl15_s_cal_fy3_ests) / (anl15_s_cal_fy3_st_dev + 0.01)",
+        "(anl15_s_ltg_cos * anl15_s_ltg_ests) / (anl15_s_ltg_st_dev + 0.01)"
+    ]
+}

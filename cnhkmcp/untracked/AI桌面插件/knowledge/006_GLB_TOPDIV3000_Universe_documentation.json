@@ -1,0 +1,48 @@
+{
+  "id": "getting-started-glb-topdiv3000-universe",
+  "title": "GLB TOPDIV3000 Universe",
+  "lastModified": "2025-11-04T02:37:09.481012-05:00",
+  "content": [
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Characteristics of the GLB TOPDIV3000 Universe"
+      },
+      "id": "80ed4189-842a-4656-a50b-2bd1039932cd"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The GLB TOPDIV3000 universe is designed to enhance Alpha generation with <b>better liquidity</b>, <b>broader coverage</b> (around 2,200 instruments), and <b>balanced global diversity</b>:</p><ul><li><b>USA:</b> Slightly over 50%</li><li><b>Asia &amp; Europe:</b> Roughly equal at ~25% each</li><li><b>Additional AMR coverage</b></li></ul>",
+      "id": "5de9f55a-d4d3-486a-96ed-5ade2b23f4a6"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Tips for Success"
+      },
+      "id": "4fd01e92-fafd-40fa-9f3d-434508e3fe1a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><ul><li>Test your previous GLB Alphas on this new universe.</li><li>Improved liquidity and broader coverage may allow Alphas that previously failed Sub-Universe tests to succeed.</li><li>Transfer USA, EUR, and ASI Alphas to the GLB TOPDIV3000 universe for better performance.</li><li>Use price-relative metrics (e.g., ratios) instead of raw prices for consistency across instruments.</li><li>Apply <b>Double Neutralization</b> to improve reliability:<ul><li><b>Country Neutralization:</b> Remove country-specific risks by neutralizing against country mean values.</li><li><b>Sector/Industry Neutralization:</b> Refine further by neutralizing sector or industry factors.</li><li><b>Example:</b> new_group = group_cartesian_product(country, industry)</li></ul></li><li>Select component Alphas from the <b>TOP3000</b> or <b>MINVOL1M</b> universes and combine them into <b>SuperAlphas</b> under the <b>GLB TOPDIV3000</b> universe for enhanced performance.</li></ul>",
+      "id": "792d1514-85da-4022-907d-b2475bb14135"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "More concepts that you can explore"
+      },
+      "id": "e61d588d-b369-4e27-a6dd-cd4a2785ba08"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><a href=\"https://platform.worldquantbrain.com/learn/documentation/regions-and-universes/global-region\">Getting Started: Global Alphas</a></p><p><a href=\"https://platform.worldquantbrain.com/learn/documentation/superalpha/getting-started-global-superalphas\">Getting Started with Global SuperAlphas</a></p><p><a href=\"https://support.worldquantbrain.com/hc/en-us/community/posts/19381139332503--GLB-Theme-On-Dealing-With-FX-In-Multi-Currency-Regions\">On Dealing With FX In Multi-Currency Regions</a></p>",
+      "id": "a3507fe7-6fbd-49df-b5c4-73e00cb60ee8"
+    }
+  ],
+  "sequence": 124,
+  "category": "Regions and Universes"
+}

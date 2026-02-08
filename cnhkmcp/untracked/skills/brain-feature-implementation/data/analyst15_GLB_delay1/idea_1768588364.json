@@ -1,0 +1,23 @@
+{
+    "template": "{gro} / ({pe} + 0.01)",
+    "expression_list": [
+        "anl15_gr_12_m_gro / (anl15_gr_12_m_pe + 0.01)",
+        "anl15_gr_18_m_gro / (anl15_gr_18_m_pe + 0.01)",
+        "anl15_gr_cal_fy0_gro / (anl15_gr_cal_fy0_pe + 0.01)",
+        "anl15_gr_cal_fy1_gro / (anl15_gr_cal_fy1_pe + 0.01)",
+        "anl15_gr_cal_fy2_gro / (anl15_gr_cal_fy2_pe + 0.01)",
+        "anl15_gr_cal_fy3_gro / (anl15_gr_cal_fy3_pe + 0.01)",
+        "anl15_ind_12_m_gro / (anl15_ind_12_m_pe + 0.01)",
+        "anl15_ind_18_m_gro / (anl15_ind_18_m_pe + 0.01)",
+        "anl15_ind_cal_fy0_gro / (anl15_ind_cal_fy0_pe + 0.01)",
+        "anl15_ind_cal_fy1_gro / (anl15_ind_cal_fy1_pe + 0.01)",
+        "anl15_ind_cal_fy2_gro / (anl15_ind_cal_fy2_pe + 0.01)",
+        "anl15_ind_cal_fy3_gro / (anl15_ind_cal_fy3_pe + 0.01)",
+        "anl15_s_12_m_gro / (anl15_s_12_m_pe + 0.01)",
+        "anl15_s_18_m_gro / (anl15_s_18_m_pe + 0.01)",
+        "anl15_s_cal_fy0_gro / (anl15_s_cal_fy0_pe + 0.01)",
+        "anl15_s_cal_fy1_gro / (anl15_s_cal_fy1_pe + 0.01)",
+        "anl15_s_cal_fy2_gro / (anl15_s_cal_fy2_pe + 0.01)",
+        "anl15_s_cal_fy3_gro / (anl15_s_cal_fy3_pe + 0.01)"
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "template": "{mean} / ({total} + 0.01)",
+    "expression_list": [
+        "anl15_gr_12_m_mean / (anl15_gr_12_m_total + 0.01)",
+        "anl15_gr_18_m_mean / (anl15_gr_18_m_total + 0.01)",
+        "anl15_gr_cal_fy1_mean / (anl15_gr_cal_fy1_total + 0.01)",
+        "anl15_gr_cal_fy2_mean / (anl15_gr_cal_fy2_total + 0.01)",
+        "anl15_gr_cal_fy3_mean / (anl15_gr_cal_fy3_total + 0.01)",
+        "anl15_ind_12_m_mean / (anl15_ind_12_m_total + 0.01)",
+        "anl15_ind_18_m_mean / (anl15_ind_18_m_total + 0.01)",
+        "anl15_ind_cal_fy1_mean / (anl15_ind_cal_fy1_total + 0.01)",
+        "anl15_ind_cal_fy2_mean / (anl15_ind_cal_fy2_total + 0.01)",
+        "anl15_ind_cal_fy3_mean / (anl15_ind_cal_fy3_total + 0.01)",
+        "anl15_s_12_m_mean / (anl15_s_12_m_total + 0.01)",
+        "anl15_s_18_m_mean / (anl15_s_18_m_total + 0.01)",
+        "anl15_s_cal_fy1_mean / (anl15_s_cal_fy1_total + 0.01)",
+        "anl15_s_cal_fy2_mean / (anl15_s_cal_fy2_total + 0.01)",
+        "anl15_s_cal_fy3_mean / (anl15_s_cal_fy3_total + 0.01)"
+    ]
+}

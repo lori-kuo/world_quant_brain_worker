@@ -1,0 +1,515 @@
+{
+  "id": "brain-api",
+  "title": "BRAIN API",
+  "lastModified": "2025-07-31T04:09:42.120454-04:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>The BRAIN platform sports a rich API library you can use to automate <a href=\"https://www.tutorialspoint.com/http/http_requests.htm\">requests</a> to perform certain actions, such as testing alpha expressions with a range of values.</p><p>This document will detail a few common actions, such as how to sign in and send an alpha for simulation using the API, as well as describe the API behind these actions. We will use Python’s <a href=\"https://requests.readthedocs.io/en/latest/\">Requests</a> library to illustrate these examples, but you can communicate with the API <a href=\"https://en.wikipedia.org/wiki/Web_API\">endpoints</a> using any programming language you prefer.</p>",
+      "id": "5ffcf4ef-35c6-4020-9d74-eb0eceaf8749"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Examples"
+      },
+      "id": "8b27f6d0-d9ed-4597-9308-2db0b1bab7e5"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Signing In"
+      },
+      "id": "ff49109e-b60d-43a8-9cfe-f648913fd26f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>To sign in to the platform, invoke the /authentication endpoint using a POST request with a <a href=\"https://en.wikipedia.org/wiki/Basic_access_authentication\">basic authorization header</a>. An example using the Python Requests is shown below.</p>",
+      "id": "7a5abbb4-b5d7-4522-b638-71e6a6b85dc0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nimport requests\r\nimport json\r\nfrom os.path import expanduser\r\n\r\n# Create a session to persistently store the headers\r\ns = requests.Session()\r\n\r\n# Save credentials from JSON file in home directory into session\r\nwith open(expanduser('~/.brain_credentials'), 'r') as f:\r\n    s.auth = tuple(json.load(f))\r\n\r\n# Send a POST request to the /authentication API\r\nresponse = s.post('https://api.worldquantbrain.com/authentication')\r\n</code>\r\n<br>",
+      "id": "06f8ca8a-4f2d-47ce-a338-370f1f66e591"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>You can create a JSON file with the name '.brain_credentials' in your home directory to store your credentials for use in the code above. An example of the JSON file contents can be as follows:</p><p></p><p>[\"&lt;email&gt;\",\"&lt;password&gt;\"]</p>",
+      "id": "896e5ea2-64f1-4f18-a77a-5b96360c2331"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the query is successful, a <a href=\"https://en.wikipedia.org/wiki/JSON_Web_Token\">JSON Web Token</a> (JWT) is returned that you can use as a header for subsequent requests and is cached by the session.</p><p></p>",
+      "id": "357c28eb-8803-4ecb-8c21-7cbef4136ff1"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Biometrics Sign In"
+      },
+      "id": "8c491cd6-af84-4870-99b8-fde33fccf544"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If you have biometrics sign in enabled, the above request will return with a “<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Status\">status code</a> 401” response, as well as a header location that you need to access through the browser to proceed with the biometric authentication.</p>",
+      "id": "60e78cce-f48b-4e48-b1c5-370e3a594afe"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nWWW-Authenticate: persona\r\nLocation: /authentication/persona?inquiry=inq_ZQZkqAXPqQL7Vym9aPELnghV\r\n</code>\r\n<br>",
+      "id": "7107e5a9-e406-45ce-a3d7-e69a20f865ec"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>You will have to access the abovementioned location through the browser. In this example, the URL will be https://api.worldquantbrain.com/authentication/persona?inquiry=inq_ZQZkqAXPqQL7Vym9aPELnghV, which you can obtain by combining the response URL and the Location header as below:</p>",
+      "id": "7fca0905-b1d3-4fa8-a88c-98f2f2724b67"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nfrom urllib.parse import urljoin\r\n\r\n# Check status code for next action\r\nif response.status_code == requests.status_codes.codes.unauthorized:\r\n    if response.headers[\"WWW-Authenticate\"] == \"persona\":\r\n        # Outputs the URL to access through the browser to complete biometrics authentication\r\n        input(\"Complete biometrics authentication and press any key to continue: \" + urljoin(response.url, response.headers[\"Location\"]))\r\n        s.post(urljoin(response.url, response.headers[\"Location\"]))\r\n    else:\r\n        print(\"incorrect email and password\")\r\n</code>\r\n<br>",
+      "id": "6d610de3-c26a-42ca-8bf1-bada22abd3cd"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Simulating an Alpha"
+      },
+      "id": "5d8f2d67-8ed1-428c-869c-5c6c9c143428"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>After finishing authentication, you can send alphas for simulation by sending a JSON object consisting of the settings of the simulation and the expression through a POST request to the /simulations API endpoint.</p>",
+      "id": "952cd6f3-892e-42ab-b915-6bce0f500703"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nsimulation_data = {\r\n    'type': 'REGULAR',\r\n    'settings': {\r\n        'instrumentType': 'EQUITY',\r\n        'region': 'USA',\r\n        'universe': 'TOP3000',\r\n        'delay': 1,\r\n        'decay': 15,\r\n        'neutralization': 'SUBINDUSTRY',\r\n        'truncation': 0.08,\r\n        'maxTrade': 'ON',\r\n        'pasteurization': 'ON',\r\n        'testPeriod': 'P1Y6M',\r\n        'unitHandling': 'VERIFY',\r\n        'nanHandling': 'OFF',\r\n        'language': 'FASTEXPR',\r\n        'visualization': False,\r\n    },\r\n    'regular': 'close'\r\n}\r\nsimulation_response = s.post('https://api.worldquantbrain.com/simulations', json=simulation_data)\r\n</code>\r\n<br>",
+      "id": "98b51ada-3e0f-46c4-87d1-7cc90b7a19df"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Waiting for an Alpha Simulation to End and Retrieving Results"
+      },
+      "id": "d9078f48-b536-422f-9186-20be25bf6582"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>You can check the progress of the simulation of the alpha by sending a GET request to the URL provided by the HTTP response returned when sending an alpha for simulation, under the header “Location.” If the alpha is still in the midst of simulation, a “Retry-After” header is returned and the script should wait for the specified amount of seconds before querying the URL again.</p><p>Once the simulation finishes, the response to the GET request will include a JSON object in the body where you can retrieve the alpha id in the “alpha” field, which you can then pass on to the /alphas API endpoint to retrieve the result.</p><p></p><p></p>",
+      "id": "fe5ff521-a54a-4c60-8aef-fd2a49f0e2c4"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nfrom time import sleep\r\n\r\nsimulation_progress_url = simulation_response.headers['Location']\r\nfinished = False\r\nwhile True:\r\n    simulation_progress = s.get(simulation_progress_url)\r\n    if simulation_progress.headers.get(\"Retry-After\", 0) == 0:\r\n        break\r\n    print(\"Sleeping for \" + simulation_progress.headers[\"Retry-After\"] + \" seconds\")\r\n    sleep(float(simulation_progress.headers[\"Retry-After\"]))\r\nprint(\"Alpha done simulating, getting alpha details\")\r\nalpha_id = simulation_progress.json()[\"alpha\"]\r\nalpha = s.get(\"https://api.worldquantbrain.com/alphas/\" + alpha_id)\r\n</code>\r\n<br>",
+      "id": "25c15d2c-3887-4fb3-bacc-37dfde6976f6"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "Getting Record Sets of Alpha Simulations"
+      },
+      "id": "073a6ff9-ef73-4d9b-aa7b-c202f4d16cb8"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>You can obtain the record set containing the information of your simulations, such as PnL and Sharpe ratio, for each trading day by sending a GET request to the /alphas/&lt;alpha_id&gt;/recordsets/&lt;record set name&gt;.</p><p>The example code below shows how to obtain PnL information over the simulation period</p><p></p>",
+      "id": "13f56331-6c49-48e6-9f1c-9ec702e0569e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nfrom time import sleep\r\n\r\nfinished = False\r\nwhile True:\r\n    pnl = s.get(\"https://api.worldquantbrain.com/alphas/\" + alpha_id + \"/recordsets/pnl\")\r\n    if pnl.headers.get(\"Retry-After\", 0) == 0:\r\n        break\r\n    print(\"Sleeping for \" + pnl.headers[\"Retry-After\"] + \" seconds\")\r\n    sleep(float(pnl.headers[\"Retry-After\"]))\r\nprint(\"PnL retrieved\")\r\n</code>\r\n<br>",
+      "id": "c4f322a7-bd3e-4386-9622-33d04ad0c953"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "API Documentation"
+      },
+      "id": "60560ae0-4f25-4a5e-a34b-e684cb909e58"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/authentication"
+      },
+      "id": "a10226c0-4fad-4e03-bb55-78282efd1300"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>GET</b></p><p>Retrieves the current state of the client’s authentication.</p>",
+      "id": "821762f6-4601-4840-9035-8a2946fdbfbc"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nGET /authentication\r\nCookie: jwt=&lt;JWT&gt;\r\n</code>\r\n<br>\r\n\r\n<u>Response:</u>",
+      "id": "07171ea3-620c-4abb-9473-2c201089e06b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the client is not currently authenticated:</p>",
+      "id": "181d3e68-15f9-489b-852b-4665674d7a6b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n204 No Content\r\n</code>\r\n<br>",
+      "id": "d40f80b6-b105-4c18-a680-26fed65d24c4"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the client is currently authenticated, then the user id and token expiry information is returned:</p>",
+      "id": "0706d401-dd7f-4a90-9ae7-4a3205d4bf0b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 OK\r\n{\r\n    \"user\": {\r\n        \"id\": \"&lt;string:user id&gt;\"\r\n    },\r\n    \"token\": {\r\n        \"expiry\": &lt;number:time until expiry in seconds&gt;\r\n    },\r\n    \"permissions\": [\r\n        \"PERMISSION\",\r\n        \"...\"\r\n    ]\r\n}\r\n</code>\r\n<br>",
+      "id": "f9175eaa-075c-46e9-ae66-62426685cc6d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>POST</b></p><p>Authenticates the client using basic authentication. The user may be required to solve a <a href=\"https://developers.google.com/recaptcha/docs/display#js_api\">reCAPTCHA</a> and then be locked out if they have had too many authentication attempts. The client is notified if a reCAPTCHA is required in the response to an unsuccessful POST.</p><p>If a user requires web authentication, a 401 message is returned with a response body containing the credential create or GET options.</p>",
+      "id": "ff0f3d2f-3b6e-4898-bf7b-54a2d238ea6b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nPOST /authentication\r\nAuthorization: Basic &lt;Base64(user email:password)&gt;\r\n{\r\n    \"recaptcha\": \"&lt;string:reCAPTCHA response if required&gt;\"\r\n    \"expiry\": \"&lt;number:time until expiry in seconds, must be between 1 and 14400&gt;\"\r\n}\r\n</code>\r\n<br>\r\n<u>Response:</u>",
+      "id": "04fe0191-33ff-489e-9e62-f32e84c8805b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the authentication is successful, the authentication cookie is set and the user id and token expiry information is returned:</p>",
+      "id": "b5676767-1128-4ad9-b8ce-a5de7e5b8d69"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n201 Created\r\nSet-Cookie: t=&lt;JWT&gt;; httponly; Path=/; secure\r\n{\r\n    \"user\": {\"id\": \"&lt;string:user id&gt;\"},\r\n    \"token\": {\"expiry\": &lt;number:time until expiry in seconds&gt;},\r\n    \"permissions\": [\"PERMISSION\", \"...\"]\r\n}\r\n</code>\r\n<br>",
+      "id": "9684e282-c638-4033-a695-787fca911b3d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the credentials are invalid:</p>",
+      "id": "5a93c4cf-18f8-4fa5-9e04-27e2684a1d76"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n401 Unauthorized\r\n{\r\n    \"detail\": \"&lt;unauthorized code&gt;\"\r\n}\r\n</code>\r\n<br>",
+      "id": "28555c95-bd7c-450a-9805-2a0d853d5774"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the credentials are invalid and a reCAPTCHA is required:</p>",
+      "id": "29f9df01-2b4e-467a-81be-d470e3b8a0d3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n401 Unauthorized\r\n{\r\n    \"detail\": \"&lt;unauthorized code&gt;\",\r\n    \"recaptcha\": [\r\n        \"This field is required.\"\r\n    ]\r\n}\r\n</code>\r\n<br>",
+      "id": "913008d7-9945-4672-af4c-a599e0f6a059"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>DELETE</b></p><p>Deletes the authentication state by deleting the authentication cookie and invalidating the JWT.</p>",
+      "id": "26436276-a834-4d04-b66f-ec71c3a79911"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nDELETE /authentication\r\nCookie: t=&lt;JWT&gt;\r\n</code>\r\n<br>\r\n<u>Response:</u>",
+      "id": "a053b498-aab3-491d-8091-0275baec0a3a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If deleting authentication state is successful:</p>",
+      "id": "eb8ae67f-a4cb-462f-bf21-6bb32f6d1fe1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n204 OK\r\nSet-Cookie:t=; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/\r\n{\r\n}\r\n</code>\r\n<br>",
+      "id": "4d88b002-dfd2-4f91-800c-61f0d6d02ac0"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the authentication status is invalid:</p>",
+      "id": "d8457558-8df8-4d81-9783-68b6d79cf696"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n401 Unauthorized\r\n{\r\n    \"detail\": \"INVALID_CREDENTIALS\"\r\n}\r\n</code>\r\n<br>",
+      "id": "c9be7f83-581d-48c6-ace3-1be0d08b4468"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/simulations"
+      },
+      "id": "e149fb0d-373e-413a-858e-c5e2352b33b3"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>OPTIONS</b></p><p>Gets the details about the available properties, their types, requirements and allowed values.</p>",
+      "id": "ebec90cb-fe9d-4af9-b9df-d5979074ca56"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nOPTIONS /simulations\r\n</code>\r\n<br>\r\n<u>Response:</u>",
+      "id": "ee0d83fe-a39f-4a42-a64a-1730507f5cd8"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 Ok\r\n{\r\n    actions: {\r\n        POST: {\r\n            id: {\r\n                type: \"string\",\r\n                required: false,\r\n                readOnly: true\r\n            },\r\n            ...\r\n}\r\n</code>\r\n<br>",
+      "id": "074b5f14-4b0f-43a2-8988-ddcaed8e7566"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>POST</b></p><p>Creates a new simulation.</p>",
+      "id": "d17fcc6a-9042-49b1-9309-c7316e428cc1"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nPOST /simulations\r\n{\r\n    \"type\": \"&lt;string: the simulation type: REGULAR or SUPER&gt;\",\r\n    \"settings\": {\r\n        \"instrumentType\": \"&lt;string: the simulation instrument type, see OPTIONS for a list of available instrument type&gt;\",\r\n        \"region\": \"&lt;string: the simulation region, see OPTIONS for a list of available regions&gt;\",\r\n        \"universe\": \"&lt;string: the simulation universe, see OPTIONS for a list of available universes&gt;\",\r\n        \"delay\": &lt;number: 0 or 1 delay&gt;,\r\n        \"decay\": &lt;number: the decay&gt;,\r\n        \"neutralization\": \"&lt;string: the simulation neutralization, see OPTIONS for a list of available neutralizations&gt;\",\r\n        \"truncation\": &lt;number: the truncation&gt;,\r\n        \"pasteurization\": \"&lt;string: the simulation pasteurization, see OPTIONS for list of available pasteurization&gt;\",\r\n         “testPeriod\": \"&lt; string: Duration. Example: P1Y6M &gt;\",\r\n        \"unitHandling\": \"&lt;string: the simulation unit handling, see OPTIONS for list of available unit handling&gt;\",\r\n        \"nanHandling\": \"&lt;string: the simulation NaN handling, see OPTIONS for list of available NaN handling&gt;\",\r\n        \"selectionHandling\": \"&lt;string: the selection handling for the SUPER simulations, see OPTIONS for a list of available selection handling&gt;\",\r\n        \"selectionLimit\": \"&lt;string: the selection limit for the SUPER simulations&gt;\",\r\n        \"language\": \"&lt;string: the language, see OPTIONS for a list of available languages&gt;\",\r\n        \"visualization\": &lt;boolean: the visualization&gt;,\r\n    }\r\n    \"regular\": \"&lt;string: the code for the REGULAR simulation&gt;\"\r\n    \"combo\": \"&lt;string: the combo for the SUPER simulation&gt;\"\r\n    \"selection\": \"&lt;string: the selection for the SUPER simulation&gt;\"\r\n}\r\n</code>\r\n<br>",
+      "id": "681dc23c-57be-472a-bb16-54b955be716f"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Multiple simulations can be run by posting an array of length 2..10 of the above simulation objects. The user requires the MULTI_SIMULATION permission to allow multiple simulations. See /authentication to get the user’s permissions. Also the settings for the simulation must be compatible, they must have the same simulation type, instrument type, region, delay and language.</p>",
+      "id": "0fbb7bb4-b8b0-43bc-8694-613942bad29a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n[\r\n    {\"type\":\"REGULAR\",...},\r\n    {\"type\":\"REGULAR\",...},\r\n    ...\r\n]\r\n</code>\r\n<br>",
+      "id": "198ac8ee-177d-4c7e-a1a0-2a1907e0d7ad"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Progress of multi-simulations is tracked by a parent simulation object. A child simulation is created for each of the multi-simulation objects. The list of child simulation ids are available when the parent simulation is complete.</p>",
+      "id": "c6e683d9-c03f-4d0e-ac68-563df29395df"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Response:</u>",
+      "id": "bd7623e5-167d-4555-b8ca-664b562d7839"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the simulation request was processed successfully, you will get the following response:</p>",
+      "id": "8c5dc9ce-f789-4fa3-ab91-5e3a2dd6e75a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n201 Created\r\nLocation: /simulations/&lt;simulation id&gt;\r\n</code>\r\n<br>",
+      "id": "298a41b1-aa0a-40f2-85d8-c950851fb0ad"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Updates to the simulation can be obtained from GET /simulations/&lt;simulation id&gt;. If a request is invalid, an array of validation errors will be returned for each property with an error. For example:</p>",
+      "id": "1746413d-cf72-44cc-b589-a6850441bb14"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n400 Bad Request\r\n{\r\n    \"type\": [\r\n        \"\\\"X\\\" is not a valid choice.\"\r\n    ],\r\n    \"settings\": {\r\n        \"region\": [\r\n            \"This field is required.\"\r\n        ]\r\n    }\r\n}\r\n</code>\r\n<br>",
+      "id": "029a5b9d-f7f7-4ea8-9355-4d958404512b"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>GET</b></p><p>Retrieves the current state of simulation.</p>",
+      "id": "12b61bd8-73e4-4300-8b3c-580532ad0455"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nGET /simulations/&lt;simulation id&gt;\r\n</code>\r\n<br>\r\n<u>Response:</u>",
+      "id": "6061ccf9-681e-4a99-9f3a-7c55ea34be23"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the simulation is still in progress, the progress is returned:</p>",
+      "id": "2435e1e7-b9f6-47eb-b8c2-8ba40e61921e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 OK\r\nRetry-After: &lt;seconds&gt;\r\n{\r\n    \"progress\": &lt;number: 0..1 progress of the asynchronous request if available&gt;\r\n}\r\n</code>\r\n<br>",
+      "id": "59a56b04-746b-43e9-b6f2-1ab1954a2508"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>If the simulation is complete, the response body matches the POST response body with additional properties below.</p><p>If multiple simulations were submitted, the child simulation ids will be included. The details of the child simulations are available at GET /simulations/&lt;child simulation id&gt;</p>",
+      "id": "bf9b9407-96f4-4886-86ba-69e3c743be11"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 OK\r\n{\r\n    \"id\": \"&lt;string:simulation id&gt;\",\r\n    \"parent\": \"&lt;string:parent simulation id if this simulation is a child&gt;\",\r\n    \"children\": [ &lt;array: child simulation ids if this simulation is a parent&gt;\r\n        \"&lt;string:simulation id&gt;\",\r\n        ...\r\n    ],\r\n    \"status\": \"&lt;string: the simulation status: WAITING, SIMULATING, CANCELLED, COMPLETE, WARNING, ERROR, TIMEOUT, or FAIL&gt;\",\r\n    \"message\": \"&lt;string:error message, if the status = ERROR and a message is available&gt;\"\r\n    \"location\": { &lt;object: code location if status = ERROR and the error is related to the code&gt;\r\n        \"property\": \"&lt;string: the code property with the error: 'regular', 'combo', or 'selection'&gt;\"\r\n        \"line\": &lt;number: the line number of the error in the code&gt;,\r\n        \"start\": &lt;number: the start column of the error in the line&gt;,\r\n        \"end\": &lt;number: the end column of the error in the line&gt;,\r\n    }\r\n    \"progress\": &lt;number: 0..1 simulation progress if the status = SIMULATING&gt;\r\n    \"alpha\": \"&lt;string: the id of the generated Alpha only available when status = COMPLETE or WARNING and simulation type = SIMULATE&gt;\"\r\n    ...&lt;the request object data&gt;...\r\n}\r\n</code>\r\n<br>",
+      "id": "6b0fbba4-4dec-432e-989b-66459920848a"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/alphas"
+      },
+      "id": "9ce99d17-8b64-47c7-a927-add29e1544c7"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>This API endpoint manages alphas. Alphas are created by submitting simulations. See /simulations.</p>",
+      "id": "d86371b2-17a3-4fb2-ada3-32a27ed9d6a2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>GET</b></p><p>Retrieves the alpha. Alpha ids can be obtained from the alpha of a simulation response object.</p>",
+      "id": "8ddf7528-673f-46ef-a30a-a123dbf5dd00"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nGET /alphas/&lt;alpha id&gt;\r\n</code>\r\n<br>\r\n<u>Response::</u>",
+      "id": "66df6297-4c8a-4320-be85-96bd22f930f8"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 OK\r\n{\r\n    \"id\": \"&lt;string:alpha id&gt;\",\r\n    \"type\": \"&lt;string: the simulation type: REGULAR or SUPER&gt;\",\r\n    \"settings\": {\r\n        …\r\n    }\r\n    \"regular\": {\r\n        …\r\n    },\r\n    \"combo\": {\r\n        …\r\n    },\r\n    \"selection\": {\r\n        …\r\n    },\r\n    …\r\n}\r\n</code>\r\n<br>",
+      "id": "0af5fa20-c0cb-41fd-9b43-ce0056936136"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/alphas/<alpha_id>/recordsets"
+      },
+      "id": "361ad83a-04ea-4cd6-bbdf-5f5ef07be3ff"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>GET</b></p>",
+      "id": "0ed73bc5-5697-4fad-9705-ec4f67ec5ef8"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nGET /alphas/&lt;alpha id&gt;/recordsets\r\n</code>\r\n<br>",
+      "id": "c30d0c8e-3618-4365-9127-bb8181d0740e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Lists the record sets available for the Alpha.</p>",
+      "id": "9c503001-4e1c-4cc4-a1fe-d64d0f8cf982"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Response:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n200 OK\r\n{\r\n    \"count\": &lt;number: the number of record sets&gt;,\r\n    \"results\": [\r\n        {\r\n            \"name\": \"&lt;string: the name of the record set&gt;\",\r\n            \"title\": \"&lt;string: the human readable name of the record set&gt;\"\r\n        },\r\n        ...\r\n    ]\r\n}\r\n</code>\r\n<br>",
+      "id": "b4234df0-958c-41b4-b933-9baa5de38b7d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Example including all record sets:</p>",
+      "id": "30cf74ca-8d7c-4c6a-980f-3a9310368834"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n{\r\n    \"count\": 19,\r\n    \"results\": [\r\n        {\r\n        \"name\": \"pnl\",\r\n        \"title\": \"PnL\"\r\n        },\r\n        {\r\n        \"name\": \"sharpe\",\r\n        \"title\": \"Sharpe\"\r\n        },\r\n        {\r\n        \"name\": \"turnover\",\r\n        \"title\": \"Turnover\"\r\n        },\r\n        {\r\n        \"name\": \"daily-pnl\",\r\n        \"title\": \"Daily PnL\"\r\n        },\r\n        {\r\n        \"name\": \"yearly-stats\",\r\n        \"title\": \"Yearly Stats\"\r\n        },\r\n        {\r\n        \"name\": \"coverage\",\r\n        \"title\": \"Coverage of Universe\"\r\n        },\r\n        {\r\n        \"name\": \"coverage-by-industry\",\r\n        \"title\": \"Coverage by Industry\"\r\n        },\r\n        {\r\n        \"name\": \"coverage-by-sector\",\r\n        \"title\": \"Coverage by Sector\"\r\n        },\r\n        {\r\n        \"name\": \"average-size-by-industry\",\r\n        \"title\": \"Average Size by Industry\"\r\n        },\r\n        {\r\n        \"name\": \"average-size-by-sector\",\r\n        \"title\": \"Average Size by Sector\"\r\n        },\r\n        {\r\n        \"name\": \"average-size-by-capitalization\",\r\n        \"title\": \"Average Size by Capitalization\"\r\n        },\r\n        {\r\n        \"name\": \"pnl-by-industry\",\r\n        \"title\": \"PnL by Industry\"\r\n        },\r\n        {\r\n        \"name\": \"pnl-by-sector\",\r\n        \"title\": \"PnL by Sector\"\r\n        },\r\n        {\r\n        \"name\": \"pnl-by-capitalization\",\r\n        \"title\": \"PnL by Capitalization\"\r\n        },\r\n        {\r\n        \"name\": \"sharpe-by-industry\",\r\n        \"title\": \"Sharpe by Industry\"\r\n        },\r\n        {\r\n        \"name\": \"sharpe-by-sector\",\r\n        \"title\": \"Sharpe by Sector\"\r\n        },\r\n        {\r\n        \"name\": \"sharpe-by-capitalization\",\r\n        \"title\": \"Sharpe by Capitalization\"\r\n        },\r\n        {\r\n        \"name\": \"average-value-by-industry\",\r\n        \"title\": \"Abs Average Value by Industry\"\r\n        },\r\n        {\r\n        \"name\": \"average-value-by-sector\",\r\n        \"title\": \"Abs Average Value by Sector\"\r\n        }\r\n    ]\r\n}  \r\n</code>\r\n<br>",
+      "id": "1a6ff7a5-6ca5-44d1-a961-fd9495446f55"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/alphas/<alpha_id>/recordsets/<record set name>"
+      },
+      "id": "b0a27c50-6a78-4744-8607-254f61577d23"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>GET</b></p>",
+      "id": "643589ba-a5db-4b04-8c7b-fbccdbc36377"
+    },
+    {
+      "type": "TEXT",
+      "value": "<u>Request:</u>\r\n<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\nGET /alphas/&lt;alpha id&gt;/recordsets/&lt;record set name&gt;\r\n</code>\r\n<br>\r\n<u>Response:</u>",
+      "id": "bdb16f6a-17c2-462c-bd30-2d560a130403"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>Retrieves the given record set.</p><p>Depending on the record set there will be different properties:</p>",
+      "id": "2d059cdb-143a-4789-9c35-3eb65b8765f2"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\npnl: ... date , pnl , sharpe , ...\r\nsharpe: ... date , sharpe , ...\r\ncoverage: ... date , instruments , ...\r\ncoverage-by-industry: ... series , software , chemicals , ... the industries ...\r\ncoverage-by-sector: ... series , technology , financial , ... the sector ...\r\naverage-size-by-capitalization: ... 020 , 2040 , 4060 , 6080 , 80100 , ...\r\naverage-size-by-sector: ... technology , financial , ... the sectors ...\r\naverage-size-by-industry: ... software , chemicals , ... the industries ...\r\npnl-by-capitalization: ... date , pnlDivTwo , 020 , 2040 , 4060 , 6080 , 80100 , ...\r\npnl-by-sector: ... date , pnlDivTwo , technology , basicMaterials , ... the sectors ...\r\npnl-by-industry: ... date , pnlDivTwo , software , chemicals , ... the industries ...\r\nsharpe-by-capitalization: ... 020 , 2040 , 4060 , 6080 , 80100 , ...\r\nsharpe-by-sector: ... technology , basicMaterials , ... the sectors ...\r\nsharpe-by-industry: ... software , chemicals , ... the industries ...\r\naverage-value-by-sector: ... date , technology , basicMaterials , ... the sectors ...\r\naverage-value-by-industry: ... date , software , chemicals , ... the industries ...\r\nturnover: ... date , turnover , ...\r\n</code>\r\n<br>",
+      "id": "1ba0bb28-f9dc-4897-a3a2-2095951e0180"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Additional Details"
+      },
+      "id": "50a6c746-c5a6-446e-8daf-427ba4efae5e"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Record Sets</b></p><p>Some responses include tabular record sets. These can be used for tables and charting. They are encoded efficiently as follows:</p>",
+      "id": "c5e9b46f-2fca-477f-ba2e-25ec59fd624d"
+    },
+    {
+      "type": "TEXT",
+      "value": "<code style=\"display:block; white-space: pre-wrap; word-wrap:break-word;\">\r\n{\r\n    \"schema\": {\r\n        \"name\": \"&lt;string: the name of the record set&gt;\",\r\n        \"title\": \"&lt;string: the human readable name of the record set&gt;\",\r\n        \"properties\": [ &lt;array: the record set properties&gt;\r\n            {\r\n                \"name\": \"&lt;string: the name of the property&gt;\"\r\n                \"title\": \"&lt;string: the human readable name of the property&gt;\"\r\n                \"type\": \"&lt;string: data type of the property: string, integer, decimal, amount, percent, permyriad, date, time, datetime, year&gt;\"\r\n            },\r\n        ...]\r\n    \"records\": [ &lt;array: the records&gt;\r\n        [\r\n            &lt;array: the record property values&gt;\r\n        ],\r\n    ...]\r\n}\r\n</code>\r\n<br>",
+      "id": "77f63750-e227-41ab-941c-974b32605e73"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p>The type can be used by the client to format numbers. Amounts are generally formatted in thousands \"1.2K\", millions \"1.2M\", billions \"1.2B\". Percent and permyriad (basis points) are formatted as \"1.23%\", \"1.23‱\" respectively.</p>",
+      "id": "347b5899-efa4-49b7-b1d8-5c253422f945"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "2",
+        "content": "/users/<userid>/activities/diversity"
+      },
+      "id": "ba479370-40f1-4850-a7e2-7bfcf70914b6"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p><b>GET</b></p><p>Request:</p><p>/users/&lt;userid&gt;/activities/diversity</p><p>Provide alpha submission breakdown by Region, Delay, and Data Category.</p><p>Return recordset with parameters:</p><p>/users/&lt;userid&gt;/activities/diversity?grouping=region,delay,dataCategory</p><p>Alpha shall belong to a Dataset Category if it uses a data field in a dataset from the Dataset Category.</p><p>Response:</p><p>200 OK</p><p>{</p><p>'alphas': [</p><p>{</p><p>'alphaCount': &lt;integer of alpha count&gt;,</p><p>'delay': &lt;integer of delay&gt;,</p><p>'region': &lt;string of region&gt;,</p><p>'dataCategory': {'name': &lt;string name of data category&gt;, 'id': &lt;string id of data category&gt; }</p><p>},</p><p>...</p><p>],</p><p>'count': &lt;integer of all alpha count&gt;</p><p>}</p>",
+      "id": "01f2dcb8-1980-45d1-b8e9-c4d579c010a7"
+    },
+    {
+      "type": "HEADING",
+      "value": {
+        "level": "1",
+        "content": "Troubleshooting common API error messages"
+      },
+      "id": "1bab5780-84da-4eb1-99aa-5cdc56baca5c"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Error",
+            "Likely cause & resolution"
+          ],
+          [
+            "Invalid data field",
+            "A data field was wrongly used in your Alpha expression. Check if you are using vector data fields with vector operators, or if you have included a matrix data field in a vector operator."
+          ],
+          [
+            "Empty output from ace_lib function",
+            "Some of your inputs might be invalid. Check through your inputs to the function.\n\nIf the invalid input is a dataset or data field, check if the dataset or data field is still on the platform through the Data Explorer."
+          ],
+          [
+            "Got invalid input at index 0, must be an event data",
+            "An invalid input was detected. Check if you are passing a constant into a vector operator."
+          ]
+        ],
+        "firstRowIsTableHeader": true,
+        "firstColIsHeader": false
+      },
+      "id": "d7c3f690-59f0-4c50-b8d0-f64f82b0ab7a"
+    }
+  ],
+  "sequence": 15,
+  "category": "BRAIN API"
+}

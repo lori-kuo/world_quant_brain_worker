@@ -1,0 +1,35 @@
+[
+  {
+    "name": "in",
+    "category": "Special",
+    "definition": "in",
+    "description": "in",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "SELECTION"
+    ]
+  },
+  {
+    "name": "self_corr",
+    "category": "Special",
+    "definition": "self_corr(input)",
+    "description": "Taking an input matrix of (D x N) with lookback=\"K\", producing an output matrix of (D x N x N), where each output(di, j, k) refers to correlation of input(di-K:di, j) and input(di-K:di, k). Outputs (D x N x N) from the input of (D x N)",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "universe_size",
+    "category": "Special",
+    "definition": "universe_size",
+    "description": "universe_size",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "SELECTION"
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+openai
+Pillow
+fastembed>=0.3.6
+chromadb>=0.5.11
+watchdog
+pypdf
+python-docx

@@ -1,0 +1,156 @@
+[
+  {
+    "name": "reduce_avg",
+    "category": "Reduce",
+    "definition": "reduce_avg(input, threshold=0)",
+    "description": "Average of non-NAN elements of d(..., :). Threshold: Minimum required number of valid (non-nan) values. If there is not enough valid values, then the output is nan. 0 means no limit.threshold (Default: 0) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_choose",
+    "category": "Reduce",
+    "definition": "reduce_choose(input, nth, ignoreNan=true)",
+    "description": "Choose the 'nth' element in the array, return NAN if not found. Threshold: nth=\"<the Nth element>\" (Required) ignoreNan=\"true|false\" (Default: true) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_count",
+    "category": "Reduce",
+    "definition": "reduce_count(input, threshold)",
+    "description": "Count the number of element of d(..., :) > threshold. threshold=<float> *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_ir",
+    "category": "Reduce",
+    "definition": "reduce_ir(input)",
+    "description": "IR of values in the array *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_kurtosis",
+    "category": "Reduce",
+    "definition": "reduce_kurtosis(input)",
+    "description": "Kurtosis of values in the array ***Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. \r\nIf input matrix is (D x N), output matrix (D x 1) \r\nIf input matrix is (D x N X N), output matrix (D x N X 1) \r\nThe defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_max",
+    "category": "Reduce",
+    "definition": "reduce_max(input)",
+    "description": "Maximum of elements of d(..., :) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_min",
+    "category": "Reduce",
+    "definition": "reduce_min(input)",
+    "description": "Minimum of elements of d(..., :) ***Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. \r\nIf input matrix is (D x N), output matrix (D x 1) \r\nIf input matrix is (D x N X N), output matrix (D x N X 1) \r\nThe defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_norm",
+    "category": "Reduce",
+    "definition": "reduce_norm(input)",
+    "description": "Absolute sum of number of element of d(..., :) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_percentage",
+    "category": "Reduce",
+    "definition": "reduce_percentage(input, percentage=0.5)",
+    "description": "Return the value of percentage in the sorted array: e.g., median value when percentage=0.5. Threshold: percentage=\"<value between 0 and 1>\" (Default: 0.5) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_powersum",
+    "category": "Reduce",
+    "definition": "reduce_powersum(input, constant=2, precise=false)",
+    "description": "Sum of power, sum(power(x, constant)). Threshold: precise, whether calculate power precise if constant greater than 4, default false constant=<integer value>, default:2 *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_range",
+    "category": "Reduce",
+    "definition": "reduce_range(input)",
+    "description": "Return the range of values in the array, return NAN if no valid value *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_skewness",
+    "category": "Reduce",
+    "definition": "reduce_skewness(input)",
+    "description": "Skewness of values in the array *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_stddev",
+    "category": "Reduce",
+    "definition": "reduce_stddev(input, threshold=0)",
+    "description": "Standard deviation of values in the array. Threshold: Minimum required percentage of valid (non-nan) values. If there is not enough valid values, then the output is NAN. 0 means no limit.threshold (Default: 0) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "reduce_sum",
+    "category": "Reduce",
+    "definition": "reduce_sum(input)",
+    "description": "Sum the number of element of d(..., :) *** Takes an input 2-D or 3-D matrix with user-defined reducer, producing an output matrix. *If input matrix is (D x N), output matrix (D x 1) *If input matrix is (D x N X N), output matrix (D x N X 1) *The defined function is applied on the last dimension : output(I) = reduce(input(I, 0:N)).",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  }
+]

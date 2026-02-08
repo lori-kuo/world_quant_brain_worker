@@ -1,0 +1,20 @@
+{
+    "template": "{pe} / ({st_dev} + 0.01)",
+    "expression_list": [
+        "anl15_gr_12_m_pe / (anl15_gr_12_m_st_dev + 0.01)",
+        "anl15_gr_18_m_pe / (anl15_gr_18_m_st_dev + 0.01)",
+        "anl15_gr_cal_fy1_pe / (anl15_gr_cal_fy1_st_dev + 0.01)",
+        "anl15_gr_cal_fy2_pe / (anl15_gr_cal_fy2_st_dev + 0.01)",
+        "anl15_gr_cal_fy3_pe / (anl15_gr_cal_fy3_st_dev + 0.01)",
+        "anl15_ind_12_m_pe / (anl15_ind_12_m_st_dev + 0.01)",
+        "anl15_ind_18_m_pe / (anl15_ind_18_m_st_dev + 0.01)",
+        "anl15_ind_cal_fy1_pe / (anl15_ind_cal_fy1_st_dev + 0.01)",
+        "anl15_ind_cal_fy2_pe / (anl15_ind_cal_fy2_st_dev + 0.01)",
+        "anl15_ind_cal_fy3_pe / (anl15_ind_cal_fy3_st_dev + 0.01)",
+        "anl15_s_12_m_pe / (anl15_s_12_m_st_dev + 0.01)",
+        "anl15_s_18_m_pe / (anl15_s_18_m_st_dev + 0.01)",
+        "anl15_s_cal_fy1_pe / (anl15_s_cal_fy1_st_dev + 0.01)",
+        "anl15_s_cal_fy2_pe / (anl15_s_cal_fy2_st_dev + 0.01)",
+        "anl15_s_cal_fy3_pe / (anl15_s_cal_fy3_st_dev + 0.01)"
+    ]
+}

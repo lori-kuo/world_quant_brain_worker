@@ -1,0 +1,66 @@
+{
+  "id": "global-region",
+  "title": "Global Alphas [Gold]",
+  "lastModified": "2025-11-04T02:34:01.955501-05:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Global simulations aggregate all the stocks in various regions into a single simulation.</p><p>Due to the time differences across the globe, these simulations are currently available in delay-1 mode only.</p><p></p><p></p><p><b>Alphas</b></p><p></p><ul><li>Since ASI is a region, which has multiple countries too, you can try alpha ideas that work well in ASI. In addition to your ideas that work in ASI, you can also try other specific ideas or specific datasets which are only available or have higher coverage in a certain country.</li><li>Rather than thinking about alphas that work in specific countries or exchanges, it might be more advantageous to think of ideas that work generally for equities.</li><li>The advantage of a large universe is that you will have greater confidence in the robustness of the alpha if you can pass the submission criteria, as you can see that historically, your idea worked across the globe in all liquid equities!</li></ul><p></p><p></p><p><b>Global Universe</b></p><ul><li>The Global Region universe is about 9000 stocks in total, spanning several countries.</li></ul>",
+      "id": "46b7cf3d-51b6-4aec-9ef3-a780edf58dc6"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Neutralization</b></p><p>Right now, neutralization by market will neutralize all stocks by the global mean values, likewise for sector, subindustry and industry neutralization settings.<br/></p><ul><li>It might be more meaningful to instead neutralize by country first before neutralizing by any other grouping (concept of double neutralization will be useful here). This is a new neutralization setting that we have added for Global region. This will neutralize all stocks by their country mean values, hence removing country specific risk from your alpha.</li><li>You can also neutralize your GLB alphas against a group of risk factors. Read this page on <a href=\"https://platform.worldquantbrain.com/learn/documentation/advanced-topics/getting-started-risk-neutralized-alphas\">risk neutralization</a> for more details. If you select one of SLOW/FAST/SLOW_AND_FAST as the neutralization setting, the group neutralization setting defaults to market. Hence, it is a good practice to check your risk-neutralized GLB alpha's performance with the group_neutralize operator and country grouping</li></ul><p></p><p><b>Sub-Geography Sharpe Cutoff for GLB Alphas</b></p>",
+      "id": "d21dbab9-95e3-464a-bd46-3b363eda089b"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Submission Criteria",
+            "Threshold"
+          ],
+          [
+            "AMER Sharpe ",
+            "≥ 1"
+          ],
+          [
+            "APAC Sharpe",
+            "≥ 1"
+          ],
+          [
+            "EMEA Sharpe ",
+            "≥ 1"
+          ]
+        ],
+        "firstRowIsTableHeader": false,
+        "firstColIsHeader": true
+      },
+      "id": "fc15f51b-71a7-4568-bca9-d8eda5b918dd"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>GLB Alphas are subject to additional sub-geography Sharpe cutoff criteria. These criteria ensure that your Alpha isn’t just performing well globally but is also delivering consistent returns across all three geographies. The goal is to avoid over-reliance on a single geography and encourage a more balanced contribution to your overall PnL.</p><p></p><p><b>Tips to Improve Sharpe Across Geographies</b></p><ul><li><b>AMER</b>: Focus on high-liquidity equities and consider incorporating earnings-related signals, as the stocks in these markets are highly responsive to earnings announcements.</li><li><b>APAC</b>: Pay attention to market microstructure data, as price-volume patterns in APAC markets often differ due to shorter market hours and unique market regulations.</li><li><b>EMEA</b>: Explore macroeconomic indicators, as EMEA stocks are often influenced by geopolitical events and currency fluctuations.</li><li>GLB Alphas also include a breakdown of global PnL by geography in their PnL chart, making it easy to see how much each geography is contributing. This helps you identify imbalances and determine areas for improvement.</li></ul>",
+      "id": "f89b6cbc-8c83-403a-b987-ce99d9ce9bfe"
+    },
+    {
+      "type": "IMAGE",
+      "value": {
+        "title": "Picture1.png",
+        "width": 624,
+        "height": 442,
+        "fileSize": 84498,
+        "url": "https://api.worldquantbrain.com/content/images/XRKUfH1WF2_5hHtfWieOJ37eCIY=/422/original/Picture1.png"
+      },
+      "id": "5f802b19-bb7d-4cde-9aed-42b0076b4108"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p></p><p></p><p><b>Increasing robustness</b></p><p>Try exploring <a href=\"https://platform.worldquantbrain.com/data/data-sets/pv29?delay=1&amp;instrumentType=EQUITY&amp;limit=20&amp;offset=0&amp;region=GLB&amp;universe=TOP3000\">Derived</a> and <a href=\"https://platform.worldquantbrain.com/data/data-sets/pv30?delay=1&amp;instrumentType=EQUITY&amp;limit=20&amp;offset=0&amp;region=GLB&amp;universe=TOP3000\">Alternate</a> Industry Classification datasets. Using group operators using these grouping fields can help make your alpha signals robust</p>",
+      "id": "0485a828-6a4a-438c-b7ee-83ded11e4593"
+    }
+  ],
+  "sequence": 1,
+  "category": "Regions and Universes"
+}

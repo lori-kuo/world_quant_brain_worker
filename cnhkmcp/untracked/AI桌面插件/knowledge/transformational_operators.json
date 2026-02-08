@@ -1,0 +1,61 @@
+[
+  {
+    "name": "bucket",
+    "category": "Transformational",
+    "definition": "bucket(rank(x), range=\"0, 1, 0.1\" or buckets = \"2,5,6,7,10\")",
+    "description": "Convert float values into indexes for user-specified buckets. Bucket is useful for creating group values, which can be passed to GROUP as input",
+    "documentation": "/operators/bucket",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "generate_stats",
+    "category": "Transformational",
+    "definition": "generate_stats(alpha)",
+    "description": "The generate_stats() operator calculates Alpha statistics for each day in the IS period. It takes an input of selected Alphas with shape = (A x D x I). It outputs daily statistics for each Alpha with shape = (S x D x A), where S is the number of statistics calculated.",
+    "documentation": null,
+    "level": "ALL",
+    "scopes": [
+      "COMBO"
+    ]
+  },
+  {
+    "name": "left_tail",
+    "category": "Transformational",
+    "definition": "left_tail(x, maximum = 0)",
+    "description": "NaN everything greater than maximum, maximum should be constant",
+    "documentation": "/operators/left_tail",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "right_tail",
+    "category": "Transformational",
+    "definition": "right_tail(x, minimum = 0)",
+    "description": "NaN everything less than minimum, minimum should be constant",
+    "documentation": "/operators/right_tail",
+    "level": null,
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  },
+  {
+    "name": "trade_when",
+    "category": "Transformational",
+    "definition": "trade_when(x, y, z)",
+    "description": "Used in order to change Alpha values only under a specified condition and to hold Alpha values in other cases. It also allows to close Alpha positions (assign NaN values) under a specified condition",
+    "documentation": "/operators/trade_when",
+    "level": "ALL",
+    "scopes": [
+      "COMBO",
+      "REGULAR"
+    ]
+  }
+]

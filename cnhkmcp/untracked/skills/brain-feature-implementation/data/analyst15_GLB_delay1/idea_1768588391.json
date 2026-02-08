@@ -1,0 +1,14 @@
+{
+    "template": "abs({1m_chg}) * ({ests_up} + {ests_dn})",
+    "expression_list": [
+        "abs(anl15_gr_12_m_1m_chg) * (anl15_gr_12_m_ests_up + anl15_gr_12_m_ests_dn)",
+        "abs(anl15_gr_18_m_1m_chg) * (anl15_gr_18_m_ests_up + anl15_gr_18_m_ests_dn)",
+        "abs(anl15_gr_ltg_1m_chg) * (anl15_gr_ltg_ests_up + anl15_gr_ltg_ests_dn)",
+        "abs(anl15_ind_12_m_1m_chg) * (anl15_ind_12_m_ests_up + anl15_ind_12_m_ests_dn)",
+        "abs(anl15_ind_18_m_1m_chg) * (anl15_ind_18_m_ests_up + anl15_ind_18_m_ests_dn)",
+        "abs(anl15_ind_ltg_1m_chg) * (anl15_ind_ltg_ests_up + anl15_ind_ltg_ests_dn)",
+        "abs(anl15_s_12_m_1m_chg) * (anl15_s_12_m_ests_up + anl15_s_12_m_ests_dn)",
+        "abs(anl15_s_18_m_1m_chg) * (anl15_s_18_m_ests_up + anl15_s_18_m_ests_dn)",
+        "abs(anl15_s_ltg_1m_chg) * (anl15_s_ltg_ests_up + anl15_s_ltg_ests_dn)"
+    ]
+}

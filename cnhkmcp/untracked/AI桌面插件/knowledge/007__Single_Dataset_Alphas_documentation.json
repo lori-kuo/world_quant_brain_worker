@@ -1,0 +1,41 @@
+{
+  "id": "single-dataset-alphas",
+  "title": "❗ Single Dataset Alphas",
+  "lastModified": "2025-08-26T03:39:14.716871-04:00",
+  "content": [
+    {
+      "type": "TEXT",
+      "value": "<p></p><p>Single Dataset Alphas* use data fields from only one dataset to build the entire Alpha expression, excluding 6 permitted grouping fields that can be a part of the expression – country, exchange, market, sector, industry and subindustry. Single Dataset Alphas also have a slightly relaxed <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests\">submission criteria</a>. For such Alphas, rather than clearing IS Ladder Sharpe test, Alphas need to only clear certain limits for Last 2Y IS Sharpe.</p><p>Further details on the importance of Single Dataset Alphas and the relaxed IS testing details are discussed below:</p><p><b>Introduction</b></p><p>BRAIN offers a wide array of datasets spanning various <a href=\"https://platform.worldquantbrain.com/data/data-sets?delay=1&amp;instrumentType=EQUITY&amp;limit=20&amp;offset=0&amp;region=USA&amp;universe=TOP3000\">categories</a>, including fundamental, price-volume, analyst, and options data. While an alpha can incorporate data fields from multiple datasets, this approach if not implemented correctly, may potentially lead to overfitting due to the mixing of conflicting signals between datasets.</p><p>In contrast, single dataset Alphas maintain homogeneity by using data from only one dataset, making them less prone to overfitting and more robust in their predictions.</p><p><b>Single Dataset Alpha Expression Properties</b></p><ol><li>Single Dataset Alphas must utilize data fields from only one dataset, with exceptions for the following 5 permitted grouping fields – country, exchange, market, sector, industry and subindustry.</li><li>The use of inst_pnl() and convert() operators is considered as utilizing the pv1 dataset since these operators rely on pv1 data for calculations.</li></ol><p><b>Submission Tests for Single Dataset Alphas</b></p><p>Single Dataset Alphas have slightly relaxed <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests\">submission criteria</a> as compared to regular Alphas. These Alphas don’t need to pass the <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests#check-is-sharpe-or-is-ladder-test\">IS Ladder Sharpe Test</a>. Instead, only the last two year Avg IS Sharpe of the Alpha must clear the following thresholds:</p><p></p>",
+      "id": "4cbda995-995c-4b0e-835f-66edff582480"
+    },
+    {
+      "type": "TABLE",
+      "value": {
+        "data": [
+          [
+            "Last 2Y Sharpe limit",
+            "Threshold"
+          ],
+          [
+            "Delay-1",
+            "2.38"
+          ],
+          [
+            "Delay-0",
+            "3.96"
+          ]
+        ],
+        "firstRowIsTableHeader": false,
+        "firstColIsHeader": true
+      },
+      "id": "c11a5e2a-8b9a-4968-9c60-21fb42cd027a"
+    },
+    {
+      "type": "TEXT",
+      "value": "<p><b>Note</b>: If the turnover of Alpha is less than 30%, the IS Sharpe Ladder PASS_THRESHOLDS are multiplied by a factor of 0.85.</p><p></p><p>For more information, refer to <a href=\"https://platform.worldquantbrain.com/learn/documentation/consultant-information/consultant-submission-tests#:~:text=EUR%20ILLIQUID_MINVOL1M%3A%200.355-,Check%2DIS%2DSharpe%20or%20IS%2DLadder%20test,-%F0%9D%91%86\">Check-IS-Sharpe or IS-Ladder test</a><br/></p><p>All Alpha simulations with properties of Single Dataset Alphas shall display the message “2 year Sharpe of &lt;value&gt; is below cutoff of &lt;limit&gt;” or “</p><p>2 year Sharpe of &lt;value&gt; is above cutoff of &lt;limit&gt;.” in the IS Testing Status tab of Alpha simulation results instead of the IS Ladder Sharpe Pass/Fail criteria.</p>",
+      "id": "4125322c-0ac4-414d-a92f-57b26be93d0e"
+    }
+  ],
+  "sequence": 150,
+  "category": "Creating Alphas"
+}

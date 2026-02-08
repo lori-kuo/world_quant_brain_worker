@@ -1,0 +1,302 @@
+{
+  "001_10_Steps_to_Start_on_BRAIN_documentation.json": {
+    "mtime": 1767205657.3113902,
+    "size": 2483
+  },
+  "001_Intermediate_Pack_-_Improve_your_Alpha_2_2_documentation.json": {
+    "mtime": 1767205656.9802248,
+    "size": 9295
+  },
+  "001_Intermediate_Pack_-_Understand_Results_1_2_documentation.json": {
+    "mtime": 1767205656.584933,
+    "size": 9758
+  },
+  "001_Introduction_to_Alphas_documentation.json": {
+    "mtime": 1767205655.9214056,
+    "size": 11156
+  },
+  "001_Introduction_to_BRAIN_Expression_Language_documentation.json": {
+    "mtime": 1767205656.2119222,
+    "size": 4925
+  },
+  "001_WorldQuant_Challenge_documentation.json": {
+    "mtime": 1767205657.651904,
+    "size": 4605
+  },
+  "001__Read_this_First_-_Starter_Pack_documentation.json": {
+    "mtime": 1767205655.607875,
+    "size": 31286
+  },
+  "002_How_to_choose_the_Simulation_Settings_documentation.json": {
+    "mtime": 1767205658.687592,
+    "size": 13775
+  },
+  "002_Simulate_your_first_Alpha_documentation.json": {
+    "mtime": 1767205658.3287065,
+    "size": 8701
+  },
+  "002__Alpha_Examples_for_Beginners_documentation.json": {
+    "mtime": 1767205659.4102447,
+    "size": 10826
+  },
+  "002__Alpha_Examples_for_Bronze_Users_documentation.json": {
+    "mtime": 1767205659.7409737,
+    "size": 4795
+  },
+  "002__Alpha_Examples_for_Silver_Users_documentation.json": {
+    "mtime": 1767205660.0698695,
+    "size": 3854
+  },
+  "002__How_BRAIN_works_documentation.json": {
+    "mtime": 1767205659.0631225,
+    "size": 16929
+  },
+  "003_Clear_these_tests_before_submitting_an_Alpha_documentation.json": {
+    "mtime": 1767205660.7332313,
+    "size": 24609
+  },
+  "003_Parameters_in_the_Simulation_results_documentation.json": {
+    "mtime": 1767205661.1079519,
+    "size": 16168
+  },
+  "004_Group_Data_Fields_documentation.json": {
+    "mtime": 1767205662.790159,
+    "size": 4663
+  },
+  "004_How_to_use_the_Data_Explorer_documentation.json": {
+    "mtime": 1767205662.1967475,
+    "size": 6196
+  },
+  "004_Model77_dataset_documentation.json": {
+    "mtime": 1767205663.0996022,
+    "size": 3274
+  },
+  "004_Sentiment1_dataset_documentation.json": {
+    "mtime": 1767205663.436493,
+    "size": 2058
+  },
+  "004_Understanding_Data_in_BRAIN_Key_Concepts_and_Tips_documentation.json": {
+    "mtime": 1767205661.830939,
+    "size": 9173
+  },
+  "004_Vector_Data_Fields_documentation.json": {
+    "mtime": 1767205662.482697,
+    "size": 6058
+  },
+  "005_Crowding_Risk-Neutralized_Alphas_documentation.json": {
+    "mtime": 1767205666.6135564,
+    "size": 3404
+  },
+  "005_D0_documentation.json": {
+    "mtime": 1767205665.3834035,
+    "size": 5894
+  },
+  "005_Double_Neutralization_documentation.json": {
+    "mtime": 1767205665.0453224,
+    "size": 3308
+  },
+  "005_Fast_D1_Documentation_documentation.json": {
+    "mtime": 1767205668.092214,
+    "size": 11325
+  },
+  "005_Investability_Constrained_Metrics_documentation.json": {
+    "mtime": 1767205667.7071521,
+    "size": 7971
+  },
+  "005_Must-read_posts_How_to_improve_your_Alphas_documentation.json": {
+    "mtime": 1767205664.22182,
+    "size": 2781
+  },
+  "005_Neutralization_documentation.json": {
+    "mtime": 1767205664.6446226,
+    "size": 8962
+  },
+  "005_RAM_Risk-Neutralized_Alphas_documentation.json": {
+    "mtime": 1767205666.9769416,
+    "size": 4121
+  },
+  "005_Risk_Neutralization_Default_setting_documentation.json": {
+    "mtime": 1767205666.256811,
+    "size": 3796
+  },
+  "005_Risk_Neutralized_Alphas_documentation.json": {
+    "mtime": 1767205665.7260354,
+    "size": 11617
+  },
+  "005_Statistical_Risk-Neutralized_Alphas_documentation.json": {
+    "mtime": 1767205667.3264325,
+    "size": 5663
+  },
+  "006_EUR_TOP2500_Universe_documentation.json": {
+    "mtime": 1767205669.7011774,
+    "size": 2248
+  },
+  "006_Getting_Started_China_Research_for_Consultants_Gold_documentation.json": {
+    "mtime": 1767205670.0584345,
+    "size": 8247
+  },
+  "006_Getting_started_on_Illiquid_Universes_Gold_documentation.json": {
+    "mtime": 1767205669.39144,
+    "size": 2224
+  },
+  "006_Getting_started_with_USA_TOPSP500_universe_Gold_documentation.json": {
+    "mtime": 1767205669.0832088,
+    "size": 2681
+  },
+  "006_GLB_TOPDIV3000_Universe_documentation.json": {
+    "mtime": 1767205670.398031,
+    "size": 2990
+  },
+  "006_Global_Alphas_Gold_documentation.json": {
+    "mtime": 1767205668.80443,
+    "size": 5531
+  },
+  "006_India_Alphas_documentation.json": {
+    "mtime": 1767205670.7715836,
+    "size": 1845
+  },
+  "007_Consultant_Dos_and_Don_ts_documentation.json": {
+    "mtime": 1767205676.2029963,
+    "size": 6318
+  },
+  "007_Consultant_Features_documentation.json": {
+    "mtime": 1767205673.3801267,
+    "size": 16785
+  },
+  "007_Consultant_Simulation_Features_documentation.json": {
+    "mtime": 1767205673.0209067,
+    "size": 7226
+  },
+  "007_Consultant_Submission_Tests_documentation.json": {
+    "mtime": 1767205673.745088,
+    "size": 17040
+  },
+  "007_Finding_Consultant_Alphas_documentation.json": {
+    "mtime": 1767205672.251832,
+    "size": 24560
+  },
+  "007_Power_Pool_Alphas_documentation.json": {
+    "mtime": 1767205671.878901,
+    "size": 6398
+  },
+  "007_Research_Advisory_Program_documentation.json": {
+    "mtime": 1767205676.5531626,
+    "size": 2637
+  },
+  "007_Starting_Guide_for_Research_Consultants_documentation.json": {
+    "mtime": 1767205671.4752853,
+    "size": 3245
+  },
+  "007_Visualization_Tool_documentation.json": {
+    "mtime": 1767205674.119551,
+    "size": 5744
+  },
+  "007_Your_Advisor_-_Kunqi_Jiang_documentation.json": {
+    "mtime": 1767205676.9000566,
+    "size": 4746
+  },
+  "007__Brain_Genius_documentation.json": {
+    "mtime": 1767205677.6026185,
+    "size": 16460
+  },
+  "007__Single_Dataset_Alphas_documentation.json": {
+    "mtime": 1767205677.241985,
+    "size": 4113
+  },
+  "008_Advisory_Theme_Calendar_documentation.json": {
+    "mtime": 1767205679.3681905,
+    "size": 584
+  },
+  "008_Multiplier_Rules_documentation.json": {
+    "mtime": 1767205678.6744087,
+    "size": 2178
+  },
+  "008_Overview_of_Themes_documentation.json": {
+    "mtime": 1767205678.3109314,
+    "size": 1784
+  },
+  "008_Theme_Calendar_documentation.json": {
+    "mtime": 1767205679.021326,
+    "size": 8936
+  },
+  "009_Combo_Expression_documentation.json": {
+    "mtime": 1767205681.154851,
+    "size": 10902
+  },
+  "009_Global_SuperAlphas_documentation.json": {
+    "mtime": 1767205682.4950798,
+    "size": 3717
+  },
+  "009_Helpful_Tips_documentation.json": {
+    "mtime": 1767205681.8373532,
+    "size": 3618
+  },
+  "009_Selection_Expression_documentation.json": {
+    "mtime": 1767205680.810195,
+    "size": 47119
+  },
+  "009_SuperAlpha_Operators_documentation.json": {
+    "mtime": 1767205682.1679401,
+    "size": 18735
+  },
+  "009_SuperAlpha_Results_documentation.json": {
+    "mtime": 1767205681.500101,
+    "size": 3838
+  },
+  "009_What_is_a_SuperAlpha_documentation.json": {
+    "mtime": 1767205680.1058033,
+    "size": 13234
+  },
+  "010_BRAIN_API_documentation.json": {
+    "mtime": 1767205683.554062,
+    "size": 36407
+  },
+  "010_Documentation_for_ACE_API_Library_Gold_documentation.json": {
+    "mtime": 1767205683.8682556,
+    "size": 1660
+  },
+  "010__Understanding_simulation_limits_documentation.json": {
+    "mtime": 1767205683.1834643,
+    "size": 12013
+  },
+  "arithmetic_operators.json": {
+    "mtime": 1767205684.2544255,
+    "size": 5302
+  },
+  "cross_sectional_operators.json": {
+    "mtime": 1767205684.2554393,
+    "size": 3393
+  },
+  "group_operators.json": {
+    "mtime": 1767205684.2564406,
+    "size": 4058
+  },
+  "logical_operators.json": {
+    "mtime": 1767205684.2584274,
+    "size": 3549
+  },
+  "reduce_operators.json": {
+    "mtime": 1767205684.2594502,
+    "size": 8602
+  },
+  "special_operators.json": {
+    "mtime": 1767205684.2606597,
+    "size": 891
+  },
+  "test.txt": {
+    "mtime": 1767174050.546388,
+    "size": 82
+  },
+  "time_series_operators.json": {
+    "mtime": 1767205684.2626643,
+    "size": 12968
+  },
+  "transformational_operators.json": {
+    "mtime": 1767205684.2626643,
+    "size": 2080
+  },
+  "vector_operators.json": {
+    "mtime": 1767205684.2636645,
+    "size": 997
+  }
+}
