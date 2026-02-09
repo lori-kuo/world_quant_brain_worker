@@ -16,23 +16,72 @@ def inspiration_house():
     """Main inspiration house page"""
     return render_template('inspiration_house.html')
 
+@inspiration_house_bp.route('/api/ollama/models', methods=['POST'])
+def get_ollama_models():
+    """Get available Ollama models from the Ollama API"""
+    try:
+        data = request.get_json() or {}
+        api_base_url = data.get('api_base_url', 'http://localhost:11434')
+        
+        # Remove /v1 suffix if present, as Ollama tags API doesn't use it
+        base_url = api_base_url.rstrip('/').replace('/v1', '')
+        ollama_api_url = f"{base_url}/api/tags"
+        
+        logger.info(f"Fetching Ollama models from: {ollama_api_url}")
+        
+        # Call Ollama API to get model list
+        response = requests.get(ollama_api_url, timeout=5)
+        
+        if response.status_code == 200:
+            data = response.json()
+            models = data.get('models', [])
+            model_names = [model.get('name', '') for model in models if model.get('name')]
+            
+            logger.info(f"Found {len(model_names)} Ollama models: {model_names}")
+            
+            return jsonify({
+                'success': True,
+                'models': model_names,
+                'count': len(model_names)
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': f'Ollama API returned status {response.status_code}'
+            }), 400
+            
+    except requests.exceptions.ConnectionError as e:
+        logger.error(f"Cannot connect to Ollama: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': 'Cannot connect to Ollama. Please ensure: 1) ollama serve is running, 2) Base URL is correct'
+        }), 500
+    except Exception as e:
+        logger.error(f"Error fetching Ollama models: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f'Error: {str(e)}'
+        }), 500
+
 @inspiration_house_bp.route('/api/test-deepseek', methods=['POST'])
 def test_deepseek_api():
-    """Test API connection for both Deepseek and Kimi"""
+    """Test API connection for Deepseek, Kimi, Ollama, and OpenAI-compatible APIs"""
     try:
         api_key = request.headers.get('X-API-Key')
-        if not api_key:
-            return jsonify({'success': False, 'error': 'API key is required'}), 400
-
         data = request.get_json()
         provider = data.get('provider', 'deepseek')
         model_name = data.get('model_name', 'deepseek-chat')
+        api_base_url = data.get('api_base_url', None)
+        
+        # For Ollama and OpenAI-compatible, API key is optional
+        is_ollama_or_openai = provider in ['ollama', 'openai']
+        if not api_key and not is_ollama_or_openai:
+            return jsonify({'success': False, 'error': 'API key is required'}), 400
 
-        # Test API with a simple request
-        headers = {
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json'
-        }
+        # Setup headers
+        headers = {'Content-Type': 'application/json'}
+        if api_key:
+            headers['Authorization'] = f'Bearer {api_key}'
         
         test_data = {
             'model': model_name,
@@ -44,26 +93,23 @@ def test_deepseek_api():
         
         # Choose API endpoint based on provider
         if provider == 'kimi':
-            # Use the correct Kimi API endpoint that was tested and confirmed working
             api_url = 'https://api.moonshot.cn/v1/chat/completions'
-            
-            kimi_data = {
-                'model': model_name,
-                'messages': [
-                    {'role': 'user', 'content': 'Hello, this is a test message.'}
-                ],
-                'max_tokens': 10,
-                'stream': False
-            }
-            
-            logger.info(f"Testing Kimi API with correct endpoint: {api_url}")
-            response = requests.post(api_url, headers=headers, json=kimi_data, timeout=10)
-            logger.info(f"Kimi response status: {response.status_code}")
-                
+            test_data['stream'] = False
+            logger.info(f"Testing Kimi API: {api_url}")
+        elif provider == 'ollama':
+            # Ollama uses OpenAI-compatible API format
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'http://localhost:11434/v1/chat/completions'
+            logger.info(f"Testing Ollama API: {api_url}")
+        elif provider == 'openai':
+            # Custom OpenAI-compatible endpoint
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'https://api.openai.com/v1/chat/completions'
+            logger.info(f"Testing OpenAI-compatible API: {api_url}")
         else:
             # Default to Deepseek
             api_url = 'https://api.deepseek.com/chat/completions'
-            response = requests.post(api_url, headers=headers, json=test_data, timeout=10)
+            logger.info(f"Testing Deepseek API: {api_url}")
+        
+        response = requests.post(api_url, headers=headers, json=test_data, timeout=10)
         
         if response.status_code == 200:
             return jsonify({'success': True, 'message': f'{provider.capitalize()} API connection successful'})
@@ -73,7 +119,10 @@ def test_deepseek_api():
             
     except requests.exceptions.RequestException as e:
         logger.error(f"API test error: {str(e)}")
-        return jsonify({'success': False, 'error': f'Network error: {str(e)}'}), 500
+        error_msg = str(e)
+        if 'ollama' in provider and 'Connection' in error_msg:
+            error_msg = f'Cannot connect to Ollama. Please ensure: 1) ollama serve is running, 2) Model is installed (ollama list), 3) Correct base URL ({api_base_url})'
+        return jsonify({'success': False, 'error': f'Network error: {error_msg}'}), 500
     except Exception as e:
         logger.error(f"Unexpected error in API test: {str(e)}")
         return jsonify({'success': False, 'error': f'Unexpected error: {str(e)}'}), 500
@@ -83,15 +132,19 @@ def evaluate_operator():
     """Evaluate a single operator against the research target"""
     try:
         api_key = request.headers.get('X-API-Key')
-        if not api_key:
+        data = request.get_json()
+        provider = data.get('provider', 'deepseek')
+        api_base_url = data.get('api_base_url', None)
+        
+        # For Ollama and OpenAI-compatible, API key is optional
+        is_ollama_or_openai = provider in ['ollama', 'openai']
+        if not api_key and not is_ollama_or_openai:
             return jsonify({'success': False, 'error': 'API key is required'}), 400
 
-        data = request.get_json()
         operator = data.get('operator', {})
         research_target = data.get('research_target', '')
         current_expression = data.get('current_expression', '')
         expression_context = data.get('expression_context', '')
-        provider = data.get('provider', 'deepseek')
         model_name = data.get('model_name', 'deepseek-chat')
         
         if not operator or not research_target:
@@ -102,40 +155,36 @@ def evaluate_operator():
         user_prompt = build_evaluation_prompt(operator, research_target, current_expression, expression_context)
 
         # Make API call based on provider
-        headers = {
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json'
+        headers = {'Content-Type': 'application/json'}
+        if api_key:
+            headers['Authorization'] = f'Bearer {api_key}'
+        
+        api_data = {
+            'model': model_name,
+            'messages': [
+                {'role': 'system', 'content': system_prompt},
+                {'role': 'user', 'content': user_prompt}
+            ],
+            'max_tokens': 4096,
+            'temperature': 0.3
         }
         
+        # Choose API endpoint based on provider
         if provider == 'kimi':
-            # Use the correct Kimi API endpoint that was tested and confirmed working
             api_url = 'https://api.moonshot.cn/v1/chat/completions'
-            
-            api_data = {
-                'model': model_name,
-                'messages': [
-                    {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': user_prompt}
-                ],
-                'max_tokens': 4096,
-                'temperature': 0.3
-            }
-            
-            response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
-                
+            timeout = 30
+        elif provider == 'ollama':
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'http://localhost:11434/v1/chat/completions'
+            timeout = 120  # Ollama needs more time for local inference
+        elif provider == 'openai':
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'https://api.openai.com/v1/chat/completions'
+            timeout = 30
         else:
-            # Deepseek API structure
+            # Default to Deepseek
             api_url = 'https://api.deepseek.com/chat/completions'
-            api_data = {
-                'model': model_name,
-                'messages': [
-                    {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': user_prompt}
-                ],
-                'max_tokens': 4096,
-                'temperature': 0.3
-            }
-            response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
+            timeout = 30
+            
+        response = requests.post(api_url, headers=headers, json=api_data, timeout=timeout)
         
         if response.status_code == 200:
             response_data = response.json()
@@ -269,25 +318,33 @@ def batch_evaluate_operators():
     """Evaluate multiple operators in parallel"""
     try:
         api_key = request.headers.get('X-API-Key')
-        if not api_key:
+        data = request.get_json()
+        provider = data.get('provider', 'deepseek')
+        api_base_url = data.get('api_base_url', None)
+        
+        # For Ollama and OpenAI-compatible, API key is optional
+        is_ollama_or_openai = provider in ['ollama', 'openai']
+        if not api_key and not is_ollama_or_openai:
             return jsonify({'success': False, 'error': 'API key is required'}), 400
 
-        data = request.get_json()
         operators = data.get('operators', [])
         research_target = data.get('research_target', '')
         current_expression = data.get('current_expression', '')
         expression_context = data.get('expression_context', '')
         batch_size = data.get('batch_size', 100)  # Get batch size from request
-        provider = data.get('provider', 'deepseek')
         model_name = data.get('model_name', 'deepseek-chat')
         
         if not operators or not research_target:
             return jsonify({'success': False, 'error': 'Operators and research target are required'}), 400
 
         # Use ThreadPoolExecutor for parallel processing
-        # Use full parallelization for all providers
-        max_workers = len(operators)
-        logger.info(f"Using {max_workers} workers for API evaluation")
+        # For Ollama, use limited parallelization to avoid overwhelming the local server
+        if provider == 'ollama':
+            max_workers = min(3, len(operators))  # Max 3 concurrent requests for Ollama
+            logger.info(f"Using {max_workers} workers for Ollama (limited concurrency)")
+        else:
+            max_workers = len(operators)  # Full parallelization for cloud APIs
+            logger.info(f"Using {max_workers} workers for API evaluation")
         
         results = []
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -301,7 +358,8 @@ def batch_evaluate_operators():
                     current_expression,
                     expression_context,
                     provider,
-                    model_name
+                    model_name,
+                    api_base_url
                 ): operator for operator in operators
             }
             
@@ -333,7 +391,7 @@ def batch_evaluate_operators():
         logger.error(f"Unexpected error in batch evaluation: {str(e)}")
         return jsonify({'success': False, 'error': f'Unexpected error: {str(e)}'}), 500
 
-def evaluate_single_operator_async(api_key, operator, research_target, current_expression, expression_context, provider='deepseek', model_name='deepseek-chat'):
+def evaluate_single_operator_async(api_key, operator, research_target, current_expression, expression_context, provider='deepseek', model_name='deepseek-chat', api_base_url=None):
     """Evaluate a single operator asynchronously"""
     try:
         # Build the evaluation prompt
@@ -341,40 +399,32 @@ def evaluate_single_operator_async(api_key, operator, research_target, current_e
         user_prompt = build_evaluation_prompt(operator, research_target, current_expression, expression_context)
 
         # Make API call based on provider
-        headers = {
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json'
+        headers = {'Content-Type': 'application/json'}
+        if api_key:
+            headers['Authorization'] = f'Bearer {api_key}'
+        
+        api_data = {
+            'model': model_name,
+            'messages': [
+                {'role': 'system', 'content': system_prompt},
+                {'role': 'user', 'content': user_prompt}
+            ],
+            'max_tokens': 4096,
+            'temperature': 0.3
         }
         
+        # Choose API endpoint based on provider
         if provider == 'kimi':
-            # Use the correct Kimi API endpoint that was tested and confirmed working
             api_url = 'https://api.moonshot.cn/v1/chat/completions'
-            
-            api_data = {
-                'model': model_name,
-                'messages': [
-                    {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': user_prompt}
-                ],
-                'max_tokens': 4096,
-                'temperature': 0.3
-            }
-            
-            response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
-                
+        elif provider == 'ollama':
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'http://localhost:11434/v1/chat/completions'
+        elif provider == 'openai':
+            api_url = f"{api_base_url.rstrip('/')}/chat/completions" if api_base_url else 'https://api.openai.com/v1/chat/completions'
         else:
-            # Deepseek API structure
+            # Default to Deepseek
             api_url = 'https://api.deepseek.com/chat/completions'
-            api_data = {
-                'model': model_name,
-                'messages': [
-                    {'role': 'system', 'content': system_prompt},
-                    {'role': 'user', 'content': user_prompt}
-                ],
-                'max_tokens': 4096,
-                'temperature': 0.3
-            }
-            response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
+            
+        response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
         
         if response.status_code == 200:
             response_data = response.json()

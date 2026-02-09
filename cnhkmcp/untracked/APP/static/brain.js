@@ -29,19 +29,93 @@ async function readJsonOrText(response) {
     return { ok: false, data: null, rawText };
 }
 
+// Try auto login with saved credentials
+async function tryAutoLogin() {
+    try {
+        const response = await fetch(`${PROXY_BASE}/api/get-saved-credentials`);
+        const data = await response.json();
+        
+        if (data.success && data.has_credentials) {
+            // Show a quick notification
+            showLoginStatus('检测到已保存的账号，正在自动登录...', 'loading');
+            
+            // Try to authenticate with empty credentials (backend will use config file)
+            const authResponse = await fetch(`${PROXY_BASE}/api/authenticate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})  // Empty object, backend will load from config
+            });
+            
+            const authData = await authResponse.json();
+            
+            if (authData.success) {
+                brainSessionId = authData.session_id;
+                localStorage.setItem('brain_session_id', brainSessionId);
+                showLoginStatus(`✅ 自动登录成功！(${data.email})`, 'success');
+                setTimeout(() => {
+                    closeBrainLoginModal();
+                }, 1500);
+                return true;
+            }
+        }
+    } catch (error) {
+        console.log('Auto login failed, will show login form:', error);
+    }
+    return false;
+}
+
 // Open BRAIN login modal
-function openBrainLoginModal() {
+async function openBrainLoginModal() {
     const modal = document.getElementById('brainLoginModal');
     const statusDiv = document.getElementById('brainLoginStatus');
     statusDiv.innerHTML = '';
     statusDiv.className = 'login-status';
     
-    // Clear previous inputs
-    document.getElementById('brainUsername').value = '';
-    document.getElementById('brainPassword').value = '';
-    
     modal.style.display = 'block';
-    document.getElementById('brainUsername').focus();
+    
+    // Try auto login first
+    const autoLoginSuccess = await tryAutoLogin();
+    
+    if (!autoLoginSuccess) {
+        // Auto login failed, check if we have saved credentials to display
+        try {
+            const response = await fetch(`${PROXY_BASE}/api/get-saved-credentials`);
+            const data = await response.json();
+            
+            if (data.success && data.has_credentials) {
+                // Show saved email
+                document.getElementById('brainUsername').value = data.email;
+                statusDiv.innerHTML = `<div style="color: #666; font-size: 0.9em; margin-bottom: 10px;">📝 已加载保存的账号: ${data.email}<br>请输入密码或点击"快速登录"使用配置文件</div>`;
+                
+                // Add quick login button
+                const quickLoginBtn = document.createElement('button');
+                quickLoginBtn.textContent = '⚡ 快速登录（使用配置文件）';
+                quickLoginBtn.className = 'btn btn-success';
+                quickLoginBtn.style.marginTop = '10px';
+                quickLoginBtn.style.width = '100%';
+                quickLoginBtn.onclick = async (e) => {
+                    e.preventDefault();
+                    // Clear form and trigger auth with empty credentials
+                    document.getElementById('brainUsername').value = '';
+                    document.getElementById('brainPassword').value = '';
+                    await authenticateBrain();
+                };
+                statusDiv.appendChild(quickLoginBtn);
+            } else {
+                // No saved credentials, clear form
+                document.getElementById('brainUsername').value = '';
+                document.getElementById('brainPassword').value = '';
+            }
+        } catch (error) {
+            console.error('Error checking saved credentials:', error);
+            document.getElementById('brainUsername').value = '';
+            document.getElementById('brainPassword').value = '';
+        }
+        
+        document.getElementById('brainUsername').focus();
+    }
 }
 
 // Close BRAIN login modal
@@ -73,7 +147,10 @@ async function authenticateBrain() {
     const spinner = document.getElementById('loginSpinner');
     const modal = document.getElementById('brainLoginModal');
     
-    if (!username || !password) {
+    // Allow empty credentials if using config file (quick login)
+    const useConfigFile = !username && !password;
+    
+    if (!useConfigFile && (!username || !password)) {
         showLoginStatus('Please enter both username and password.', 'error');
         return;
     }
@@ -92,7 +169,11 @@ async function authenticateBrain() {
     modal.querySelector('.close').style.display = 'none';
     
     // Show loading state
-    showLoginStatus('Connecting to proxy server...', 'loading');
+    if (useConfigFile) {
+        showLoginStatus('使用配置文件登录...', 'loading');
+    } else {
+        showLoginStatus('Connecting to proxy server...', 'loading');
+    }
     
     try {
         showLoginStatus('Authenticating with BRAIN...', 'loading');
@@ -103,10 +184,12 @@ async function authenticateBrain() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
+            body: JSON.stringify(
+                useConfigFile ? {} : {
+                    username: username,
+                    password: password
+                }
+            )
         });
 
         const parsed = await readJsonOrText(authResponse);

@@ -14,7 +14,31 @@ document.addEventListener('DOMContentLoaded', function() {
     refreshLogFiles();
     setupFormValidation();
     loadSimulatorDefaults();
+    tryAutoLoadCredentials();  // Try to auto-load credentials
 });
+
+/**
+ * Try to auto-load saved credentials from backend
+ */
+async function tryAutoLoadCredentials() {
+    try {
+        const response = await fetch('/api/get-saved-credentials');
+        const data = await response.json();
+        
+        if (data.success && data.has_credentials) {
+            document.getElementById('username').value = data.email;
+            
+            // Show a hint that credentials are loaded
+            const usernameField = document.getElementById('username');
+            const hint = document.createElement('div');
+            hint.style.cssText = 'color: #666; font-size: 0.85em; margin-top: 3px;';
+            hint.textContent = `✓ 已加载保存的账号`;
+            usernameField.parentNode.appendChild(hint);
+        }
+    } catch (error) {
+        console.log('Failed to load saved credentials:', error);
+    }
+}
 
 /**
  * Setup form validation and change handlers

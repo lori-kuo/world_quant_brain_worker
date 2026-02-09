@@ -650,16 +650,34 @@
                 <select id="modelProvider" class="form-input">
                     <option value="deepseek">Deepseek</option>
                     <option value="kimi">Kimi</option>
+                    <option value="ollama">Ollama (本地)</option>
+                    <option value="openai">OpenAI Compatible</option>
                 </select>
+            </div>
+            <div class="form-group" id="apiBaseUrlGroup">
+                <label for="apiBaseUrl">API Base URL:</label>
+                <input type="text" id="apiBaseUrl" class="form-input" placeholder="e.g., http://localhost:11434/v1">
+                <small style="color: #7f8c8d; font-size: 12px;">For Ollama, use: http://localhost:11434/v1</small>
             </div>
             <div class="form-group">
                 <label for="apiKey">API Key:</label>
-                <input type="password" id="apiKey" class="form-input" placeholder="Enter your API key">
+                <input type="password" id="apiKey" class="form-input" placeholder="Enter your API key (optional for Ollama)">
+                <small style="color: #7f8c8d; font-size: 12px;" id="apiKeyHint">Required for Deepseek/Kimi, optional for local Ollama</small>
             </div>
             <div class="form-group">
                 <label for="modelName">Model Name:</label>
-                <input type="text" id="modelName" class="form-input" placeholder="e.g., deepseek-chat, kimi-k2-0711-preview">
-                <small style="color: #7f8c8d; font-size: 12px;">Enter the specific model name for your chosen provider</small>
+                <!-- Text input for non-Ollama providers -->
+                <input type="text" id="modelName" class="form-input" placeholder="e.g., deepseek-chat, kimi-k2-0711-preview, qwen2.5:32b">
+                <!-- Dropdown for Ollama models -->
+                <div id="ollamaModelGroup" style="display: none;">
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <select id="ollamaModelSelect" class="form-input" style="flex: 1;">
+                            <option value="">Select a model...</option>
+                        </select>
+                        <button id="refreshModelsBtn" class="btn" style="padding: 8px 16px; white-space: nowrap;">🔄 Refresh</button>
+                    </div>
+                </div>
+                <small style="color: #7f8c8d; font-size: 12px;" id="modelNameHint">Enter the specific model name for your chosen provider</small>
             </div>
             <div class="form-group">
                 <label for="batchSize">Worker Configuration:</label>

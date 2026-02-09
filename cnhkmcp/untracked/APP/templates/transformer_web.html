@@ -229,17 +229,9 @@
         
         let optionsData = {};
 
-        loginBtn.addEventListener('click', async () => {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (!username || !password) {
-                loginStatus.textContent = 'Please enter Username and Password';
-                loginStatus.style.color = 'red';
-                return;
-            }
-            
-            loginStatus.textContent = 'Logging in and fetching options...';
+        // Try auto login on page load
+        async function tryAutoLogin() {
+            loginStatus.textContent = '正在自动登录...';
             loginStatus.style.color = 'blue';
             loginBtn.disabled = true;
             
@@ -247,7 +239,66 @@
                 const response = await fetch('/api/transformer/login-and-fetch-options', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                    body: JSON.stringify({})  // Empty, backend will use config file
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    loginStatus.textContent = '✅ 自动登录成功！';
+                    loginStatus.style.color = 'green';
+                    
+                    optionsData = result.options;
+                    populateOptions(result.options);
+                    
+                    return true;
+                } else {
+                    loginStatus.textContent = '';
+                    loginBtn.disabled = false;
+                }
+            } catch (error) {
+                console.log('Auto login failed:', error);
+                loginStatus.textContent = '';
+                loginBtn.disabled = false;
+            }
+            
+            // Auto login failed, try to load saved credentials
+            try {
+                const credResponse = await fetch('/api/get-saved-credentials');
+                const credData = await credResponse.json();
+                if (credData.success && credData.has_credentials) {
+                    document.getElementById('username').value = credData.email;
+                    loginStatus.innerHTML = `<div style="color: #666; font-size: 0.9em;">📝 已加载保存的账号: ${credData.email}</div>`;
+                }
+            } catch (e) {
+                console.log('Failed to load saved credentials:', e);
+            }
+            
+            return false;
+        }
+
+        loginBtn.addEventListener('click', async () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Allow empty if using config file
+            const useConfigFile = !username && !password;
+            
+            if (!useConfigFile && (!username || !password)) {
+                loginStatus.textContent = 'Please enter Username and Password';
+                loginStatus.style.color = 'red';
+                return;
+            }
+            
+            loginStatus.textContent = useConfigFile ? '使用配置文件登录...' : 'Logging in and fetching options...';
+            loginStatus.style.color = 'blue';
+            loginBtn.disabled = true;
+            
+            try {
+                const response = await fetch('/api/transformer/login-and-fetch-options', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(useConfigFile ? {} : { username, password })
                 });
                 
                 const result = await response.json();
@@ -574,6 +625,11 @@
                 logViewer.textContent += '\nConnection lost.';
             };
         }
+        
+        // Auto login on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            tryAutoLogin();
+        });
     </script>
     <script src="{{ url_for('static', filename='usage_widget.js') }}"></script>
 </body>

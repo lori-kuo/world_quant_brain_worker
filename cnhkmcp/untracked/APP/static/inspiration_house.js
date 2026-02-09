@@ -2,6 +2,7 @@
 
 // Store API key and state in session storage
 let apiKey = sessionStorage.getItem('deepseekApiKey');
+let apiBaseUrl = sessionStorage.getItem('inspirationHouseApiBaseUrl') || '';
 let modelProvider = sessionStorage.getItem('inspirationHouseProvider') || 'deepseek';
 let modelName = sessionStorage.getItem('inspirationHouseModelName') || 'deepseek-chat';
 let researchTarget = sessionStorage.getItem('inspirationHouseTarget') || '';
@@ -16,8 +17,15 @@ let batchSize = parseInt(sessionStorage.getItem('inspirationHouseBatchSize')) ||
 
 // DOM Elements
 const modelProviderSelect = document.getElementById('modelProvider');
+const apiBaseUrlInput = document.getElementById('apiBaseUrl');
+const apiBaseUrlGroup = document.getElementById('apiBaseUrlGroup');
 const apiKeyInput = document.getElementById('apiKey');
+const apiKeyHint = document.getElementById('apiKeyHint');
 const modelNameInput = document.getElementById('modelName');
+const ollamaModelGroup = document.getElementById('ollamaModelGroup');
+const ollamaModelSelect = document.getElementById('ollamaModelSelect');
+const refreshModelsBtn = document.getElementById('refreshModelsBtn');
+const modelNameHint = document.getElementById('modelNameHint');
 const batchSizeInput = document.getElementById('batchSize');
 const saveApiKeyBtn = document.getElementById('saveApiKey');
 const apiConfigSection = document.getElementById('apiConfigSection');
@@ -64,6 +72,11 @@ if (apiKey) {
     apiKeyInput.value = apiKey;
 }
 
+// Initialize API Base URL if exists
+if (apiBaseUrl) {
+    apiBaseUrlInput.value = apiBaseUrl;
+}
+
 // Initialize model provider and name
 modelProviderSelect.value = modelProvider;
 modelNameInput.value = modelName;
@@ -75,16 +88,109 @@ currentBatchSizeSpan.textContent = operatorsList.length;
 // Update model name placeholder based on provider
 function updateModelNamePlaceholder() {
     const provider = modelProviderSelect.value;
-    if (provider === 'kimi') {
-        modelNameInput.placeholder = 'e.g., kimi-k2-0711-preview';
-        if (modelNameInput.value === 'deepseek-chat') {
-            modelNameInput.value = 'kimi-k2-0711-preview';
+    
+    // Show/hide API Base URL field and model input/select
+    if (provider === 'ollama' || provider === 'openai') {
+        apiBaseUrlGroup.style.display = 'block';
+        if (provider === 'ollama') {
+            // Show dropdown for Ollama, hide text input
+            modelNameInput.style.display = 'none';
+            ollamaModelGroup.style.display = 'block';
+            
+            apiBaseUrlInput.placeholder = 'http://localhost:11434/v1';
+            if (!apiBaseUrlInput.value) {
+                apiBaseUrlInput.value = 'http://localhost:11434/v1';
+            }
+            apiKeyInput.placeholder = 'Not required for local Ollama';
+            apiKeyHint.textContent = 'Optional for local Ollama (leave empty if not needed)';
+            modelNameHint.textContent = 'Select from your installed Ollama models';
+            
+            // Load Ollama models
+            loadOllamaModels();
+        } else {
+            // Show text input for OpenAI, hide dropdown
+            modelNameInput.style.display = 'block';
+            ollamaModelGroup.style.display = 'none';
+            
+            apiBaseUrlInput.placeholder = 'e.g., https://api.openai.com/v1';
+            apiKeyInput.placeholder = 'Enter your API key';
+            apiKeyHint.textContent = 'Required for OpenAI-compatible APIs';
+            modelNameInput.placeholder = 'e.g., gpt-4, gpt-3.5-turbo';
+            modelNameHint.textContent = 'Enter the model name for your API';
         }
     } else {
-        modelNameInput.placeholder = 'e.g., deepseek-chat, deepseek-coder';
-        if (modelNameInput.value === 'kimi-k2-0711-preview') {
-            modelNameInput.value = 'deepseek-chat';
+        // Show text input for Deepseek/Kimi, hide dropdown
+        modelNameInput.style.display = 'block';
+        ollamaModelGroup.style.display = 'none';
+        apiBaseUrlGroup.style.display = 'none';
+        apiKeyInput.placeholder = 'Enter your API key';
+        apiKeyHint.textContent = 'Required for Deepseek/Kimi';
+        
+        if (provider === 'kimi') {
+            modelNameInput.placeholder = 'e.g., kimi-k2-0711-preview';
+            modelNameHint.textContent = 'Enter the Kimi model name';
+            if (modelNameInput.value === 'deepseek-chat') {
+                modelNameInput.value = 'kimi-k2-0711-preview';
+            }
+        } else {
+            modelNameInput.placeholder = 'e.g., deepseek-chat, deepseek-coder';
+            modelNameHint.textContent = 'Enter the Deepseek model name';
+            if (modelNameInput.value === 'kimi-k2-0711-preview') {
+                modelNameInput.value = 'deepseek-chat';
+            }
         }
+    }
+}
+
+// Load Ollama models from API
+async function loadOllamaModels() {
+    try {
+        const baseUrl = apiBaseUrlInput.value || 'http://localhost:11434';
+        
+        const response = await fetch('/inspiration-house/api/ollama/models', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                api_base_url: baseUrl
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+            const models = data.models || [];
+            
+            // Clear existing options
+            ollamaModelSelect.innerHTML = '<option value="">Select a model...</option>';
+            
+            // Add model options
+            models.forEach(modelName => {
+                const option = document.createElement('option');
+                option.value = modelName;
+                option.textContent = modelName;
+                ollamaModelSelect.appendChild(option);
+            });
+            
+            // Restore previously selected model if it exists
+            const savedModel = sessionStorage.getItem('inspirationHouseModelName');
+            if (savedModel && models.includes(savedModel)) {
+                ollamaModelSelect.value = savedModel;
+            }
+            
+            console.log(`Loaded ${models.length} Ollama models`);
+            
+            if (models.length === 0) {
+                showNotification('No Ollama models found. Run "ollama pull <model>" to download models', 'warning');
+            }
+        } else {
+            console.error('Failed to load Ollama models:', data.error);
+            showNotification(`Cannot load models: ${data.error}`, 'error');
+        }
+    } catch (error) {
+        console.error('Error loading Ollama models:', error);
+        showNotification('Error loading Ollama models. Ensure Ollama is running.', 'error');
     }
 }
 
@@ -95,10 +201,29 @@ modelProviderSelect.addEventListener('change', () => {
     updateModelNamePlaceholder();
 });
 
+// API Base URL change handler
+apiBaseUrlInput.addEventListener('input', () => {
+    apiBaseUrl = apiBaseUrlInput.value;
+    sessionStorage.setItem('inspirationHouseApiBaseUrl', apiBaseUrl);
+});
+
 // Model name change handler
 modelNameInput.addEventListener('input', () => {
     modelName = modelNameInput.value;
     sessionStorage.setItem('inspirationHouseModelName', modelName);
+});
+
+// Ollama model select change handler
+ollamaModelSelect.addEventListener('change', () => {
+    modelName = ollamaModelSelect.value;
+    sessionStorage.setItem('inspirationHouseModelName', modelName);
+    console.log(`Selected Ollama model: ${modelName}`);
+});
+
+// Refresh Ollama models button
+refreshModelsBtn.addEventListener('click', async () => {
+    console.log('Refreshing Ollama models...');
+    await loadOllamaModels();
 });
 
 // Save batch size when changed
@@ -113,7 +238,12 @@ updateModelNamePlaceholder();
 
 // Check if API is already configured and hide config section if so
 function checkApiConfigStatus() {
-    if (apiKey && modelProvider && modelName) {
+    const isOllamaOrOpenAI = modelProvider === 'ollama' || modelProvider === 'openai';
+    const hasRequiredConfig = isOllamaOrOpenAI 
+        ? (apiBaseUrl && modelName)  // Ollama/OpenAI needs base URL and model name
+        : (apiKey && modelProvider && modelName);  // Others need API key
+    
+    if (hasRequiredConfig) {
         apiConfigSection.style.display = 'none';
         showApiConfigSection.style.display = 'block';
     } else {
@@ -195,11 +325,27 @@ function refreshOperatorsFromSessionStorage() {
 // Save API Key and Test Connection
 saveApiKeyBtn.addEventListener('click', async () => {
     const newApiKey = apiKeyInput.value.trim();
+    const newApiBaseUrl = apiBaseUrlInput.value.trim();
     const newProvider = modelProviderSelect.value;
-    const newModelName = modelNameInput.value.trim();
     
-    if (!newApiKey) {
+    // Get model name based on provider
+    let newModelName;
+    if (newProvider === 'ollama') {
+        newModelName = ollamaModelSelect.value.trim();
+    } else {
+        newModelName = modelNameInput.value.trim();
+    }
+    
+    // For Ollama, API key is optional
+    const isOllamaOrOpenAI = newProvider === 'ollama' || newProvider === 'openai';
+    
+    if (!isOllamaOrOpenAI && !newApiKey) {
         showNotification('Please enter a valid API key', 'error');
+        return;
+    }
+    
+    if (isOllamaOrOpenAI && !newApiBaseUrl) {
+        showNotification('Please enter API Base URL', 'error');
         return;
     }
     
@@ -214,25 +360,36 @@ saveApiKeyBtn.addEventListener('click', async () => {
         const response = await fetch('/inspiration-house/api/test-deepseek', {
             method: 'POST',
             headers: {
-                'X-API-Key': newApiKey,
+                'X-API-Key': newApiKey || 'not-required',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 provider: newProvider,
-                model_name: newModelName
+                model_name: newModelName,
+                api_base_url: newApiBaseUrl || null
             })
         });
 
         const data = await response.json();
         
         if (response.ok && data.success) {
-            sessionStorage.setItem('deepseekApiKey', newApiKey);
+            if (newApiKey) {
+                sessionStorage.setItem('deepseekApiKey', newApiKey);
+                apiKey = newApiKey;
+            }
+            if (newApiBaseUrl) {
+                sessionStorage.setItem('inspirationHouseApiBaseUrl', newApiBaseUrl);
+                apiBaseUrl = newApiBaseUrl;
+            }
             sessionStorage.setItem('inspirationHouseProvider', newProvider);
             sessionStorage.setItem('inspirationHouseModelName', newModelName);
-            apiKey = newApiKey;
             modelProvider = newProvider;
             modelName = newModelName;
-            showNotification(`${newProvider.charAt(0).toUpperCase() + newProvider.slice(1)} API connection successful`, 'success');
+            
+            const providerName = newProvider === 'ollama' ? 'Ollama (Local)' : 
+                                 newProvider === 'openai' ? 'OpenAI Compatible' :
+                                 newProvider.charAt(0).toUpperCase() + newProvider.slice(1);
+            showNotification(`${providerName} API connection successful`, 'success');
             
             // Hide API config section after successful configuration
             apiConfigSection.style.display = 'none';
@@ -241,8 +398,14 @@ saveApiKeyBtn.addEventListener('click', async () => {
             showNotification(`API Error: ${data.error || 'Unknown error'}`, 'error');
             console.error('API Error Details:', data);
             
-            // Provide specific guidance for Kimi API issues
-            if (newProvider === 'kimi' && data.error) {
+            // Provide specific guidance for different providers
+            if (newProvider === 'ollama' && data.error) {
+                console.log('Ollama troubleshooting tips:');
+                console.log('1. Make sure Ollama is running: ollama serve');
+                console.log('2. Check if the model is installed: ollama list');
+                console.log('3. Verify the base URL is correct (default: http://localhost:11434/v1)');
+                console.log('4. Try pulling the model: ollama pull ' + newModelName);
+            } else if (newProvider === 'kimi' && data.error) {
                 console.log('Kimi API troubleshooting tips:');
                 console.log('1. Make sure you have a valid Kimi API key');
                 console.log('2. Check if your Kimi account has API access enabled');
@@ -334,8 +497,17 @@ loadFromBRAINBtn.addEventListener('click', () => {
 
 // Start AI Evaluation
 startEvaluationBtn.addEventListener('click', async () => {
-    if (!apiKey) {
-        showNotification('Please configure your Deepseek API key first', 'error');
+    // Check API configuration based on provider
+    const isOllamaOrOpenAI = modelProvider === 'ollama' || modelProvider === 'openai';
+    const hasRequiredConfig = isOllamaOrOpenAI 
+        ? (apiBaseUrl && modelName)  // Ollama/OpenAI needs base URL and model name
+        : (apiKey && modelName);  // Others need API key and model name
+    
+    if (!hasRequiredConfig) {
+        const providerName = modelProvider === 'ollama' ? 'Ollama' : 
+                           modelProvider === 'openai' ? 'OpenAI' :
+                           modelProvider === 'kimi' ? 'Kimi' : 'Deepseek';
+        showNotification(`Please configure your ${providerName} API settings first`, 'error');
         return;
     }
 
@@ -357,6 +529,11 @@ startEvaluationBtn.addEventListener('click', async () => {
     if (isEvaluating) {
         showNotification('Evaluation already in progress', 'warning');
         return;
+    }
+    
+    // Special warning for Ollama
+    if (modelProvider === 'ollama') {
+        showNotification('⏳ Using local Ollama: This will take longer than cloud APIs. Using 3 concurrent workers to avoid overload.', 'warning');
     }
 
     try {
@@ -405,7 +582,7 @@ async function evaluateAllOperators() {
         const response = await fetch('/inspiration-house/api/batch-evaluate', {
             method: 'POST',
             headers: {
-                'X-API-Key': apiKey,
+                'X-API-Key': apiKey || 'not-required',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -415,7 +592,8 @@ async function evaluateAllOperators() {
                 expression_context: expressionContext,
                 batch_size: batchSize,
                 provider: modelProvider,
-                model_name: modelName
+                model_name: modelName,
+                api_base_url: apiBaseUrl || null
             })
         });
 
@@ -452,7 +630,7 @@ async function evaluateSingleOperator(operator) {
         const response = await fetch('/inspiration-house/api/evaluate-operator', {
             method: 'POST',
             headers: {
-                'X-API-Key': apiKey,
+                'X-API-Key': apiKey || 'not-required',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -461,7 +639,8 @@ async function evaluateSingleOperator(operator) {
                 current_expression: currentExpression,
                 expression_context: expressionContext,
                 provider: modelProvider,
-                model_name: modelName
+                model_name: modelName,
+                api_base_url: apiBaseUrl || null
             })
         });
 

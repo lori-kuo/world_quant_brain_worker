@@ -216,37 +216,85 @@
         let currentSessionId = null;
         let analyzedAlphas = [];
 
+        // Try auto login on page load
+        async function tryAutoLogin() {
+            const statusDiv = document.getElementById('loginStatus');
+            statusDiv.textContent = '正在自动登录...';
+            statusDiv.style.color = 'blue';
+            
+            try {
+                const response = await fetch('/api/yuanfen/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({})  // Empty, backend will use config file
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    statusDiv.textContent = '✅ 自动登录成功！';
+                    statusDiv.style.color = 'green';
+                    currentSessionId = data.session_id;
+                    document.getElementById('loginSection').classList.add('hidden');
+                    document.getElementById('mainContent').classList.remove('hidden');
+                    return true;
+                }
+            } catch (e) {
+                console.log('Auto login failed:', e);
+            }
+            
+            // Auto login failed, show form
+            statusDiv.textContent = '';
+            try {
+                const credResponse = await fetch('/api/get-saved-credentials');
+                const credData = await credResponse.json();
+                if (credData.success && credData.has_credentials) {
+                    document.getElementById('username').value = credData.email;
+                    statusDiv.innerHTML = `<div style="color: #666; font-size: 0.9em;">📝 已加载保存的账号: ${credData.email}</div>`;
+                }
+            } catch (e) {
+                console.log('Failed to load saved credentials:', e);
+            }
+            return false;
+        }
+
         async function handleLogin() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const statusDiv = document.getElementById('loginStatus');
 
             statusDiv.textContent = '正在登录...';
+            statusDiv.style.color = 'blue';
             
             try {
                 const response = await fetch('/api/yuanfen/login', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({username, password})
+                    body: JSON.stringify(username && password ? {username, password} : {})
                 });
                 
                 const data = await response.json();
                 
                 if (data.success) {
-                    statusDiv.textContent = '登录成功！';
+                    statusDiv.textContent = '✅ 登录成功！';
                     statusDiv.style.color = 'green';
                     currentSessionId = data.session_id;
                     document.getElementById('loginSection').classList.add('hidden');
                     document.getElementById('mainContent').classList.remove('hidden');
                 } else {
-                    statusDiv.textContent = '登录失败：' + data.message;
+                    statusDiv.textContent = '❌ 登录失败：' + data.message;
                     statusDiv.style.color = 'red';
                 }
             } catch (e) {
-                statusDiv.textContent = '错误：' + e.message;
+                statusDiv.textContent = '❌ 错误：' + e.message;
                 statusDiv.style.color = 'red';
             }
         }
+
+        // Auto login on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            tryAutoLogin();
+        });
 
         function toggleMode() {
             const mode = document.querySelector('input[name="fetchMode"]:checked').value;
