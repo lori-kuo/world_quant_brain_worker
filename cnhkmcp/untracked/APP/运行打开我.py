@@ -1338,9 +1338,38 @@ def test_operators():
     except Exception as e:
         return jsonify({'error': f'Test failed: {str(e)}'}), 500
 
+@app.route('/api/get-session-info', methods=['POST'])
+def get_session_info():
+    """Get session information for authenticated user"""
+    try:
+        data = request.get_json()
+        session_id = data.get('session_id')
+        
+        if not session_id or session_id not in brain_sessions:
+            return jsonify({
+                'success': False,
+                'error': 'Invalid or expired session'
+            }), 401
+        
+        session_info = brain_sessions[session_id]
+        
+        return jsonify({
+            'success': True,
+            'session': {
+                'username': session_info['username'],
+                'password': session_info['password'],
+                'authenticated': True
+            }
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 # Import blueprints
 try:
-    from blueprints import idea_house_bp, paper_analysis_bp, feature_engineering_bp, inspiration_house_bp
+    from blueprints import idea_house_bp, paper_analysis_bp, feature_engineering_bp, inspiration_house_bp, alpha_miner_bp
     print("📦 Blueprints imported successfully!")
 except ImportError as e:
     print(f"❌ Failed to import blueprints: {e}")
@@ -1351,12 +1380,14 @@ app.register_blueprint(idea_house_bp, url_prefix='/idea-house')
 app.register_blueprint(paper_analysis_bp, url_prefix='/paper-analysis')
 app.register_blueprint(feature_engineering_bp, url_prefix='/feature-engineering')
 app.register_blueprint(inspiration_house_bp, url_prefix='/inspiration-house')
+app.register_blueprint(alpha_miner_bp, url_prefix='/alpha-miner')
 
 print("🔧 All blueprints registered successfully!")
 print("   - Idea House: /idea-house")
 print("   - Paper Analysis: /paper-analysis") 
 print("   - Feature Engineering: /feature-engineering")
 print("   - Inspiration House: /inspiration-house")
+print("   - Alpha Miner: /alpha-miner")
 
 # Template Management Routes
 # Get the directory where this script is located for templates
@@ -2534,4 +2565,5 @@ if __name__ == '__main__':
 
     print(f"Application will run on http://{bind_host}:5000")
     print("BRAIN API integration included - no separate proxy needed!")
-    app.run(debug=False, host=bind_host, port=5000)
+    print("🔥 Hot reload enabled - files will auto-reload on change")
+    app.run(debug=True, host=bind_host, port=5000)

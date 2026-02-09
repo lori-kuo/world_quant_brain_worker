@@ -424,7 +424,7 @@ def evaluate_single_operator_async(api_key, operator, research_target, current_e
             # Default to Deepseek
             api_url = 'https://api.deepseek.com/chat/completions'
             
-        response = requests.post(api_url, headers=headers, json=api_data, timeout=30)
+        response = requests.post(api_url, headers=headers, json=api_data, timeout=180)
         
         if response.status_code == 200:
             response_data = response.json()

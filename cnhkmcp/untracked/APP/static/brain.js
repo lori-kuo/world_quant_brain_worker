@@ -251,8 +251,13 @@ async function authenticateBrain() {
             console.log("Loaded simulation options:", simulationOptions);
         }
 
-        // Store session ID in localStorage for other pages
+        // Store session ID and username in localStorage for other pages
         localStorage.setItem('brain_session_id', brainSessionId);
+        // Store username (not password for security)
+        if (username) {
+            localStorage.setItem('brain_username', username);
+        }
+        localStorage.setItem('brain_connected', 'true');
         
         // Fetch operators immediately for "Op" button functionality
         showLoginStatus('Loading operators...', 'loading');
